@@ -1,0 +1,52 @@
+@import "abstracts/variables";
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+
+  &__top-row {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    height: 4rem;
+  }
+
+  &__logo-link {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__burger-menu-button {
+    margin-left: auto;
+  }
+}
+
+.drop-down-menu {
+  background-color: white;
+  height: 0px;
+  transition: height ease-in-out 0.25s;
+  overflow: hidden;
+
+  &--expanded {
+    height: calc(1.5rem * 2 + 2.5rem * 4);
+  }
+
+  &__list {
+    padding: 1.5rem 0;
+  }
+
+  &__link {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    display: block;
+    text-align: center;
+    font-family: $primary-font-bold;
+    text-transform: uppercase;
+    line-height: 1.5;
+  }
+}

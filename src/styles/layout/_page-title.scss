@@ -1,0 +1,9 @@
+.page-title {
+  font-size: 3rem;
+  text-align: center;
+
+  &__first-word {
+    font-size: 2rem;
+    font-family: $primary-font-regular;
+  }
+}
