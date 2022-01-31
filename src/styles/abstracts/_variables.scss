@@ -1,0 +1,29 @@
+// Fonts
+$primary-font-regular: "Papyrus-Regular";
+$primary-font-bold: "Papyrus-Bold";
+
+$secondary-font-light: "Montserrat-Light";
+$secondary-font-regular: "Montserrat-Regular";
+$secondary-font-bold: "Montserrat-Bold";
+
+// Bootstrap breakpoints
+$grid-breakpoints: (
+  "xs": 0,
+  "sm": 576px,
+  "md": 768px,
+  "lg": 992px,
+  "xl": 1200px,
+  "xxl": 1400px,
+);
+
+$container-widths: (
+  "xs": 100%,
+  "sm": 540px,
+  "md": 720px,
+  "lg": 960px,
+  "xl": 1140px,
+  "xxl": 1320px,
+);
+
+// Misc
+$default-border-radius: 0.5rem;

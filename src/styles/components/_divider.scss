@@ -1,0 +1,7 @@
+@import "abstracts/variables";
+
+.divider {
+  height: 1px;
+  border: none;
+  background-color: var(--divider-color);
+}

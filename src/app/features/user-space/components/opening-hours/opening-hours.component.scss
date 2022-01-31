@@ -1,0 +1,29 @@
+@import "abstracts/variables";
+
+.opening-hours {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__list {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__list-item {
+  }
+
+  &__note {
+    font-size: 0.75rem;
+    text-align: center;
+  }
+
+  &__info-button {
+    vertical-align: middle;
+  }
+
+  &__info-icon {
+  }
+}
