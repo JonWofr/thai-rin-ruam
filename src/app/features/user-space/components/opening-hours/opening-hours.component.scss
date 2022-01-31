@@ -1,5 +1,9 @@
 @import "abstracts/variables";
 
+:host {
+  display: block;
+}
+
 .opening-hours {
   display: flex;
   flex-direction: column;

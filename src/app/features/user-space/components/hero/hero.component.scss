@@ -1,12 +1,12 @@
+@import "abstracts/variables";
+
+:host {
+  display: block;
+}
+
 .hero {
   height: 90vh;
-  background-image: radial-gradient(
-      66.66% 50% at center,
-      rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 0) 80%,
-      rgba(0, 0, 0, 0.4) 100%
-    ),
-    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+  background-image: $radial-dark-overlay, $solid-dark-overlay,
     url("/assets/images/hero-background-image.jpeg");
   background-size: cover;
   background-position: center;
@@ -19,7 +19,6 @@
   }
 
   &__opening-hours {
-    display: block;
     margin-bottom: 2rem;
   }
 }
@@ -38,4 +37,5 @@
   font-size: 1rem;
   margin-bottom: 0.75rem;
   text-align: center;
+  color: var(--primary-font-color);
 }

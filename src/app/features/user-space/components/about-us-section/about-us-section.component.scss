@@ -1,0 +1,56 @@
+@import "abstracts/mixins";
+
+:host {
+  display: block;
+}
+
+.about-us-section {
+  &__header {
+    grid-area: header;
+  }
+
+  &__image {
+    width: 90%;
+    height: 90%;
+    object-fit: cover;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-radius: 1.25rem;
+  }
+
+  &__text {
+    grid-area: text;
+    text-align: center;
+  }
+}
+
+.container {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(2, 1fr);
+  // Height of rows is set to auto because grid-auto-columns is set to auto by default
+  grid-template-areas:
+    "header header"
+    "image image"
+    "text text";
+
+  @include media-breakpoint-up("md") {
+    grid-template-areas: "image header" "image text";
+  }
+}
+
+.aspect-ratio {
+  grid-area: image;
+
+  &__inner-container::before {
+    content: "";
+    width: 90%;
+    height: 90%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 3px solid var(--primary-accent-color);
+    border-radius: 1.25rem;
+  }
+}

@@ -1,0 +1,44 @@
+<section class="section news-section">
+  <div class="container">
+    <user-space-section-header
+      class="news-section__header"
+      title="Neuigkeiten von Thai Rin Ruam"
+      subTitle="Aktuelles"
+    ></user-space-section-header>
+    <div class="news-section__body">
+      <user-space-news-card
+        [news]="news"
+        class="news-section__news-card"
+      ></user-space-news-card>
+      <a class="button button--embedded" href="/">
+        <svg
+          class="button__icon"
+          width="21"
+          height="21"
+          viewBox="0 0 21 21"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g clip-path="url(#clip0_312_7665)">
+            <path
+              d="M4.66666 3.30005L7.21416 0.800049L17.1667 10.8L7.21416 20.8L4.66666 18.3L12.1667 10.8L4.66666 3.30005Z"
+              fill="#5C5C5C"
+            />
+          </g>
+          <defs>
+            <clipPath id="clip0_312_7665">
+              <rect
+                width="20"
+                height="20"
+                fill="white"
+                transform="translate(0.5 0.800049)"
+              />
+            </clipPath>
+          </defs>
+        </svg>
+
+        <p class="button__label">Alle Neuigkeiten</p>
+      </a>
+    </div>
+  </div>
+</section>

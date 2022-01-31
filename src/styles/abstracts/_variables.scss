@@ -27,3 +27,11 @@ $container-widths: (
 
 // Misc
 $default-border-radius: 0.5rem;
+$default-box-shadow: 0px 4px 4px rgba(95, 95, 95, 0.25);
+$radial-dark-overlay: radial-gradient(
+  66.66% 50% at center,
+  rgba(0, 0, 0, 0) 0%,
+  rgba(0, 0, 0, 0) 80%,
+  rgba(0, 0, 0, 0.4) 100%
+);
+$solid-dark-overlay: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));

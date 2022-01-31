@@ -1,0 +1,13 @@
+@import "abstracts/variables";
+
+:host {
+  display: block;
+}
+
+.divider-section {
+  padding: 10rem 0;
+  background-image: $radial-dark-overlay, $solid-dark-overlay,
+    url("/assets/images/divider-section-background-image.jpg");
+  background-size: cover;
+  background-position: center;
+}

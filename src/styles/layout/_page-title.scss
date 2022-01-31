@@ -1,9 +1,10 @@
 .page-title {
-  font-size: 3rem;
   text-align: center;
 
   &__first-word {
     font-size: 2rem;
+    line-height: 1.5;
     font-family: $primary-font-regular;
+    color: var(--primary-font-color);
   }
 }

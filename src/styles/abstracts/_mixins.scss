@@ -1,0 +1,8 @@
+@use "sass:map";
+@import "abstracts/variables";
+
+@mixin media-breakpoint-up($grid-breakpoint) {
+  @media only screen and (min-width: map.get($grid-breakpoints, $grid-breakpoint)) {
+    @content;
+  }
+}
