@@ -1,0 +1,26 @@
+:host {
+  display: block;
+}
+
+.news-section {
+  background-color: var(--secondary-background-color);
+
+  &__header {
+    margin-bottom: 2rem;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  &__news-card {
+    width: 100%;
+  }
+}
+
+.button__label {
+  color: var(--secondary-font-color);
+}
