@@ -12,6 +12,11 @@ import { SectionHeaderComponent } from './components/section-header/section-head
 import { NewsSectionComponent } from './components/news-section/news-section.component';
 import { NewsCardComponent } from './components/news-card/news-card.component';
 import { DividerSectionComponent } from './components/divider-section/divider-section.component';
+import { DishCategoriesSectionComponent } from './components/dish-categories-section/dish-categories-section.component';
+import { DishCategoryCardComponent } from './components/dish-category-card/dish-category-card.component';
+import { LocationSectionComponent } from './components/location-section/location-section.component';
+import { HolidayNoteComponent } from './components/holiday-note/holiday-note.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +29,11 @@ import { DividerSectionComponent } from './components/divider-section/divider-se
     NewsSectionComponent,
     NewsCardComponent,
     DividerSectionComponent,
+    DishCategoriesSectionComponent,
+    DishCategoryCardComponent,
+    LocationSectionComponent,
+    HolidayNoteComponent,
+    FooterComponent,
   ],
   imports: [CommonModule, UserSpaceRoutingModule, SharedModule],
 })

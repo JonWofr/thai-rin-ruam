@@ -27,7 +27,6 @@
 
 .container {
   display: grid;
-  gap: 2rem;
   grid-template-columns: repeat(2, 1fr);
   // Height of rows is set to auto because grid-auto-columns is set to auto by default
   grid-template-areas:
@@ -42,6 +41,7 @@
 
 .aspect-ratio {
   grid-area: image;
+  margin-bottom: 2rem;
 
   &__inner-container::before {
     content: "";
