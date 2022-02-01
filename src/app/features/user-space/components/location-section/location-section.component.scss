@@ -1,0 +1,60 @@
+@import "abstracts/mixins";
+@import "abstracts/variables";
+
+:host {
+  display: block;
+}
+
+.location-section {
+  &__header {
+    grid-area: header;
+  }
+
+  &__route-link {
+    grid-area: image;
+    margin-bottom: 2rem;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    border-radius: $default-border-radius;
+    object-fit: cover;
+  }
+
+  &__content {
+    grid-area: content;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: flex-start;
+  }
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  // Height of rows is set to auto because grid-auto-columns is set to auto by default
+  grid-template-areas:
+    "header header"
+    "image image"
+    "content content";
+
+  @include media-breakpoint-up("md") {
+    grid-template-areas:
+      "image header"
+      "image content";
+  }
+}
+
+.contact-information-block {
+  text-align: left;
+
+  &__opening-hours-table {
+    margin-bottom: 1rem;
+  }
+
+  &__table-cell:last-child {
+    padding-left: 1rem;
+  }
+}

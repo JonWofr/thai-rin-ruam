@@ -17,11 +17,19 @@
     width: 1.25rem;
     height: 1.25rem;
     fill: var(--primary-font-color);
+
+    &--embedded {
+      fill: var(--secondary-font-color);
+    }
   }
 
   &__label {
     font-family: $secondary-font-bold;
     letter-spacing: 0.1em;
     color: var(--primary-font-color);
+
+    &--embedded {
+      color: var(--secondary-font-color);
+    }
   }
 }
