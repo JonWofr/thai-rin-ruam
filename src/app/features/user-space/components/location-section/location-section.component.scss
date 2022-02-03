@@ -40,10 +40,22 @@
     "image image"
     "content content";
 
+  &--without-section-header {
+    grid-template-areas:
+      "image image"
+      "content content";
+  }
+
   @include media-breakpoint-up("md") {
     grid-template-areas:
       "image header"
       "image content";
+
+    &--without-section-header {
+      grid-template-areas:
+        "image content"
+        "image content";
+    }
   }
 }
 

@@ -35,3 +35,11 @@ $radial-dark-overlay: radial-gradient(
   rgba(0, 0, 0, 0.4) 100%
 );
 $solid-dark-overlay: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+
+.default-section-padding {
+  --section-padding: 7rem 0;
+}
+
+.reduced-section-padding {
+  --section-padding: 4.5rem 0 7rem 0;
+}

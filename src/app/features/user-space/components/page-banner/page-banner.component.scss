@@ -1,0 +1,19 @@
+@import "abstracts/variables";
+
+:host {
+  display: block;
+}
+
+.page-banner {
+  height: 45vh;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+
+  &__title {
+    position: absolute;
+    bottom: 5rem;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+}

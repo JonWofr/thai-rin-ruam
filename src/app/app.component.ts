@@ -9,7 +9,10 @@ export class AppComponent implements OnInit {
   title = 'thai-rin-ruam-new';
 
   ngOnInit(): void {
-    // Default theme is light
-    document.documentElement.classList.add('light-theme');
+    // Default theme is light. Also default section padding is set.
+    document.documentElement.classList.add(
+      'light-theme',
+      'default-section-padding'
+    );
   }
 }

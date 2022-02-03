@@ -17,6 +17,13 @@ import { DishCategoryCardComponent } from './components/dish-category-card/dish-
 import { LocationSectionComponent } from './components/location-section/location-section.component';
 import { HolidayNoteComponent } from './components/holiday-note/holiday-note.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { PageBannerComponent } from './components/page-banner/page-banner.component';
+import { UserSpaceComponent } from './user-space.component';
+import { ContactComponent } from './pages/contact/contact.component';
+import { NewsComponent } from './pages/news/news.component';
+import { ImpressumComponent } from './pages/impressum/impressum.component';
+import { DataPrivacyComponent } from './pages/data-privacy/data-privacy.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +41,13 @@ import { FooterComponent } from './components/footer/footer.component';
     LocationSectionComponent,
     HolidayNoteComponent,
     FooterComponent,
+    AboutUsComponent,
+    PageBannerComponent,
+    UserSpaceComponent,
+    ContactComponent,
+    NewsComponent,
+    ImpressumComponent,
+    DataPrivacyComponent,
   ],
   imports: [CommonModule, UserSpaceRoutingModule, SharedModule],
 })

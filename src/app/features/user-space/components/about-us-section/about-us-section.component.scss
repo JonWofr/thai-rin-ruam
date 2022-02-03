@@ -34,8 +34,22 @@
     "image image"
     "text text";
 
+  &--without-section-header {
+    grid-template-areas:
+      "image image"
+      "text text";
+  }
+
   @include media-breakpoint-up("md") {
-    grid-template-areas: "image header" "image text";
+    grid-template-areas:
+      "image header"
+      "image text";
+
+    &--without-section-header {
+      grid-template-areas:
+        "image text"
+        "image text";
+    }
   }
 }
 

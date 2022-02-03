@@ -1,6 +1,10 @@
 <section class="section location-section">
-  <div class="container">
+  <div
+    class="container"
+    [class.container--without-section-header]="!shouldHaveSectionHeader"
+  >
     <user-space-section-header
+      *ngIf="shouldHaveSectionHeader"
       class="location-section__header"
       title="So erreichen Sie uns"
       subtitle="Anfahrt"

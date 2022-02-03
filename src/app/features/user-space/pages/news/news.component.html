@@ -1,0 +1,14 @@
+<user-space-page-banner
+  title="Aktuelles"
+  imageUrl="/assets/images/news-page-banner-image.jpg"
+></user-space-page-banner>
+<section
+  class="reduced-section-padding section section--secondary-background-color"
+>
+  <div class="container">
+    <user-space-news-card
+      *ngFor="let value of news"
+      [news]="value"
+    ></user-space-news-card>
+  </div>
+</section>
