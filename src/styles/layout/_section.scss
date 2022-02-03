@@ -1,5 +1,5 @@
 .section {
-  padding: 7rem 0;
+  padding: var(--section-padding);
 
   &--primary-background-color {
     background-color: var(--primary-background-color);

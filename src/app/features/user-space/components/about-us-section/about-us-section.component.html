@@ -1,6 +1,10 @@
 <section class="section section--primary-background-color">
-  <div class="container">
+  <div
+    class="container"
+    [class.container--without-section-header]="!shouldHaveSectionHeader"
+  >
     <user-space-section-header
+      *ngIf="shouldHaveSectionHeader"
       class="about-us-section__header"
       title="Unsere Geschichte"
       subtitle="Über Uns"
