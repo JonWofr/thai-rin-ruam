@@ -1,0 +1,33 @@
+<user-space-page-banner
+  title="Speisekarte"
+  imageUrl="/assets/images/menu-page-banner-image.jpg"
+></user-space-page-banner>
+<section class="reduced-section-padding section">
+  <div class="container">
+    <select
+      class="menu__select"
+      [ngModel]="selectedDishCategory.name"
+      (ngModelChange)="onChangeSelect($event)"
+    >
+      <option
+        *ngFor="let dishCategory of dishCategories"
+        [value]="dishCategory.name"
+      >
+        {{ dishCategory.name }}
+      </option>
+    </select>
+    <user-space-dish-category-tab-header
+      class="menu__dish-category-tab-header"
+      [title]="selectedDishCategory.description"
+      [subtitle]="selectedDishCategory.name"
+      [imageUrl]="selectedDishCategory.imageUrl"
+    >
+    </user-space-dish-category-tab-header>
+    <ul>
+      <user-space-menu-item
+        *ngFor="let dish of filteredDishes"
+        [dish]="dish"
+      ></user-space-menu-item>
+    </ul>
+  </div>
+</section>

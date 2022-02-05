@@ -1,4 +1,5 @@
 export interface DishCategory {
   name: string;
-  image: string;
+  description: string;
+  imageUrl: string;
 }

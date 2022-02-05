@@ -13,12 +13,24 @@
   src: url("/assets/fonts/montserrat/montserrat-light.ttf");
 }
 @font-face {
+  font-family: $secondary-font-medium;
+  src: url("/assets/fonts/montserrat/montserrat-medium.ttf");
+}
+@font-face {
   font-family: $secondary-font-regular;
   src: url("/assets/fonts/montserrat/montserrat-regular.ttf");
 }
 @font-face {
   font-family: $secondary-font-bold;
   src: url("/assets/fonts/montserrat/montserrat-bold.ttf");
+}
+@font-face {
+  font-family: $thai-font-regular;
+  src: url("/assets/fonts/aksaramatee/aksaramatee-regular.ttf");
+}
+@font-face {
+  font-family: $thai-font-bold;
+  src: url("/assets/fonts/aksaramatee/aksaramatee-bold.ttf");
 }
 
 * {
@@ -54,5 +66,12 @@
   letter-spacing: 0.2em;
   text-transform: uppercase;
   font-size: 0.75rem;
-  color: var(--primary-accent-color);
+
+  &--primary-accent-color {
+    color: var(--primary-accent-color);
+  }
+
+  &--secondary-accent-color {
+    color: var(--secondary-accent-color);
+  }
 }

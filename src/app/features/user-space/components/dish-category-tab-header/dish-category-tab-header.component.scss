@@ -1,0 +1,19 @@
+@import "abstracts/variables";
+
+:host {
+  display: block;
+}
+
+.dish-category-tab-header {
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: $default-border-radius;
+
+  &__section-header {
+    margin-bottom: 0;
+  }
+}

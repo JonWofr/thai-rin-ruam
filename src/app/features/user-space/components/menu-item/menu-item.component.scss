@@ -1,0 +1,59 @@
+@import "abstracts/variables";
+
+:host {
+  display: block;
+}
+
+.menu-item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+
+  &__main-content {
+    flex: 1;
+  }
+
+  &__number,
+  &__price {
+    color: var(--primary-font-color);
+  }
+
+  &__price {
+    font-family: $secondary-font-medium;
+  }
+
+  &__thai-name,
+  &__hotness-icon,
+  &__allergenes {
+    margin-left: 0.5rem;
+  }
+
+  &__thai-name {
+    font-family: $thai-font-bold;
+    font-size: 1.5rem;
+    color: var(--primary-font-color);
+  }
+
+  &__hotness-icon {
+    display: inline;
+  }
+
+  &__allergenes {
+    font-family: $secondary-font-light;
+    font-size: 0.75rem;
+  }
+
+  &__options-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-left: 1rem;
+    margin-top: 0.75rem;
+  }
+
+  &__options-item {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+}

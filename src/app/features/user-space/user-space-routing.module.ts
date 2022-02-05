@@ -5,6 +5,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { DataPrivacyComponent } from './pages/data-privacy/data-privacy.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ImpressumComponent } from './pages/impressum/impressum.component';
+import { MenuComponent } from './pages/menu/menu.component';
 import { NewsComponent } from './pages/news/news.component';
 import { UserSpaceComponent } from './user-space.component';
 
@@ -36,6 +37,10 @@ const routes: Routes = [
       {
         path: 'data-privacy',
         component: DataPrivacyComponent,
+      },
+      {
+        path: 'menu',
+        component: MenuComponent,
       },
     ],
   },
