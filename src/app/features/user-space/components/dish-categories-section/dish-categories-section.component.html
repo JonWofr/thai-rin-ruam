@@ -8,13 +8,17 @@
     ></user-space-section-header>
     <div class="dish-categories-section__body">
       <div class="dish-categories-section__dish-category-cards-container">
-        <a *ngFor="let dishCategory of dishCategories" href="/">
+        <a
+          *ngFor="let dishCategory of dishCategories"
+          routerLink="/menu"
+          [queryParams]="{ category: dishCategory.name }"
+        >
           <user-space-dish-category-card
             [dishCategory]="dishCategory"
           ></user-space-dish-category-card>
         </a>
       </div>
-      <a class="button button--embedded" href="/">
+      <a class="button button--embedded" routerLink="/menu">
         <svg
           class="button__icon button__icon--embedded"
           width="21"

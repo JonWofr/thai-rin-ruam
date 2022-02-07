@@ -8,6 +8,8 @@ import { Component, Input, OnInit } from '@angular/core';
 export class SectionHeaderComponent implements OnInit {
   @Input() title = '';
   @Input() subtitle = '';
+  @Input() style: 'primary-accent-color' | 'secondary-accent-color' =
+    'primary-accent-color';
 
   constructor() {}
 
