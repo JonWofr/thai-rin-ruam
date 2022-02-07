@@ -1,3 +1,6 @@
-<user-space-header></user-space-header>
+<user-space-header
+  *ngIf="headerColorTheme"
+  [colorTheme]="headerColorTheme"
+></user-space-header>
 <router-outlet></router-outlet>
 <user-space-footer class="dark-theme"></user-space-footer>

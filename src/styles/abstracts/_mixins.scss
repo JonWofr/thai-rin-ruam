@@ -6,3 +6,12 @@
     @content;
   }
 }
+
+@mixin with-transition(
+  $transition-property,
+  $transition-duration: $default-transition-duration,
+  $transition-timing-function: $default-transition-timing-function
+) {
+  transition: $transition-property $transition-duration
+    $transition-timing-function;
+}
