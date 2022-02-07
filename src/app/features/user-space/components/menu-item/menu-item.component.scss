@@ -7,7 +7,6 @@
 .menu-item {
   display: flex;
   align-items: baseline;
-  gap: 0.5rem;
 
   &__main-content {
     flex: 1;
@@ -18,8 +17,13 @@
     color: var(--primary-font-color);
   }
 
+  &__number {
+    margin-right: 0.5rem;
+  }
+
   &__price {
     font-family: $secondary-font-medium;
+    margin-left: 2rem;
   }
 
   &__thai-name,

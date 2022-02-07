@@ -8,11 +8,11 @@ export interface Dish {
   number: number;
   name: string;
   thaiName: string;
-  price: number;
+  price?: number;
   hotnessLevel: HotnessLevel;
   allergenes: Allergene[];
   category: DishCategory;
-  group: DishGroup;
+  group?: DishGroup;
   description: string;
   options: DishOption[];
 }

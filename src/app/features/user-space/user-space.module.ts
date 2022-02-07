@@ -29,6 +29,7 @@ import { FormsModule } from '@angular/forms';
 import { DishCategoryTabHeaderComponent } from './components/dish-category-tab-header/dish-category-tab-header.component';
 import { MenuItemComponent } from './components/menu-item/menu-item.component';
 import { AllergenesPipe } from './pipes/allergenes/allergenes.pipe';
+import { MenuLegendComponent } from './components/menu-legend/menu-legend.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { AllergenesPipe } from './pipes/allergenes/allergenes.pipe';
     DishCategoryTabHeaderComponent,
     MenuItemComponent,
     AllergenesPipe,
+    MenuLegendComponent,
   ],
   imports: [CommonModule, UserSpaceRoutingModule, SharedModule, FormsModule],
 })

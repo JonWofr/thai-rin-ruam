@@ -113,4 +113,107 @@ export const dishes: Dish[] = [
       },
     ],
   },
+  {
+    number: 5,
+    name: 'Aliqua ad dolor ut Lorem nisi laborum.',
+    thaiName: 'ปอเปี๊ย',
+    price: 3.99,
+    hotnessLevel: HotnessLevel.EXTREMELY_HOT,
+    allergenes: [
+      {
+        name: 'Milcherzeugnisse',
+        abbreviation: 'A',
+      },
+      {
+        name: 'Nusserzeugnisse',
+        abbreviation: 'B',
+      },
+      {
+        name: 'Fisch',
+        abbreviation: 'C',
+      },
+    ],
+    category: dishCategories[0],
+    description:
+      'Aliqua enim dolor aliquip aute veniam magna tempor incididunt dolore qui ea tempor.',
+    options: [
+      {
+        letter: 'a',
+        name: 'Mit Hühnchen',
+        allergenes: [
+          {
+            name: 'Milcherzeugnisse',
+            abbreviation: 'A',
+          },
+          {
+            name: 'Nusserzeugnisse',
+            abbreviation: 'B',
+          },
+        ],
+        price: 4.99,
+      },
+      {
+        letter: 'c',
+        name: 'Mit Garnelen',
+        allergenes: [],
+        price: 4.99,
+      },
+      {
+        letter: 'b',
+        name: 'Mit Rind',
+        allergenes: [],
+        price: 4.99,
+      },
+    ],
+  },
+
+  {
+    number: 4,
+    name: 'Aliqua ad dolor ut Lorem nisi laborum.',
+    thaiName: 'ปอเปี๊ย',
+    hotnessLevel: HotnessLevel.NOT_HOT,
+    price: 4.99,
+    allergenes: [
+      {
+        name: 'Milcherzeugnisse',
+        abbreviation: 'A',
+      },
+      {
+        name: 'Nusserzeugnisse',
+        abbreviation: 'B',
+      },
+      {
+        name: 'Fisch',
+        abbreviation: 'C',
+      },
+    ],
+    category: dishCategories[0],
+    description:
+      'Aliqua enim dolor aliquip aute veniam magna tempor incididunt dolore qui ea tempor.',
+    options: [],
+  },
+  {
+    number: 7,
+    name: 'Aliqua ad dolor ut Lorem nisi laborum.',
+    thaiName: 'ปอเปี๊ย',
+    hotnessLevel: HotnessLevel.NOT_HOT,
+    price: 4.99,
+    allergenes: [],
+    category: dishCategories[1],
+    description:
+      'Aliqua enim dolor aliquip aute veniam magna tempor incididunt dolore qui ea tempor.',
+    options: [],
+  },
+  {
+    number: 6,
+    name: 'Aliqua ad dolor ut Lorem nisi laborum.',
+    thaiName: 'ปอเปี๊ย',
+    hotnessLevel: HotnessLevel.NOT_HOT,
+    price: 4.99,
+    allergenes: [],
+    category: dishCategories[1],
+    description:
+      'Aliqua enim dolor aliquip aute veniam magna tempor incididunt dolore qui ea tempor.',
+    options: [],
+  },
 ];

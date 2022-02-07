@@ -18,3 +18,22 @@
     margin-bottom: 4rem;
   }
 }
+
+.dish-group {
+  margin-bottom: 4rem;
+
+  &__heading {
+    color: var(--primary-accent-color);
+    margin-bottom: 1rem;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+.divider {
+  margin-bottom: 4rem;
+}

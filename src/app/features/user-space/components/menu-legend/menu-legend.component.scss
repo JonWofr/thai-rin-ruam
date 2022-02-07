@@ -1,0 +1,28 @@
+:host {
+  display: block;
+}
+
+.menu-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+
+  &__item {
+    display: flex;
+    height: 1rem;
+    align-items: center;
+  }
+
+  &__icon-container {
+    width: 26px;
+  }
+
+  &__equal-sign {
+    margin: 0 1rem;
+  }
+
+  &__name,
+  &__allergene-abbreviation {
+    font-size: 0.75rem;
+  }
+}

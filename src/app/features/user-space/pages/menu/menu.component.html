@@ -23,11 +23,18 @@
       [imageUrl]="selectedDishCategory.imageUrl"
     >
     </user-space-dish-category-tab-header>
-    <ul>
-      <user-space-menu-item
-        *ngFor="let dish of filteredDishes"
-        [dish]="dish"
-      ></user-space-menu-item>
-    </ul>
+    <div *ngFor="let dishGroup of dishGroups" class="dish-group">
+      <h3 *ngIf="dishGroup.name" class="tertiary-heading dish-group__heading">
+        {{ dishGroup.name }}
+      </h3>
+      <ul class="dish-group__list">
+        <user-space-menu-item
+          *ngFor="let dish of dishGroup.dishes"
+          [dish]="dish"
+        ></user-space-menu-item>
+      </ul>
+    </div>
+    <hr class="divider" />
+    <user-space-menu-legend [allergenes]="allergenes"></user-space-menu-legend>
   </div>
 </section>
