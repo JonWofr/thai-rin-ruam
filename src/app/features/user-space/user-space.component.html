@@ -2,5 +2,7 @@
   *ngIf="headerColorTheme"
   [colorTheme]="headerColorTheme"
 ></user-space-header>
-<router-outlet></router-outlet>
-<user-space-footer class="dark-theme"></user-space-footer>
+<div class="user-space__parallax-container">
+  <router-outlet></router-outlet>
+  <user-space-footer class="dark-theme"></user-space-footer>
+</div>
