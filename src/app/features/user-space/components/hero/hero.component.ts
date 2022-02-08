@@ -8,11 +8,11 @@ import { TitleIntersectionService } from '../../services/title-intersection/titl
   styleUrls: ['./hero.component.scss'],
 })
 export class HeroComponent implements OnInit, AfterViewInit {
+  titleIntersectionObserver?: IntersectionObserver;
+  contactButtonIntersectionObserver?: IntersectionObserver;
   isContactButtonIntersecting?: boolean;
   isContactButtonAnimationRunning = false;
   contactButtonAnimationQueue: boolean[] = [];
-  titleIntersectionObserver?: IntersectionObserver;
-  contactButtonIntersectionObserver?: IntersectionObserver;
 
   constructor(
     private intersectionObserverHelper: IntersectionObserverHelperService,
@@ -29,7 +29,7 @@ export class HeroComponent implements OnInit, AfterViewInit {
       );
     this.contactButtonIntersectionObserver =
       this.intersectionObserverHelper.createIntersectionObserver(
-        '.hero__contact-button-trigger',
+        '.hero__contact-button-container',
         this.contactButtonIntersectionObserverCallback.bind(this)
       );
   }
@@ -60,14 +60,14 @@ export class HeroComponent implements OnInit, AfterViewInit {
   }
 
   handleContactButtonAnimation(isIntersecting: boolean) {
-    if (this.isContactButtonAnimationRunning) {
-      this.contactButtonAnimationQueue.push(isIntersecting);
-    } else {
+    if (!this.isContactButtonAnimationRunning) {
       this.startContactButtonAnimation(isIntersecting);
       // Set to the total amount of the CSS transition-duration plus a buffer of 50ms
       this.setTimeoutPromise(550).then(
         this.stopContactButtonAnimation.bind(this)
       );
+    } else {
+      this.contactButtonAnimationQueue.push(isIntersecting);
     }
   }
 

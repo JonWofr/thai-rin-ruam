@@ -1,0 +1,10 @@
+@import "abstracts/mixins";
+
+.fade-in {
+  opacity: 0;
+  @include with-transition(opacity, 0.5s);
+
+  &--visible {
+    opacity: 1;
+  }
+}
