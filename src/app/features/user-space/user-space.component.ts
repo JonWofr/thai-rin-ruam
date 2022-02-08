@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ColorTheme } from 'src/app/shared/enums/color-theme.enum';
 import { TitleIntersectionService } from './services/title-intersection/title-intersection.service';
 
 @Component({
@@ -9,15 +8,13 @@ import { TitleIntersectionService } from './services/title-intersection/title-in
   styleUrls: ['./user-space.component.scss'],
 })
 export class UserSpaceComponent implements OnInit, OnDestroy {
-  headerColorTheme?: ColorTheme;
+  isPageTitleIntersecting?: boolean;
   titleIntersectionSubscription?: Subscription;
 
   constructor(titleIntersection: TitleIntersectionService) {
     this.titleIntersectionSubscription = titleIntersection.subject.subscribe(
       (isIntersecting) => {
-        this.headerColorTheme = isIntersecting
-          ? ColorTheme.DARK
-          : ColorTheme.LIGHT;
+        this.isPageTitleIntersecting = isIntersecting;
       }
     );
   }

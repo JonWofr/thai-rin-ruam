@@ -1,6 +1,12 @@
-<user-space-header
-  *ngIf="headerColorTheme"
-  [colorTheme]="headerColorTheme"
-></user-space-header>
+<ng-container *ngIf="isPageTitleIntersecting !== undefined">
+  <user-space-header
+    *sharedMedia="'(max-width: 767px)'"
+    [isPageTitleIntersecting]="isPageTitleIntersecting"
+  ></user-space-header>
+  <user-space-desktop-header
+    *sharedMedia="'(min-width: 768px)'"
+    [isPageTitleIntersecting]="isPageTitleIntersecting"
+  ></user-space-desktop-header>
+</ng-container>
 <router-outlet></router-outlet>
 <user-space-footer class="dark-theme"></user-space-footer>

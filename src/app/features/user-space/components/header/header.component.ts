@@ -7,7 +7,9 @@ import { ColorTheme } from 'src/app/shared/enums/color-theme.enum';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  @Input() colorTheme: ColorTheme = ColorTheme.DARK;
+  @Input() isPageTitleIntersecting = true;
+
+  ColorTheme = ColorTheme;
 
   @HostListener('document:click', ['$event'])
   onClickDocument() {

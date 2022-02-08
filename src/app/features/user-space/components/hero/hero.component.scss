@@ -37,6 +37,7 @@
     top: -$default-header-height;
     width: 100%;
     height: 100vh;
+    pointer-events: none;
   }
 
   &__contact-button {
@@ -50,6 +51,7 @@
 
     overflow: hidden;
     box-shadow: none;
+    pointer-events: all;
 
     @include with-transition(all, 0.375s);
 

@@ -1,0 +1,73 @@
+@import "abstracts/mixins";
+
+:host {
+  display: block;
+}
+
+.header {
+  width: 100%;
+  height: calc(2 * $default-header-height);
+  padding: 0.75rem 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background-color: var(--primary-background-color);
+  box-shadow: none;
+  @include with-transition(all, 0.375s);
+
+  &.light-theme {
+    box-shadow: 0 4px 4px 0 #b3b3b340;
+    height: $default-header-height;
+    padding: 0.25rem;
+  }
+
+  &__navigation {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+  }
+
+  &__list {
+    flex: none;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+    &:first-of-type {
+      justify-content: flex-end;
+    }
+
+    &:last-of-type {
+      justify-content: flex-start;
+    }
+  }
+
+  &__link {
+    font-family: $primary-font-bold;
+    text-transform: uppercase;
+    @include with-transition(color, 0.375s);
+  }
+
+  &__logo-link {
+    flex: none;
+    height: 100%;
+  }
+
+  &__logo {
+    width: auto;
+    height: 100%;
+    fill: var(--primary-font-color);
+    @include with-transition(fill, 0.375s);
+  }
+}
+
+.container {
+  height: 100%;
+}
+
+.dark-theme {
+  --primary-background-color: transparent;
+}

@@ -1,35 +1,41 @@
-<section class="section section--primary-background-color">
-  <div
-    class="container"
-    [class.container--without-section-header]="!shouldHaveSectionHeader"
-  >
-    <user-space-section-header
-      *ngIf="shouldHaveSectionHeader"
-      class="about-us-section__header"
-      title="Unsere Geschichte"
-      subtitle="Über Uns"
-    ></user-space-section-header>
-    <div class="aspect-ratio aspect-ratio--1-by-1" sharedFadeIn>
-      <div class="aspect-ratio__inner-container">
-        <img
-          class="about-us-section__image"
-          src="/assets/images/about-us-image.jpeg"
-          alt=""
-        />
+<section class="section section--primary-background-color about-us-section">
+  <div class="container">
+    <div
+      class="about-us-section__grid"
+      [class.abous-us-section__grid--without-section-header]="
+        !shouldHaveSectionHeader
+      "
+    >
+      <user-space-section-header
+        *ngIf="shouldHaveSectionHeader"
+        class="about-us-section__header"
+        title="Unsere Geschichte"
+        subtitle="Über Uns"
+      ></user-space-section-header>
+      <div class="about-us-section__image-container">
+        <div class="aspect-ratio aspect-ratio--1-by-1" sharedFadeIn>
+          <div class="aspect-ratio__inner-container">
+            <img
+              class="about-us-section__image"
+              src="/assets/images/about-us-image.jpeg"
+              alt=""
+            />
+          </div>
+        </div>
       </div>
+      <p class="about-us-section__text" sharedFadeIn>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum ullam
+        neque atque corporis. Facilis error minus, ullam voluptatum aut quod
+        perspiciatis, tenetur quas voluptas reiciendis, rerum dolor! Sint
+        sapiente a aliquam repellat reprehenderit, expedita debitis harum totam
+        voluptatibus, placeat recusandae minus, nam nulla possimus doloribus.
+        Placeat ut dolorum tenetur dolor dolorem odit accusamus quo harum!
+        Labore, quis commodi qui nostrum a eius eaque minus repudiandae! Iusto
+        natus unde impedit omnis est ducimus sequi fugiat, repudiandae
+        accusantium recusandae non provident laudantium cumque quae perferendis
+        libero alias placeat autem sit quibusdam porro eum doloribus ea tempora!
+        A aliquam recusandae repudiandae atque laborum?
+      </p>
     </div>
-    <p class="about-us-section__text" sharedFadeIn>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum ullam neque
-      atque corporis. Facilis error minus, ullam voluptatum aut quod
-      perspiciatis, tenetur quas voluptas reiciendis, rerum dolor! Sint sapiente
-      a aliquam repellat reprehenderit, expedita debitis harum totam
-      voluptatibus, placeat recusandae minus, nam nulla possimus doloribus.
-      Placeat ut dolorum tenetur dolor dolorem odit accusamus quo harum! Labore,
-      quis commodi qui nostrum a eius eaque minus repudiandae! Iusto natus unde
-      impedit omnis est ducimus sequi fugiat, repudiandae accusantium recusandae
-      non provident laudantium cumque quae perferendis libero alias placeat
-      autem sit quibusdam porro eum doloribus ea tempora! A aliquam recusandae
-      repudiandae atque laborum?
-    </p>
   </div>
 </section>

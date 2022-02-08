@@ -34,9 +34,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     // Default theme is light. Also default section padding is set.
-    document.documentElement.classList.add(
-      'light-theme',
-      'default-section-padding'
-    );
+    document.documentElement.classList.add('light-theme');
   }
 }
