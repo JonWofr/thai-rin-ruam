@@ -30,6 +30,7 @@ import { DishCategoryTabHeaderComponent } from './components/dish-category-tab-h
 import { MenuItemComponent } from './components/menu-item/menu-item.component';
 import { AllergenesPipe } from './pipes/allergenes/allergenes.pipe';
 import { MenuLegendComponent } from './components/menu-legend/menu-legend.component';
+import { FadeInDirective } from 'src/app/shared/directives/fade-in/fade-in.directive';
 
 @NgModule({
   declarations: [

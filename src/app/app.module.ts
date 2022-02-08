@@ -8,17 +8,15 @@ import { AdminSpaceModule } from './features/admin-space/admin-space.module';
 import { UserSpaceModule } from './features/user-space/user-space.module';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CoreModule,
     UserSpaceModule,
-    AdminSpaceModule
+    AdminSpaceModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

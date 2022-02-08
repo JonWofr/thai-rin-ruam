@@ -10,9 +10,23 @@
       <user-space-opening-hours
         class="hero__opening-hours"
       ></user-space-opening-hours>
-      <button class="button">
+    </div>
+  </div>
+  <div class="hero__contact-button-container">
+    <div class="hero__contact-button-inner-container">
+      <a
+        *ngIf="isContactButtonIntersecting !== undefined"
+        routerLink="/contact"
+        class="button hero__contact-button"
+        [ngClass]="{
+          'hero__contact-button--fixed': !isContactButtonIntersecting
+        }"
+      >
         <svg
-          class="button__icon"
+          class="button__icon hero__contact-button-icon"
+          [ngClass]="{
+            'hero__contact-button-icon--fixed': !isContactButtonIntersecting
+          }"
           width="21"
           height="20"
           viewBox="0 0 21 20"
@@ -24,8 +38,15 @@
             fill="white"
           />
         </svg>
-        <p class="button__label">Anfahrt</p>
-      </button>
+        <p
+          class="button__label hero__contact-button-label"
+          [ngClass]="{
+            'hero__contact-button-label--fixed': !isContactButtonIntersecting
+          }"
+        >
+          Anfahrt
+        </p>
+      </a>
     </div>
   </div>
 </section>
