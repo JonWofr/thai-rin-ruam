@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { allergenes } from 'src/app/shared/data/allergenes.data';
 import { dishCategories } from 'src/app/shared/data/dish-categories.data';
@@ -21,7 +22,9 @@ export class MenuComponent implements OnInit {
   allergenes = allergenes;
   Math = Math;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, title: Title) {
+    title.setTitle('Speisekarte – Thai Rin Ruam');
+  }
 
   ngOnInit(): void {
     const selectedDishCategoryName =

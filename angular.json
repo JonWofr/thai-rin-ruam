@@ -30,7 +30,14 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": ["src/favicon.ico", "src/assets"],
+            "assets": [
+              {
+                "glob": "**",
+                "input": "src/favicon",
+                "output": "/"
+              },
+              "src/assets"
+            ],
             "styles": ["src/styles/main.scss"],
             "stylePreprocessorOptions": {
               "includePaths": ["src/styles"]
