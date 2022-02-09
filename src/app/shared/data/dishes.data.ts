@@ -4,7 +4,7 @@ import { dishCategories } from './dish-categories.data';
 
 export const dishes: Dish[] = [
   {
-    number: 1,
+    number: 4,
     name: 'Nisi elit dolore sint tempor.',
     thaiName: 'ปอเปี๊ย',
     price: 9.99,
@@ -35,7 +35,7 @@ export const dishes: Dish[] = [
     ],
   },
   {
-    number: 3,
+    number: 5,
     name: 'Lorem duis magna eu ullamco excepteur.',
     thaiName: 'ปอเปี๊ย',
     price: 19.99,
@@ -114,7 +114,7 @@ export const dishes: Dish[] = [
     ],
   },
   {
-    number: 5,
+    number: 1,
     name: 'Aliqua ad dolor ut Lorem nisi laborum.',
     thaiName: 'ปอเปี๊ย',
     price: 3.99,
@@ -168,7 +168,7 @@ export const dishes: Dish[] = [
   },
 
   {
-    number: 4,
+    number: 3,
     name: 'Aliqua ad dolor ut Lorem nisi laborum.',
     thaiName: 'ปอเปี๊ย',
     hotnessLevel: HotnessLevel.NOT_HOT,

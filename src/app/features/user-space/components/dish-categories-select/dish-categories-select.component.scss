@@ -1,0 +1,14 @@
+@import "abstracts/variables";
+
+:host {
+  display: block;
+}
+
+.dish-categories-select {
+  width: 100%;
+  padding: 1rem;
+  background-color: #ececec;
+  border-radius: $default-border-radius;
+  border: none;
+  margin-bottom: 2rem;
+}

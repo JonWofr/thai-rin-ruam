@@ -2,11 +2,32 @@
   class="header"
   [ngClass]="isPageTitleIntersecting ? ColorTheme.DARK : ColorTheme.LIGHT"
 >
-  <nav>
-    <div class="header__top-row container">
+  <div class="container">
+    <nav class="header__navigation">
+      <ul class="header__list">
+        <li class="header__item">
+          <a
+            class="header__link"
+            routerLink="/news"
+            routerLinkActive="header__link--active"
+            >Aktuelles</a
+          >
+        </li>
+        <li class="header__item">
+          <a
+            class="header__link"
+            routerLink="/menu"
+            routerLinkActive="header__link--active"
+            >Speisekarte</a
+          >
+        </li>
+      </ul>
       <a class="header__logo-link" routerLink="/">
         <svg
           class="header__logo"
+          [ngClass]="{
+            'header__logo--small': !isPageTitleIntersecting
+          }"
           width="96"
           height="56"
           viewBox="0 0 96 56"
@@ -168,63 +189,24 @@
           </defs>
         </svg>
       </a>
-      <button
-        class="header__burger-menu-button"
-        (click)="onClickBurgerMenuButton($event)"
-      >
-        <svg
-          class="header__burger-menu-icon"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M24 4C24 5.10457 23.1046 6 22 6H2C0.89543 6 0 5.10457 0 4C0 2.89543 0.895431 2 2 2H22C23.1046 2 24 2.89543 24 4ZM24 12C24 10.8954 23.1046 10 22 10H2C0.89543 10 0 10.8954 0 12C0 13.1046 0.895431 14 2 14H22C23.1046 14 24 13.1046 24 12ZM24 20C24 18.8954 23.1046 18 22 18H2C0.89543 18 0 18.8954 0 20C0 21.1046 0.895431 22 2 22H22C23.1046 22 24 21.1046 24 20Z"
-          />
-        </svg>
-      </button>
-    </div>
-    <div
-      class="drop-down-menu light-theme"
-      [ngClass]="{
-        'drop-down-menu--expanded': isExpanded
-      }"
-    >
-      <ul class="drop-down-menu__list container">
-        <li class="drop-down-menu__item">
+      <ul class="header__list">
+        <li class="header__item">
           <a
-            class="drop-down-menu__link"
-            routerLink="/news"
-            routerLinkActive="drop-down-menu__link--active"
-            >Aktuelles</a
-          >
-        </li>
-        <li class="drop-down-menu__item">
-          <a
-            class="drop-down-menu__link"
-            routerLink="/menu"
-            routerLinkActive="drop-down-menu__link--active"
-            >Speisekarte</a
-          >
-        </li>
-        <li class="drop-down-menu__item">
-          <a
-            class="drop-down-menu__link"
+            class="header__link"
             routerLink="/about-us"
-            routerLinkActive="drop-down-menu__link--active"
+            routerLinkActive="header__link--active"
             >Über uns</a
           >
         </li>
-        <li class="drop-down-menu__item">
+        <li class="header__item">
           <a
-            class="drop-down-menu__link"
+            class="header__link"
             routerLink="/contact"
-            routerLinkActive="drop-down-menu__link--active"
+            routerLinkActive="header__link--active"
             >Kontakt</a
           >
         </li>
       </ul>
-    </div>
-  </nav>
+    </nav>
+  </div>
 </header>

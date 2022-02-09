@@ -1,8 +1,12 @@
+@import "abstracts/mixins";
+
 :host {
   display: block;
 }
 
 .footer {
+  padding: 7rem 0;
+  background-color: var(--primary-background-color);
   text-align: center;
 
   &__logo {
@@ -11,9 +15,10 @@
   }
 
   &__contact-information-blocks-container {
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
     gap: 3rem;
   }
 
@@ -49,6 +54,8 @@
 }
 
 .contact-information-block {
+  flex: 1;
+  min-width: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;

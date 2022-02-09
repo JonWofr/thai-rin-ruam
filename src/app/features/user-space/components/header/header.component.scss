@@ -58,21 +58,40 @@
   overflow: hidden;
 
   &--expanded {
-    height: calc(1.5rem * 2 + 2.5rem * 4);
+    height: calc(1.5rem * 2 + 3rem * 4);
   }
 
   &__list {
-    padding: 1.5rem 0;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
   }
 
   &__link {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
+    padding: 0.75rem 0;
     display: block;
     text-align: center;
     font-family: $primary-font-bold;
     text-transform: uppercase;
     line-height: 1.5;
+    position: relative;
+
+    &::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      position: absolute;
+      bottom: 0.25rem;
+      left: calc(50% - 10px / 2);
+      transform-origin: center;
+      transform: scale(0);
+      background-color: var(--primary-accent-color);
+      border-radius: 50%;
+      @include with-transition(transform);
+    }
+
+    &--active::before {
+      transform: scale(1);
+    }
   }
 }
 

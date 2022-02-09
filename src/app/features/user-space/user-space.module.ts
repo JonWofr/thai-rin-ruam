@@ -30,7 +30,9 @@ import { DishCategoryTabHeaderComponent } from './components/dish-category-tab-h
 import { MenuItemComponent } from './components/menu-item/menu-item.component';
 import { AllergenesPipe } from './pipes/allergenes/allergenes.pipe';
 import { MenuLegendComponent } from './components/menu-legend/menu-legend.component';
-import { FadeInDirective } from 'src/app/shared/directives/fade-in/fade-in.directive';
+import { DesktopHeaderComponent } from './components/desktop-header/desktop-header.component';
+import { DishCategoriesTabBarComponent } from './components/dish-categories-tab-bar/dish-categories-tab-bar.component';
+import { DishCategoriesSelectComponent } from './components/dish-categories-select/dish-categories-select.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +62,9 @@ import { FadeInDirective } from 'src/app/shared/directives/fade-in/fade-in.direc
     MenuItemComponent,
     AllergenesPipe,
     MenuLegendComponent,
+    DesktopHeaderComponent,
+    DishCategoriesTabBarComponent,
+    DishCategoriesSelectComponent,
   ],
   imports: [CommonModule, UserSpaceRoutingModule, SharedModule, FormsModule],
 })

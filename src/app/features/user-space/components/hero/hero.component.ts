@@ -22,21 +22,30 @@ export class HeroComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {}
 
   ngAfterViewInit(): void {
+    this.initialiseIntersectionObservers();
+  }
+
+  ngOnDestroy(): void {
+    this.titleIntersectionObserver?.disconnect();
+    this.contactButtonIntersectionObserver?.disconnect();
+  }
+
+  initialiseIntersectionObservers() {
+    const isDesktop = window.matchMedia('(min-width: 768px)').matches;
     this.titleIntersectionObserver =
       this.intersectionObserverHelper.createIntersectionObserver(
-        '.hero__title',
-        this.titleIntersectionObserverCallback.bind(this)
+        '.hero__first-word',
+        this.titleIntersectionObserverCallback.bind(this),
+        {
+          rootMargin: isDesktop ? '-112px 0px 0px 0px' : '-64px 0px 0px 0px',
+          threshold: 1,
+        }
       );
     this.contactButtonIntersectionObserver =
       this.intersectionObserverHelper.createIntersectionObserver(
         '.hero__contact-button-container',
         this.contactButtonIntersectionObserverCallback.bind(this)
       );
-  }
-
-  ngOnDestroy(): void {
-    this.titleIntersectionObserver?.disconnect();
-    this.contactButtonIntersectionObserver?.disconnect();
   }
 
   titleIntersectionObserverCallback(entries: IntersectionObserverEntry[]) {

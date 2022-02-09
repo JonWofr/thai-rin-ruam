@@ -1,11 +1,9 @@
 import {
   AfterViewInit,
   Component,
-  EventEmitter,
   Input,
   OnDestroy,
   OnInit,
-  Output,
 } from '@angular/core';
 import { IntersectionObserverHelperService } from '../../services/intersection-observer-helper/intersection-observer-helper.service';
 import { TitleIntersectionService } from '../../services/title-intersection/title-intersection.service';
@@ -29,18 +27,29 @@ export class PageBannerComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit(): void {}
 
   ngAfterViewInit(): void {
-    this.titleIntersectionObserver =
-      this.intersectionObserverHelper.createIntersectionObserver(
-        '.page-banner__title',
-        (entries) => {
-          entries.forEach((entry) =>
-            this.titleIntersection.subject.next(entry.isIntersecting)
-          );
-        }
-      );
+    this.initialiseIntersectionObserver();
   }
 
   ngOnDestroy(): void {
     this.titleIntersectionObserver?.disconnect();
+  }
+
+  initialiseIntersectionObserver() {
+    const isDesktop = window.matchMedia('(min-width: 768px)').matches;
+    this.titleIntersectionObserver =
+      this.intersectionObserverHelper.createIntersectionObserver(
+        '.page-banner__title',
+        this.titleIntersectionObserverCallback.bind(this),
+        {
+          rootMargin: isDesktop ? '-112px 0px 0px 0px' : '-64px 0px 0px 0px',
+          threshold: 1,
+        }
+      );
+  }
+
+  titleIntersectionObserverCallback(entries: IntersectionObserverEntry[]) {
+    entries.forEach((entry) =>
+      this.titleIntersection.subject.next(entry.isIntersecting)
+    );
   }
 }

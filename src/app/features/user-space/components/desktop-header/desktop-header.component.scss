@@ -1,0 +1,95 @@
+@import "abstracts/mixins";
+
+:host {
+  display: block;
+}
+
+.header {
+  width: 100%;
+  height: calc(1.75 * $default-header-height);
+  padding: 0.75rem 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background-color: var(--primary-background-color);
+  box-shadow: none;
+  @include with-transition(all, 0.375s);
+
+  &.light-theme {
+    box-shadow: 0 4px 4px 0 #b3b3b340;
+    height: $default-header-height;
+    padding: 0.25rem;
+  }
+
+  &__navigation {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+  }
+
+  &__list {
+    flex: none;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+    &:first-of-type {
+      justify-content: flex-end;
+    }
+
+    &:last-of-type {
+      justify-content: flex-start;
+    }
+  }
+
+  &__link {
+    display: block;
+    font-family: $primary-font-bold;
+    line-height: 1.5;
+    text-transform: uppercase;
+    padding: 1rem 0;
+    position: relative;
+    @include with-transition(color, 0.375s);
+
+    &::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      position: absolute;
+      bottom: 0.5rem;
+      left: calc(50% - 10px / 2);
+      transform-origin: center;
+      transform: scale(0);
+      background-color: var(--primary-accent-color);
+      border-radius: 50%;
+      @include with-transition(transform);
+    }
+
+    &--active::before {
+      transform: scale(1);
+    }
+  }
+
+  &__logo-link {
+    flex: none;
+    height: 100%;
+  }
+
+  &__logo {
+    width: auto;
+    height: 100%;
+    fill: var(--primary-font-color);
+    @include with-transition(fill, 0.375s);
+  }
+}
+
+.container {
+  height: 100%;
+}
+
+.dark-theme {
+  --primary-background-color: transparent;
+}
