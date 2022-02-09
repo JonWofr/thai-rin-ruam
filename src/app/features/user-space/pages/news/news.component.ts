@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { News } from 'src/app/shared/models/news.model';
 
 @Component({
@@ -70,7 +71,9 @@ export class NewsComponent implements OnInit {
     },
   ];
 
-  constructor() {}
+  constructor(title: Title) {
+    title.setTitle('Aktuelles – Thai Rin Ruam');
+  }
 
   ngOnInit(): void {}
 }
