@@ -5,11 +5,12 @@
     <user-space-section-header
       title="Unsere Speisen kategorisiert"
       subtitle="Speisekarte"
+      sharedFadeIn
     ></user-space-section-header>
     <div class="dish-categories-section__body">
       <div class="dish-categories-section__dish-category-cards-container">
         <a
-          *ngFor="let dishCategory of dishCategories"
+          *ngFor="let dishCategory of dishCategories.slice(0, 6)"
           routerLink="/menu"
           [queryParams]="{ category: dishCategory.name }"
           sharedFadeIn

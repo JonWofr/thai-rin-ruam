@@ -34,10 +34,10 @@ export class HeroComponent implements OnInit, AfterViewInit {
     const isDesktop = window.matchMedia('(min-width: 768px)').matches;
     this.titleIntersectionObserver =
       this.intersectionObserverHelper.createIntersectionObserver(
-        '.hero__title',
+        '.hero__first-word',
         this.titleIntersectionObserverCallback.bind(this),
         {
-          rootMargin: isDesktop ? '-128px 0px 0px 0px' : '-64px 0px 0px 0px',
+          rootMargin: isDesktop ? '-112px 0px 0px 0px' : '-64px 0px 0px 0px',
           threshold: 1,
         }
       );

@@ -6,7 +6,7 @@
 
 .header {
   width: 100%;
-  height: calc(2 * $default-header-height);
+  height: calc(1.75 * $default-header-height);
   padding: 0.75rem 0;
   position: fixed;
   top: 0;
@@ -46,9 +46,31 @@
   }
 
   &__link {
+    display: block;
     font-family: $primary-font-bold;
+    line-height: 1.5;
     text-transform: uppercase;
+    padding: 1rem 0;
+    position: relative;
     @include with-transition(color, 0.375s);
+
+    &::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      position: absolute;
+      bottom: 0.5rem;
+      left: calc(50% - 10px / 2);
+      transform-origin: center;
+      transform: scale(0);
+      background-color: var(--primary-accent-color);
+      border-radius: 50%;
+      @include with-transition(transform);
+    }
+
+    &--active::before {
+      transform: scale(1);
+    }
   }
 
   &__logo-link {

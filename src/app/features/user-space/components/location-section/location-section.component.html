@@ -11,9 +11,15 @@
         class="location-section__header"
         title="So erreichen Sie uns"
         subtitle="Anfahrt"
+        sharedFadeIn
       >
       </user-space-section-header>
-      <a class="location-section__route-link" href="/" sharedFadeIn>
+      <a
+        class="location-section__route-link"
+        href="https://goo.gl/maps/UUh7GXSgZDGr3goK6"
+        target="_blank"
+        sharedFadeIn
+      >
         <div class="aspect-ratio aspect-ratio--4-by-3">
           <div class="aspect-ratio__inner-container">
             <img
@@ -24,7 +30,12 @@
           </div>
         </div>
       </a>
-      <div class="location-section__content">
+      <div
+        class="location-section__content"
+        [class.location-section__content--without-section-header]="
+          !shouldHaveSectionHeader
+        "
+      >
         <div class="contact-information-block" sharedFadeIn>
           <h3 class="tertiary-heading">Adresse</h3>
           <p>
@@ -45,7 +56,7 @@
               </tr>
               <tr>
                 <td class="contact-information-block__table-cell">
-                  Mittwoch - Samstag:
+                  Mittwoch – Samstag:
                 </td>
                 <td class="contact-information-block__table-cell">
                   11:30 – 20:00 Uhr

@@ -31,6 +31,8 @@ import { MenuItemComponent } from './components/menu-item/menu-item.component';
 import { AllergenesPipe } from './pipes/allergenes/allergenes.pipe';
 import { MenuLegendComponent } from './components/menu-legend/menu-legend.component';
 import { DesktopHeaderComponent } from './components/desktop-header/desktop-header.component';
+import { DishCategoriesTabBarComponent } from './components/dish-categories-tab-bar/dish-categories-tab-bar.component';
+import { DishCategoriesSelectComponent } from './components/dish-categories-select/dish-categories-select.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +63,8 @@ import { DesktopHeaderComponent } from './components/desktop-header/desktop-head
     AllergenesPipe,
     MenuLegendComponent,
     DesktopHeaderComponent,
+    DishCategoriesTabBarComponent,
+    DishCategoriesSelectComponent,
   ],
   imports: [CommonModule, UserSpaceRoutingModule, SharedModule, FormsModule],
 })

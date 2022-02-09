@@ -19,6 +19,7 @@ export class MenuComponent implements OnInit {
   dishes = dishes;
   dishGroups: DishGroup[] = [];
   allergenes = allergenes;
+  Math = Math;
 
   constructor(private route: ActivatedRoute) {}
 
@@ -34,19 +35,20 @@ export class MenuComponent implements OnInit {
       }
     }
 
-    let filteredDishes = this.filterDishesByCategory(
-      this.dishes,
-      this.selectedDishCategory
-    );
-    filteredDishes = this.sortDishesByNumber(filteredDishes);
-    this.dishGroups = this.groupDishes(filteredDishes);
+    this.preprocessDishes();
   }
 
-  onChangeSelect(dishCategoryName: string) {
-    this.selectedDishCategory =
-      dishCategories.find(
-        (dishCategory) => dishCategory.name === dishCategoryName
-      ) ?? dishCategories[0];
+  onChangeSelect(selectedDishCategoryName: string) {
+    console.log(selectedDishCategoryName);
+    const selectedDishCategory =
+      this.dishCategories.find(
+        (dishCategory) => dishCategory.name === selectedDishCategoryName
+      ) ?? this.dishCategories[0];
+    this.selectedDishCategory = selectedDishCategory;
+    this.preprocessDishes();
+  }
+
+  preprocessDishes() {
     let filteredDishes = this.filterDishesByCategory(
       this.dishes,
       this.selectedDishCategory
@@ -80,7 +82,6 @@ export class MenuComponent implements OnInit {
         });
       }
     });
-    console.log(dishGroups);
     return dishGroups;
   }
 }

@@ -29,6 +29,10 @@ svg {
 button {
   border: none;
   background-color: transparent;
+
+  &:hover:not(:disabled) {
+    cursor: pointer;
+  }
 }
 
 a {

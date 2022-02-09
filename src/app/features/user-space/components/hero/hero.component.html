@@ -1,53 +1,56 @@
 <section class="hero dark-theme">
-  <div class="container">
-    <h1 class="primary-heading page-title hero__title">
-      <span class="page-title__first-word"> Entdecke </span><br />
-      Thailändische <br />
-      Spezialitäten
-    </h1>
-    <hr class="divider" />
-    <div class="hero__information-container">
-      <h2 class="subtitle">Öffnungszeiten</h2>
-      <user-space-opening-hours
-        class="hero__opening-hours"
-      ></user-space-opening-hours>
+  <div class="hero__content">
+    <div class="container">
+      <h1 class="primary-heading page-title hero__title">
+        <span class="page-title__first-word hero__first-word"> Entdecke </span
+        ><br />
+        Thailändische <br />
+        Spezialitäten
+      </h1>
+      <hr class="divider" />
+      <div class="hero__opening-hours-container">
+        <h2 class="subtitle">Öffnungszeiten</h2>
+        <user-space-opening-hours
+          class="hero__opening-hours"
+        ></user-space-opening-hours>
+      </div>
     </div>
-  </div>
-  <div class="hero__contact-button-container">
-    <div class="hero__contact-button-inner-container">
-      <a
-        *ngIf="isContactButtonIntersecting !== undefined"
-        routerLink="/contact"
-        class="button hero__contact-button"
-        [ngClass]="{
-          'hero__contact-button--fixed': !isContactButtonIntersecting
-        }"
-      >
-        <svg
-          class="button__icon hero__contact-button-icon"
+    <div class="hero__contact-button-container">
+      <div class="hero__contact-button-inner-container">
+        <a
+          *ngIf="isContactButtonIntersecting !== undefined"
+          routerLink="/contact"
+          class="button hero__contact-button"
           [ngClass]="{
-            'hero__contact-button-icon--fixed': !isContactButtonIntersecting
-          }"
-          width="21"
-          height="20"
-          viewBox="0 0 21 20"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M10.5 0C7.00167 0 3.83333 2.83583 3.83333 6.335C3.83333 9.83333 6.72416 14.01 10.5 20C14.2758 14.01 17.1667 9.83333 17.1667 6.335C17.1667 2.83583 13.9992 0 10.5 0ZM10.5 9.16667C9.11916 9.16667 8 8.0475 8 6.66667C8 5.28583 9.11916 4.16667 10.5 4.16667C11.8808 4.16667 13 5.28583 13 6.66667C13 8.0475 11.8808 9.16667 10.5 9.16667Z"
-            fill="white"
-          />
-        </svg>
-        <p
-          class="button__label hero__contact-button-label"
-          [ngClass]="{
-            'hero__contact-button-label--fixed': !isContactButtonIntersecting
+            'hero__contact-button--fixed': !isContactButtonIntersecting
           }"
         >
-          Anfahrt
-        </p>
-      </a>
+          <svg
+            class="button__icon hero__contact-button-icon"
+            [ngClass]="{
+              'hero__contact-button-icon--fixed': !isContactButtonIntersecting
+            }"
+            width="21"
+            height="20"
+            viewBox="0 0 21 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M10.5 0C7.00167 0 3.83333 2.83583 3.83333 6.335C3.83333 9.83333 6.72416 14.01 10.5 20C14.2758 14.01 17.1667 9.83333 17.1667 6.335C17.1667 2.83583 13.9992 0 10.5 0ZM10.5 9.16667C9.11916 9.16667 8 8.0475 8 6.66667C8 5.28583 9.11916 4.16667 10.5 4.16667C11.8808 4.16667 13 5.28583 13 6.66667C13 8.0475 11.8808 9.16667 10.5 9.16667Z"
+              fill="white"
+            />
+          </svg>
+          <p
+            class="button__label hero__contact-button-label"
+            [ngClass]="{
+              'hero__contact-button-label--fixed': !isContactButtonIntersecting
+            }"
+          >
+            Anfahrt
+          </p>
+        </a>
+      </div>
     </div>
   </div>
 </section>

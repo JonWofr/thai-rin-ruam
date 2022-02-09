@@ -1,4 +1,5 @@
 @import "abstracts/variables";
+@import "abstracts/mixins";
 
 :host {
   display: block;
@@ -57,6 +58,10 @@
     object-fit: cover;
     border-radius: 50%;
     box-shadow: $default-box-shadow;
+  }
+
+  @include media-breakpoint-up("md") {
+    padding: 2.5rem;
   }
 }
 

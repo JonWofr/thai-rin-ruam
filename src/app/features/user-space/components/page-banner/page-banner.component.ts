@@ -41,7 +41,7 @@ export class PageBannerComponent implements OnInit, AfterViewInit, OnDestroy {
         '.page-banner__title',
         this.titleIntersectionObserverCallback.bind(this),
         {
-          rootMargin: isDesktop ? '-128px 0px 0px 0px' : '-64px 0px 0px 0px',
+          rootMargin: isDesktop ? '-112px 0px 0px 0px' : '-64px 0px 0px 0px',
           threshold: 1,
         }
       );

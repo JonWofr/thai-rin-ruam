@@ -48,6 +48,10 @@
     flex-direction: column;
     gap: 2rem;
     align-items: flex-start;
+
+    &--without-section-header {
+      align-self: center;
+    }
   }
 
   @include media-breakpoint-up("lg") {

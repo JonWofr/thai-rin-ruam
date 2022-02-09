@@ -6,37 +6,65 @@
   class="reduced-section-padding section section--primary-background-color"
 >
   <div class="container">
-    <select
-      class="menu__select"
-      [ngModel]="selectedDishCategory.name"
-      (ngModelChange)="onChangeSelect($event)"
-    >
-      <option
-        *ngFor="let dishCategory of dishCategories"
-        [value]="dishCategory.name"
-      >
-        {{ dishCategory.name }}
-      </option>
-    </select>
+    <user-space-dish-categories-select
+      *sharedMedia="'(max-width: 767px)'"
+      [dishCategories]="dishCategories"
+      [selectedDishCategory]="selectedDishCategory"
+      (changeSelect)="onChangeSelect($event)"
+      sharedFadeIn
+    ></user-space-dish-categories-select>
+    <user-space-dish-categories-tab-bar
+      *sharedMedia="'(min-width: 768px)'"
+      [dishCategories]="dishCategories"
+      [selectedDishCategory]="selectedDishCategory"
+      (changeTab)="onChangeSelect($event)"
+      sharedFadeIn
+    ></user-space-dish-categories-tab-bar>
     <user-space-dish-category-tab-header
       class="menu__dish-category-tab-header"
       [title]="selectedDishCategory.description"
       [subtitle]="selectedDishCategory.name"
       [imageUrl]="selectedDishCategory.imageUrl"
+      sharedFadeIn
     >
     </user-space-dish-category-tab-header>
-    <div *ngFor="let dishGroup of dishGroups" class="dish-group">
-      <h3 *ngIf="dishGroup.name" class="tertiary-heading dish-group__heading">
-        {{ dishGroup.name }}
-      </h3>
-      <ul class="dish-group__list">
-        <user-space-menu-item
-          *ngFor="let dish of dishGroup.dishes"
-          [dish]="dish"
-        ></user-space-menu-item>
-      </ul>
+    <div class="menu__dish-groups-container">
+      <div *ngFor="let dishGroup of dishGroups" class="dish-group">
+        <h3
+          *ngIf="dishGroup.name"
+          class="tertiary-heading dish-group__heading"
+          sharedFadeIn
+        >
+          {{ dishGroup.name }}
+        </h3>
+        <div class="dish-group__lists-container">
+          <ul class="dish-group__list">
+            <user-space-menu-item
+              *ngFor="
+                let dish of dishGroup.dishes.slice(
+                  0,
+                  Math.ceil(dishGroup.dishes.length / 2)
+                )
+              "
+              [dish]="dish"
+              sharedFadeIn
+            ></user-space-menu-item>
+          </ul>
+          <ul class="dish-group__list">
+            <user-space-menu-item
+              *ngFor="
+                let dish of dishGroup.dishes.slice(
+                  Math.ceil(dishGroup.dishes.length / 2)
+                )
+              "
+              [dish]="dish"
+              sharedFadeIn
+            ></user-space-menu-item>
+          </ul>
+        </div>
+      </div>
     </div>
-    <hr class="divider" />
+    <hr class="divider" sharedFadeIn />
     <user-space-menu-legend [allergenes]="allergenes"></user-space-menu-legend>
   </div>
 </section>

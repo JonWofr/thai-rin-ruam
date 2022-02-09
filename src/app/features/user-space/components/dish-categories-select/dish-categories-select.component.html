@@ -1,0 +1,13 @@
+<select
+  *ngIf="selectedDishCategory"
+  class="dish-categories-select"
+  [ngModel]="selectedDishCategory.name"
+  (ngModelChange)="changeSelect.emit($event)"
+>
+  <option
+    *ngFor="let dishCategory of dishCategories"
+    [value]="dishCategory.name"
+  >
+    {{ dishCategory.name }}
+  </option>
+</select>

@@ -19,4 +19,8 @@
 
 .reduced-section-padding {
   --section-padding: 4.5rem 0 7rem 0;
+
+  @include media-breakpoint-up("md") {
+    --section-padding: 4.5rem 0 9rem 0;
+  }
 }

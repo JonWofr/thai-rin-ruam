@@ -55,6 +55,10 @@
     width: 100%;
     grid-area: text;
     align-self: flex-start;
+
+    &--without-section-header {
+      align-self: center;
+    }
   }
 
   @include media-breakpoint-up("md") {
@@ -78,6 +82,12 @@
       grid-template-areas:
         "image header"
         "image text";
+
+      &--without-section-header {
+        grid-template-areas:
+          "image text"
+          "image text";
+      }
     }
 
     &__header {
