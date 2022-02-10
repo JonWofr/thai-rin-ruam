@@ -1,3 +1,16 @@
+<shared-header
+  *sharedMedia="'(max-width: 767px)'"
+  [navigationItems]="navigationItems"
+  [feature]="Feature.ADMIN_SPACE"
+  (clickLogoutButton)="onClickLogoutButton()"
+></shared-header>
+<shared-desktop-header
+  *sharedMedia="'(min-width: 768px)'"
+  [navigationItems]="navigationItems"
+  [feature]="Feature.ADMIN_SPACE"
+  (clickLogoutButton)="onClickLogoutButton()"
+></shared-desktop-header>
+<router-outlet></router-outlet>
 <shared-dark-overlay *ngIf="shouldShowSpinner">
   <shared-spinner> </shared-spinner>
 </shared-dark-overlay>
@@ -6,4 +19,3 @@
   [type]="currentToast.type"
   [message]="currentToast.message"
 ></admin-space-toast>
-<router-outlet></router-outlet>

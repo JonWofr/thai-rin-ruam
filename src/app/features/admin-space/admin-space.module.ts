@@ -8,6 +8,7 @@ import { LoginCardComponent } from './components/login-card/login-card.component
 import { FormsModule } from '@angular/forms';
 import { ToastComponent } from './components/toast/toast.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     AdminSpaceComponent,
     LoginCardComponent,
     ToastComponent,
+    HomeComponent,
   ],
   imports: [CommonModule, AdminSpaceRoutingModule, FormsModule, SharedModule],
 })

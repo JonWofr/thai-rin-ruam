@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
+import { Feature } from 'src/app/shared/enums/feature.enum';
+import { navigationItems } from './data/navigation-items.data';
 import { ToastType } from './enums/toast-type.enum';
 import { Toast } from './models/toast.model';
 import { SpinnerControllerService } from './services/spinner-controller/spinner-controller.service';
@@ -12,16 +15,19 @@ import { ToastControllerService } from './services/toast-controller/toast-contro
 })
 export class AdminSpaceComponent implements OnInit {
   ToastType = ToastType;
+  Feature = Feature;
 
   shouldShowSpinner = false;
   currentToast?: Toast;
   private toastQueue: Toast[] = [];
   private canShowToast = true;
   private endSubscriptions = new Subject<void>();
+  navigationItems = navigationItems;
 
   constructor(
     private toastController: ToastControllerService,
-    private spinnerController: SpinnerControllerService
+    private spinnerController: SpinnerControllerService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -71,5 +77,17 @@ export class AdminSpaceComponent implements OnInit {
     // Cooldown time
     await this.setTimeoutPromise(100);
     this.canShowToast = true;
+  }
+
+  onClickLogoutButton() {
+    this.spinnerController.subject.next(true);
+    setTimeout(() => {
+      this.spinnerController.subject.next(false);
+      this.toastController.subject.next({
+        type: ToastType.SUCCESS,
+        message: 'Erfolgreich ausgeloggt',
+      });
+      this.router.navigateByUrl('/admin');
+    }, 1000);
   }
 }
