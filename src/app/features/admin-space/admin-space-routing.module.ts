@@ -1,10 +1,25 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminSpaceComponent } from './admin-space.component';
+import { HomeComponent } from './pages/home/home.component';
+import { LoginComponent } from './pages/login/login.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: 'admin',
+    component: AdminSpaceComponent,
+    children: [
+      { path: '', component: HomeComponent },
+      {
+        path: 'login',
+        component: LoginComponent,
+      },
+    ],
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AdminSpaceRoutingModule { }
+export class AdminSpaceRoutingModule {}

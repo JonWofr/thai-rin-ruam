@@ -1,0 +1,38 @@
+.form {
+  &__header {
+    margin-bottom: 2rem;
+  }
+
+  &__body {
+    margin-bottom: 2rem;
+  }
+
+  &__group {
+    margin-bottom: 1rem;
+  }
+
+  &__control {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--form-control-background-color);
+    border-radius: $default-border-radius;
+    border: none;
+
+    &::placeholder {
+      color: var(--placeholder-color);
+    }
+  }
+
+  &__alerts-container {
+    margin-top: 0.5rem;
+    padding-left: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  &__alert {
+    font-size: 0.75rem;
+    color: var(--error-color);
+  }
+}

@@ -1,0 +1,21 @@
+:host {
+  display: block;
+}
+
+.login-card {
+  padding: 2rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+
+  &__logo {
+    height: 100px;
+    width: auto;
+    margin: 0 auto;
+    align-self: center;
+    fill: var(--primary-font-color);
+  }
+}
+
+.button {
+  margin: 0 auto;
+}

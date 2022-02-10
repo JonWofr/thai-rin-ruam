@@ -6,7 +6,6 @@ import { HomeComponent } from './pages/home/home.component';
 import { HeroComponent } from './components/hero/hero.component';
 import { OpeningHoursComponent } from './components/opening-hours/opening-hours.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { HeaderComponent } from './components/header/header.component';
 import { AboutUsSectionComponent } from './components/about-us-section/about-us-section.component';
 import { SectionHeaderComponent } from './components/section-header/section-header.component';
 import { NewsSectionComponent } from './components/news-section/news-section.component';
@@ -30,7 +29,6 @@ import { DishCategoryTabHeaderComponent } from './components/dish-category-tab-h
 import { MenuItemComponent } from './components/menu-item/menu-item.component';
 import { AllergenesPipe } from './pipes/allergenes/allergenes.pipe';
 import { MenuLegendComponent } from './components/menu-legend/menu-legend.component';
-import { DesktopHeaderComponent } from './components/desktop-header/desktop-header.component';
 import { DishCategoriesTabBarComponent } from './components/dish-categories-tab-bar/dish-categories-tab-bar.component';
 import { DishCategoriesSelectComponent } from './components/dish-categories-select/dish-categories-select.component';
 
@@ -39,7 +37,6 @@ import { DishCategoriesSelectComponent } from './components/dish-categories-sele
     HomeComponent,
     HeroComponent,
     OpeningHoursComponent,
-    HeaderComponent,
     AboutUsSectionComponent,
     SectionHeaderComponent,
     NewsSectionComponent,
@@ -62,7 +59,6 @@ import { DishCategoriesSelectComponent } from './components/dish-categories-sele
     MenuItemComponent,
     AllergenesPipe,
     MenuLegendComponent,
-    DesktopHeaderComponent,
     DishCategoriesTabBarComponent,
     DishCategoriesSelectComponent,
   ],

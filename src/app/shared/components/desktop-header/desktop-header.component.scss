@@ -27,6 +27,7 @@
     display: flex;
     justify-content: center;
     gap: 4rem;
+    position: relative;
   }
 
   &__list {
@@ -83,6 +84,13 @@
     height: 100%;
     fill: var(--primary-font-color);
     @include with-transition(fill, 0.375s);
+  }
+
+  &__logout-button {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(0, -50%);
   }
 }
 

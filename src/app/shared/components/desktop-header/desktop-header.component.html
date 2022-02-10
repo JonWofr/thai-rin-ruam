@@ -2,11 +2,32 @@
   class="header"
   [ngClass]="isPageTitleIntersecting ? ColorTheme.DARK : ColorTheme.LIGHT"
 >
-  <nav>
-    <div class="header__top-row container">
+  <div class="container">
+    <nav class="header__navigation">
+      <ul class="header__list">
+        <li
+          *ngFor="
+            let navigationItem of navigationItems.slice(
+              0,
+              Math.ceil(navigationItems.length / 2)
+            )
+          "
+          class="header__item"
+        >
+          <a
+            class="header__link"
+            [routerLink]="navigationItem.link"
+            routerLinkActive="header__link--active"
+            >{{ navigationItem.name }}</a
+          >
+        </li>
+      </ul>
       <a class="header__logo-link" routerLink="/">
         <svg
           class="header__logo"
+          [ngClass]="{
+            'header__logo--small': !isPageTitleIntersecting
+          }"
           width="96"
           height="56"
           viewBox="0 0 96 56"
@@ -168,63 +189,52 @@
           </defs>
         </svg>
       </a>
-      <button
-        class="header__burger-menu-button"
-        (click)="onClickBurgerMenuButton($event)"
-      >
-        <svg
-          class="header__burger-menu-icon"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
+      <ul class="header__list">
+        <li
+          *ngFor="
+            let navigationItem of navigationItems.slice(
+              Math.ceil(navigationItems.length / 2)
+            )
+          "
+          class="header__item"
         >
-          <path
-            d="M24 4C24 5.10457 23.1046 6 22 6H2C0.89543 6 0 5.10457 0 4C0 2.89543 0.895431 2 2 2H22C23.1046 2 24 2.89543 24 4ZM24 12C24 10.8954 23.1046 10 22 10H2C0.89543 10 0 10.8954 0 12C0 13.1046 0.895431 14 2 14H22C23.1046 14 24 13.1046 24 12ZM24 20C24 18.8954 23.1046 18 22 18H2C0.89543 18 0 18.8954 0 20C0 21.1046 0.895431 22 2 22H22C23.1046 22 24 21.1046 24 20Z"
-          />
-        </svg>
-      </button>
-    </div>
-    <div
-      class="drop-down-menu light-theme"
-      [ngClass]="{
-        'drop-down-menu--expanded': isExpanded
-      }"
-    >
-      <ul class="drop-down-menu__list container">
-        <li class="drop-down-menu__item">
           <a
-            class="drop-down-menu__link"
-            routerLink="/news"
-            routerLinkActive="drop-down-menu__link--active"
-            >Aktuelles</a
-          >
-        </li>
-        <li class="drop-down-menu__item">
-          <a
-            class="drop-down-menu__link"
-            routerLink="/menu"
-            routerLinkActive="drop-down-menu__link--active"
-            >Speisekarte</a
-          >
-        </li>
-        <li class="drop-down-menu__item">
-          <a
-            class="drop-down-menu__link"
-            routerLink="/about-us"
-            routerLinkActive="drop-down-menu__link--active"
-            >Über uns</a
-          >
-        </li>
-        <li class="drop-down-menu__item">
-          <a
-            class="drop-down-menu__link"
-            routerLink="/contact"
-            routerLinkActive="drop-down-menu__link--active"
-            >Kontakt</a
+            class="header__link"
+            [routerLink]="navigationItem.link"
+            routerLinkActive="header__link--active"
+            >{{ navigationItem.name }}</a
           >
         </li>
       </ul>
-    </div>
-  </nav>
+      <button
+        *ngIf="feature === Feature.ADMIN_SPACE"
+        class="button button--primary-accent-color-inverted header__logout-button dark-theme"
+        (click)="clickLogoutButton.emit()"
+      >
+        <svg
+          class="button__icon button__icon--primary-accent-color-inverted"
+          width="21"
+          height="20"
+          viewBox="0 0 21 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g clip-path="url(#clip0_555_3327)">
+            <path
+              d="M13.8333 7.50002V4.16669L20.5 10L13.8333 15.8334V12.5H7.16667V7.50002H13.8333ZM12.1667 15.8334V15.7642C11.185 16.335 10.0483 16.6667 8.83333 16.6667C5.1575 16.6667 2.16667 13.6759 2.16667 10C2.16667 6.32419 5.1575 3.33335 8.83333 3.33335C10.0483 3.33335 11.185 3.66502 12.1667 4.23585V2.36502C11.145 1.91835 10.0192 1.66669 8.83333 1.66669C4.23167 1.66669 0.5 5.39752 0.5 10C0.5 14.6025 4.23167 18.3334 8.83333 18.3334C10.0192 18.3334 11.145 18.0817 12.1667 17.635V15.8334Z"
+            />
+          </g>
+          <defs>
+            <clipPath id="clip0_555_3327">
+              <rect width="20" height="20" transform="translate(0.5)" />
+            </clipPath>
+          </defs>
+        </svg>
+
+        <p class="button__label button__label--primary-accent-color-inverted">
+          Ausloggen
+        </p>
+      </button>
+    </nav>
+  </div>
 </header>
