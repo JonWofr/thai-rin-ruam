@@ -1,0 +1,56 @@
+@import "abstracts/variables";
+
+.toast {
+  position: fixed;
+  top: 0.5rem;
+  right: 0;
+  z-index: 3;
+  padding: 1rem 2rem;
+  border-radius: $default-border-radius 0 0 $default-border-radius;
+  box-shadow: $default-box-shadow;
+  background-color: var(--primary-background-color);
+  max-width: 300px;
+  animation-name: slide-in-and-out;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: both;
+  animation-duration: 3s;
+
+  &__type,
+  &__message {
+    text-align: right;
+  }
+
+  &__type {
+    margin-bottom: 0.25rem;
+    &--info {
+      color: var(--info-color);
+    }
+
+    &--success {
+      color: var(--success-color);
+    }
+
+    &--warn {
+      color: var(--warn-color);
+    }
+
+    &--error {
+      color: var(--error-color);
+    }
+  }
+}
+
+@keyframes slide-in-and-out {
+  0% {
+    transform: translateX(100%);
+  }
+  10% {
+    transform: translateX(0%);
+  }
+  90% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}

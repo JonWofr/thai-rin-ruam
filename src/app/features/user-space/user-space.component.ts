@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs';
 import { TitleIntersectionService } from './services/title-intersection/title-intersection.service';
 
 @Component({
-  selector: 'user-space-user-space',
+  selector: 'user-space',
   templateUrl: './user-space.component.html',
   styleUrls: ['./user-space.component.scss'],
 })

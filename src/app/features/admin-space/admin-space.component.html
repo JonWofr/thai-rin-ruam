@@ -1,0 +1,9 @@
+<shared-dark-overlay *ngIf="shouldShowSpinner">
+  <shared-spinner> </shared-spinner>
+</shared-dark-overlay>
+<admin-space-toast
+  *ngIf="currentToast"
+  [type]="currentToast.type"
+  [message]="currentToast.message"
+></admin-space-toast>
+<router-outlet></router-outlet>

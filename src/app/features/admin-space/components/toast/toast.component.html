@@ -1,0 +1,15 @@
+<div class="toast">
+  <p
+    class="subtitle toast__type"
+    [ngClass]="'toast__type--' + type"
+    [ngSwitch]="type"
+  >
+    <ng-container *ngSwitchCase="ToastType.SUCCESS"> Erfolg </ng-container>
+    <ng-container *ngSwitchCase="ToastType.INFO"> Info </ng-container>
+    <ng-container *ngSwitchCase="ToastType.WARN"> Warnung </ng-container>
+    <ng-container *ngSwitchCase="ToastType.ERROR"> Fehler </ng-container>
+  </p>
+  <p class="toast__message">
+    {{ message }}
+  </p>
+</div>
