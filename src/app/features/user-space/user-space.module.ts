@@ -26,8 +26,6 @@ import { DataPrivacyComponent } from './pages/data-privacy/data-privacy.componen
 import { MenuComponent } from './pages/menu/menu.component';
 import { FormsModule } from '@angular/forms';
 import { DishCategoryTabHeaderComponent } from './components/dish-category-tab-header/dish-category-tab-header.component';
-import { MenuItemComponent } from './components/menu-item/menu-item.component';
-import { AllergenesPipe } from './pipes/allergenes/allergenes.pipe';
 import { MenuLegendComponent } from './components/menu-legend/menu-legend.component';
 import { DishCategoriesTabBarComponent } from './components/dish-categories-tab-bar/dish-categories-tab-bar.component';
 import { DishCategoriesSelectComponent } from './components/dish-categories-select/dish-categories-select.component';
@@ -56,8 +54,6 @@ import { DishCategoriesSelectComponent } from './components/dish-categories-sele
     DataPrivacyComponent,
     MenuComponent,
     DishCategoryTabHeaderComponent,
-    MenuItemComponent,
-    AllergenesPipe,
     MenuLegendComponent,
     DishCategoriesTabBarComponent,
     DishCategoriesSelectComponent,

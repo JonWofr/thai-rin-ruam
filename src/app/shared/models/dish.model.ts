@@ -5,6 +5,7 @@ import { DishGroup } from './dish-group.model';
 import { DishOption } from './dish-option.model';
 
 export interface Dish {
+  id: string;
   number: number;
   name: string;
   thaiName: string;

@@ -45,6 +45,11 @@
 
   &__icon {
     width: 1.25rem;
+    // Weird flexbox bug occurrs when a svg with a set max-width is
+    // inside a flexbox inside an absolutely positioned element. The flexbox
+    // somehow ignores the actual width of the svg when the max-width
+    // property is present.
+    max-width: initial;
     height: 1.25rem;
     fill: var(--primary-font-color);
 
