@@ -1,4 +1,4 @@
-<section class="section">
+<section class="section section--secondary-background-color">
   <div class="container">
     <h1 class="secondary-heading">Speisekarte</h1>
     <select
@@ -64,7 +64,9 @@
       <ng-container *ngSwitchCase="tabs[1].value">
         <li *ngFor="let allergene of allergenes">
           <div class="document-list__item-content">
-            <p class="document-list__item-content-left-side">
+            <p
+              class="document-list__item-content-left-side document-list__allergene"
+            >
               {{ allergene.abbreviation }}
             </p>
             <div class="document-list__more-button-container">

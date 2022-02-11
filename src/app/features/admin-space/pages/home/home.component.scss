@@ -35,6 +35,11 @@
   &__more-button-inner-container {
     position: relative;
   }
+
+  &__allergene {
+    color: var(--primary-font-color);
+    line-height: 2rem;
+  }
 }
 
 .icon-button {
