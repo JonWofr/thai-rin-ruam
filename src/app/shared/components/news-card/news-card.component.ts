@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { News } from 'src/app/shared/models/news.model';
 
 @Component({
-  selector: 'user-space-news-card',
+  selector: 'shared-news-card',
   templateUrl: './news-card.component.html',
   styleUrls: ['./news-card.component.scss'],
 })

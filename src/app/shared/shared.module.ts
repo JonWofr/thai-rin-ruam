@@ -9,6 +9,7 @@ import { DesktopHeaderComponent } from './components/desktop-header/desktop-head
 import { RouterModule } from '@angular/router';
 import { MenuItemComponent } from './components/menu-item/menu-item.component';
 import { AllergenesPipe } from './pipes/allergenes/allergenes.pipe';
+import { NewsCardComponent } from './components/news-card/news-card.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { AllergenesPipe } from './pipes/allergenes/allergenes.pipe';
     DesktopHeaderComponent,
     MenuItemComponent,
     AllergenesPipe,
+    NewsCardComponent,
   ],
   imports: [CommonModule, RouterModule.forChild([])],
   exports: [
@@ -30,6 +32,7 @@ import { AllergenesPipe } from './pipes/allergenes/allergenes.pipe';
     HeaderComponent,
     DesktopHeaderComponent,
     MenuItemComponent,
+    NewsCardComponent,
   ],
 })
 export class SharedModule {}

@@ -9,7 +9,6 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { AboutUsSectionComponent } from './components/about-us-section/about-us-section.component';
 import { SectionHeaderComponent } from './components/section-header/section-header.component';
 import { NewsSectionComponent } from './components/news-section/news-section.component';
-import { NewsCardComponent } from './components/news-card/news-card.component';
 import { DividerSectionComponent } from './components/divider-section/divider-section.component';
 import { DishCategoriesSectionComponent } from './components/dish-categories-section/dish-categories-section.component';
 import { DishCategoryCardComponent } from './components/dish-category-card/dish-category-card.component';
@@ -38,7 +37,6 @@ import { DishCategoriesSelectComponent } from './components/dish-categories-sele
     AboutUsSectionComponent,
     SectionHeaderComponent,
     NewsSectionComponent,
-    NewsCardComponent,
     DividerSectionComponent,
     DishCategoriesSectionComponent,
     DishCategoryCardComponent,

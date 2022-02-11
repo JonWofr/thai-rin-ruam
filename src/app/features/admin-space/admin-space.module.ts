@@ -10,6 +10,8 @@ import { ToastComponent } from './components/toast/toast.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { HomeComponent } from './pages/home/home.component';
 import { ContextMenuComponent } from './components/context-menu/context-menu.component';
+import { NewsComponent } from './pages/news/news.component';
+import { AddItemCardComponent } from './components/add-item-card/add-item-card.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { ContextMenuComponent } from './components/context-menu/context-menu.com
     ToastComponent,
     HomeComponent,
     ContextMenuComponent,
+    NewsComponent,
+    AddItemCardComponent,
   ],
   imports: [CommonModule, AdminSpaceRoutingModule, FormsModule, SharedModule],
 })
