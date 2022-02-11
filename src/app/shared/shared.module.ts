@@ -7,6 +7,8 @@ import { DarkOverlayComponent } from './components/dark-overlay/dark-overlay.com
 import { HeaderComponent } from './components/header/header.component';
 import { DesktopHeaderComponent } from './components/desktop-header/desktop-header.component';
 import { RouterModule } from '@angular/router';
+import { MenuItemComponent } from './components/menu-item/menu-item.component';
+import { AllergenesPipe } from './pipes/allergenes/allergenes.pipe';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { RouterModule } from '@angular/router';
     DarkOverlayComponent,
     HeaderComponent,
     DesktopHeaderComponent,
+    MenuItemComponent,
+    AllergenesPipe,
   ],
   imports: [CommonModule, RouterModule.forChild([])],
   exports: [
@@ -25,6 +29,7 @@ import { RouterModule } from '@angular/router';
     DarkOverlayComponent,
     HeaderComponent,
     DesktopHeaderComponent,
+    MenuItemComponent,
   ],
 })
 export class SharedModule {}

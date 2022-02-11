@@ -1,10 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { HotnessLevel } from 'src/app/shared/enums/hotness-level.enum';
-import { Allergene } from 'src/app/shared/models/allergene.model';
 import { Dish } from 'src/app/shared/models/dish.model';
 
 @Component({
-  selector: 'user-space-menu-item',
+  selector: 'shared-menu-item',
   templateUrl: './menu-item.component.html',
   styleUrls: ['./menu-item.component.scss'],
 })

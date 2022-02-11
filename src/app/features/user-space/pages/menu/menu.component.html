@@ -39,7 +39,7 @@
         </h3>
         <div class="dish-group__lists-container">
           <ul class="dish-group__list">
-            <user-space-menu-item
+            <shared-menu-item
               *ngFor="
                 let dish of dishGroup.dishes.slice(
                   0,
@@ -48,10 +48,10 @@
               "
               [dish]="dish"
               sharedFadeIn
-            ></user-space-menu-item>
+            ></shared-menu-item>
           </ul>
           <ul class="dish-group__list">
-            <user-space-menu-item
+            <shared-menu-item
               *ngFor="
                 let dish of dishGroup.dishes.slice(
                   Math.ceil(dishGroup.dishes.length / 2)
@@ -59,7 +59,7 @@
               "
               [dish]="dish"
               sharedFadeIn
-            ></user-space-menu-item>
+            ></shared-menu-item>
           </ul>
         </div>
       </div>

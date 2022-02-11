@@ -1,0 +1,29 @@
+@import "abstracts/variables";
+
+:host {
+  display: block;
+  position: absolute;
+  top: 100%;
+  right: 100%;
+}
+
+.context-menu {
+  border-top-right-radius: 0px;
+
+  &__item:not(:first-child) {
+    border-top: 1px solid var(--divider-color);
+  }
+}
+
+.button {
+  width: 100%;
+  padding: 1rem;
+
+  &__icon {
+    flex: none;
+  }
+
+  &__label {
+    font-family: $secondary-font-regular;
+  }
+}
