@@ -1,12 +1,27 @@
 <div class="editable-select">
-  <input
-    #editableSelect
-    class="form__control"
-    type="text"
-    (focus)="toggleDropdownMenu()"
-    (blur)="toggleDropdownMenu()"
-    (keyup)="onKeyUp(editableSelect.value)"
-  />
+  <div class="editable-select__input-container form__control">
+    <label class="editable-select__label" for="input"></label>
+    <admin-space-chip
+      *ngFor="let selectedOption of selectedOptions"
+      class="editable-select__chip"
+      [label]="selectedOption.label"
+      (clickChip)="onClickChip(selectedOption)"
+    ></admin-space-chip>
+    <input
+      id="input"
+      #editableSelect
+      class="editable-select__input"
+      type="text"
+      [value]="inputValue"
+      [placeholder]="placeholder"
+      [disabled]="type === SelectType.SINGLE && selectedOptions.length === 1"
+      (focus)="showDropdownMenu()"
+      (blur)="hideDropdownMenu()"
+      (keyup)="onKeyUp(editableSelect.value)"
+      (keyup.escape)="hideDropdownMenu()"
+      (keydown.enter)="onEnter($event)"
+    />
+  </div>
   <div
     class="editable-select__dropdown-menu-container card"
     [ngClass]="{
@@ -14,8 +29,12 @@
         shouldShowDropdownMenu
     }"
     [style.height]="
-      shouldShowDropdownMenu && filteredOptions.length > 0
-        ? 'calc(0.5rem * 2 + 2.25rem * ' + filteredOptions.length + ')'
+      shouldShowDropdownMenu && (filteredOptions.length > 0 || hasCreateOption)
+        ? 'calc(0.5rem * 2 + 2.25rem * ' +
+          (hasCreateOption
+            ? filteredOptions.length + 1
+            : filteredOptions.length) +
+          ')'
         : '0px'
     "
   >
@@ -24,8 +43,16 @@
         *ngFor="let filteredOption of filteredOptions"
         class="editable-select__item"
       >
-        <button class="editable-select__button">
+        <button
+          class="editable-select__button"
+          (click)="onClickDropdownMenuItem(filteredOption)"
+        >
           {{ filteredOption.label }}
+        </button>
+      </li>
+      <li *ngIf="hasCreateOption" class="editable-select__item">
+        <button class="editable-select__button">
+          Erstelle "{{ inputValue }}"
         </button>
       </li>
     </ul>

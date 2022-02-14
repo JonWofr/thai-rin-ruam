@@ -1,0 +1,21 @@
+@import "abstracts/variables";
+
+.chip {
+  background-color: var(--primary-background-color);
+  border-radius: calc(2rem / 2);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+
+  &__label {
+    font-size: 1rem;
+    line-height: 1;
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    fill: var(--secondary-font-color);
+  }
+}

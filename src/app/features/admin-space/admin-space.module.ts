@@ -17,6 +17,7 @@ import { CreateModalComponent } from './components/create-modal/create-modal.com
 import { CreateDishModalComponent } from './components/create-dish-modal/create-dish-modal.component';
 import { MultiSelectComponent } from './components/multi-select/multi-select.component';
 import { EditableSelectComponent } from './components/editable-select/editable-select.component';
+import { ChipComponent } from './components/chip/chip.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { EditableSelectComponent } from './components/editable-select/editable-s
     CreateDishModalComponent,
     MultiSelectComponent,
     EditableSelectComponent,
+    ChipComponent,
   ],
   imports: [CommonModule, AdminSpaceRoutingModule, FormsModule, SharedModule],
 })
