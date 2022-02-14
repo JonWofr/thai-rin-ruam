@@ -1,0 +1,29 @@
+:host {
+  display: block;
+}
+
+.modal {
+  padding: 2.5rem 0.75rem;
+
+  &__header {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    align-items: baseline;
+  }
+
+  &__body {
+    margin-bottom: 2rem;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 0.625rem;
+  }
+}
+
+.secondary-heading {
+  flex: 1;
+}

@@ -1,0 +1,33 @@
+<div class="editable-select">
+  <input
+    #editableSelect
+    class="form__control"
+    type="text"
+    (focus)="toggleDropdownMenu()"
+    (blur)="toggleDropdownMenu()"
+    (keyup)="onKeyUp(editableSelect.value)"
+  />
+  <div
+    class="editable-select__dropdown-menu-container card"
+    [ngClass]="{
+      'editable-select__dropdown-menu-container--visible':
+        shouldShowDropdownMenu
+    }"
+    [style.height]="
+      shouldShowDropdownMenu && filteredOptions.length > 0
+        ? 'calc(0.5rem * 2 + 2.25rem * ' + filteredOptions.length + ')'
+        : '0px'
+    "
+  >
+    <ul class="editable-select__dropdown-menu">
+      <li
+        *ngFor="let filteredOption of filteredOptions"
+        class="editable-select__item"
+      >
+        <button class="editable-select__button">
+          {{ filteredOption.label }}
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>

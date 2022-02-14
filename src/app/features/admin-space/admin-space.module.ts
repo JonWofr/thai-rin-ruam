@@ -12,6 +12,11 @@ import { HomeComponent } from './pages/home/home.component';
 import { ContextMenuComponent } from './components/context-menu/context-menu.component';
 import { NewsComponent } from './pages/news/news.component';
 import { AddItemCardComponent } from './components/add-item-card/add-item-card.component';
+import { ModalComponent } from './components/modal/modal.component';
+import { CreateModalComponent } from './components/create-modal/create-modal.component';
+import { CreateDishModalComponent } from './components/create-dish-modal/create-dish-modal.component';
+import { MultiSelectComponent } from './components/multi-select/multi-select.component';
+import { EditableSelectComponent } from './components/editable-select/editable-select.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +28,11 @@ import { AddItemCardComponent } from './components/add-item-card/add-item-card.c
     ContextMenuComponent,
     NewsComponent,
     AddItemCardComponent,
+    ModalComponent,
+    CreateModalComponent,
+    CreateDishModalComponent,
+    MultiSelectComponent,
+    EditableSelectComponent,
   ],
   imports: [CommonModule, AdminSpaceRoutingModule, FormsModule, SharedModule],
 })

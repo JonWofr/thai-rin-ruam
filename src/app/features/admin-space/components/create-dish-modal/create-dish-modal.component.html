@@ -1,0 +1,103 @@
+<admin-space-create-modal
+  title="Gericht erstellen"
+  (clickCloseButton)="clickCloseButton.emit()"
+  (clickCancelButton)="clickCancelButton.emit()"
+  (clickSaveButton)="clickSaveButton.emit($event)"
+>
+  <form
+    id="create-form"
+    class="form"
+    #form="ngForm"
+    (ngSubmit)="clickSaveButton.emit(form)"
+  >
+    <div class="form__group">
+      <input
+        class="form__control"
+        type="number"
+        placeholder="Nummer"
+        name="number"
+        ngModel
+        #number="ngModel"
+        required
+      />
+      <div
+        *ngIf="number.touched && number.invalid"
+        class="form__alerts-container"
+      >
+        <p *ngIf="number.errors?.['required']" class="form__alert">
+          Du musst etwas eingeben
+        </p>
+      </div>
+    </div>
+    <div class="form__group">
+      <input
+        class="form__control"
+        type="text"
+        placeholder="Name"
+        name="name"
+        ngModel
+        #name="ngModel"
+        required
+      />
+      <div *ngIf="name.touched && name.invalid" class="form__alerts-container">
+        <p *ngIf="name.errors?.['required']" class="form__alert">
+          Du musst etwas eingeben
+        </p>
+      </div>
+    </div>
+    <div class="form__group">
+      <input
+        class="form__control"
+        type="text"
+        placeholder="Thailändischer Name"
+        name="thaiName"
+        ngModel
+        #thaiName="ngModel"
+        required
+      />
+      <div
+        *ngIf="thaiName.touched && thaiName.invalid"
+        class="form__alerts-container"
+      >
+        <p *ngIf="thaiName.errors?.['required']" class="form__alert">
+          Du musst etwas eingeben
+        </p>
+      </div>
+    </div>
+    <div class="form__group">
+      <input
+        class="form__control"
+        type="number"
+        placeholder="Preis"
+        name="price"
+        ngModel
+      />
+    </div>
+    <div class="form__group">
+      <select
+        class="form__control"
+        name="thaiName"
+        ngModel
+        #thaiName="ngModel"
+        required
+      >
+        <option value="" selected disabled hidden>Schärfe</option>
+        <option
+          *ngFor="let hotnessLevelKeyValuePair of hotnessLevelKeyValuePairs"
+          [value]="hotnessLevelKeyValuePair[0]"
+        >
+          {{ hotnessLevelKeyValuePair[1] }}
+        </option>
+      </select>
+      <div
+        *ngIf="thaiName.touched && thaiName.invalid"
+        class="form__alerts-container"
+      >
+        <p *ngIf="thaiName.errors?.['required']" class="form__alert">
+          Du musst etwas eingeben
+        </p>
+      </div>
+    </div>
+    <admin-space-editable-select></admin-space-editable-select>
+  </form>
+</admin-space-create-modal>

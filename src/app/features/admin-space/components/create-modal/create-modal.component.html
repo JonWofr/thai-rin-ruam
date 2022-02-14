@@ -1,0 +1,52 @@
+<admin-space-modal title="Hallo" (clickCloseButton)="clickCloseButton.emit()">
+  <ng-content modalBody></ng-content>
+  <ng-container ngProjectAs="[modalFooter]">
+    <button
+      class="button button--primary-accent-color-inverted dark-theme"
+      type="button"
+      (click)="clickCancelButton.emit()"
+    >
+      <svg
+        class="button__icon button__icon--primary-accent-color-inverted"
+        width="20"
+        height="20"
+        viewBox="0 0 20 20"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g clip-path="url(#clip0_379_1024)">
+          <path
+            d="M19.9626 17.0869L12.5006 9.69719L19.8879 2.24331L17.5869 -0.0373764L10.2013 7.42056L2.74577 0.0365611L0.462646 2.31969L7.92627 9.7175L0.536584 17.1795L2.81971 19.4626L10.2232 11.9941L17.682 19.3879L19.9626 17.0869Z"
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_379_1024">
+            <rect width="19.5" height="19.5" transform="translate(0.5)" />
+          </clipPath>
+        </defs>
+      </svg>
+      <p class="button__label button__label--primary-accent-color-inverted">
+        Abbrechen
+      </p>
+    </button>
+    <button
+      class="button button--primary-accent-color dark-theme"
+      type="submit"
+      form="create-form"
+    >
+      <svg
+        class="button__icon"
+        width="20"
+        height="20"
+        viewBox="0 0 20 20"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M20 8.33333H11.6667V0H8.33333V8.33333H0V11.6667H8.33333V20H11.6667V11.6667H20V8.33333Z"
+        />
+      </svg>
+      <p class="button__label">Hinzufügen</p>
+    </button>
+  </ng-container>
+</admin-space-modal>

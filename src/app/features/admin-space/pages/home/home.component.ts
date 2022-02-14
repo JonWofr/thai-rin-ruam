@@ -4,6 +4,7 @@ import { allergenes } from 'src/app/shared/data/allergenes.data';
 import { Tab } from 'src/app/shared/models/tab.model';
 import { Dish } from 'src/app/shared/models/dish.model';
 import { Allergene } from 'src/app/shared/models/allergene.model';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'admin-space-home',
@@ -51,5 +52,9 @@ export class HomeComponent implements OnInit {
         ? undefined
         : selectedAllergene;
     event.stopPropagation();
+  }
+
+  onClickCreateModalSaveButton(form: NgForm) {
+    console.log(form);
   }
 }

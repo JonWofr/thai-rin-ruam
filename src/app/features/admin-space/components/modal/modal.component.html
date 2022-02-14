@@ -1,0 +1,35 @@
+<shared-dark-overlay>
+  <article class="modal card">
+    <header class="modal__header">
+      <h2 class="secondary-heading">
+        {{ title }}
+      </h2>
+      <button class="icon-button" (click)="clickCloseButton.emit()">
+        <svg
+          class="icon-button__icon"
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g clip-path="url(#clip0_379_1024)">
+            <path
+              d="M19.9626 17.0869L12.5006 9.69719L19.8879 2.24331L17.5869 -0.0373764L10.2013 7.42056L2.74577 0.0365611L0.462646 2.31969L7.92627 9.7175L0.536584 17.1795L2.81971 19.4626L10.2232 11.9941L17.682 19.3879L19.9626 17.0869Z"
+            />
+          </g>
+          <defs>
+            <clipPath id="clip0_379_1024">
+              <rect width="19.5" height="19.5" transform="translate(0.5)" />
+            </clipPath>
+          </defs>
+        </svg>
+      </button>
+    </header>
+    <div class="modal__body">
+      <ng-content select="[modalBody]"></ng-content>
+    </div>
+    <footer class="modal__footer">
+      <ng-content select="[modalFooter]"></ng-content>
+    </footer>
+  </article>
+</shared-dark-overlay>
