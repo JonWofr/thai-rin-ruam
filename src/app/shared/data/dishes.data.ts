@@ -2,6 +2,7 @@ import { HotnessLevel } from '../enums/hotness-level.enum';
 import { Dish } from '../models/dish.model';
 import { dishCategories } from './dish-categories.data';
 import { allergenes } from './allergenes.data';
+import { dishGroups } from './dish-groups.data';
 
 export const dishes: Dish[] = [
   {
@@ -13,9 +14,7 @@ export const dishes: Dish[] = [
     hotnessLevel: HotnessLevel.HOT,
     allergenes: [allergenes[0], allergenes[1]],
     category: dishCategories[0],
-    group: {
-      name: 'Thai-Curries',
-    },
+    group: dishGroups[0],
     description:
       'Cupidatat aute pariatur fugiat incididunt sunt et eiusmod nisi minim.',
     options: [
@@ -36,9 +35,7 @@ export const dishes: Dish[] = [
     hotnessLevel: HotnessLevel.VERY_HOT,
     allergenes: [allergenes[2]],
     category: dishCategories[0],
-    group: {
-      name: 'Thai-Curries',
-    },
+    group: dishGroups[0],
     description: 'Cupidatat ad velit ex ut fugiat proident cupidatat.',
     options: [],
   },
@@ -51,9 +48,7 @@ export const dishes: Dish[] = [
     hotnessLevel: HotnessLevel.NOT_HOT,
     allergenes: [allergenes[0], allergenes[1], allergenes[2], allergenes[3]],
     category: dishCategories[0],
-    group: {
-      name: 'Thai-Curries',
-    },
+    group: dishGroups[0],
     description:
       'Aliqua enim dolor aliquip aute veniam magna tempor incididunt dolore qui ea tempor.',
     options: [

@@ -1,6 +1,6 @@
 <div class="editable-select">
   <div class="editable-select__input-container form__control">
-    <label class="editable-select__label" for="input"></label>
+    <label class="editable-select__label" [for]="inputId"></label>
     <admin-space-chip
       *ngFor="let selectedOption of selectedOptions"
       class="editable-select__chip"
@@ -8,15 +8,19 @@
       (clickChip)="onClickChip(selectedOption)"
     ></admin-space-chip>
     <input
-      id="input"
+      [id]="inputId"
       #editableSelect
       class="editable-select__input"
       type="text"
       [value]="inputValue"
-      [placeholder]="placeholder"
+      [placeholder]="
+        type === SelectType.SINGLE && selectedOptions.length === 1
+          ? ''
+          : placeholder
+      "
       [disabled]="type === SelectType.SINGLE && selectedOptions.length === 1"
-      (focus)="showDropdownMenu()"
-      (blur)="hideDropdownMenu()"
+      (focus)="onFocus()"
+      (blur)="onBlur()"
       (keyup)="onKeyUp(editableSelect.value)"
       (keyup.escape)="hideDropdownMenu()"
       (keydown.enter)="onEnter($event)"
@@ -51,7 +55,7 @@
         </button>
       </li>
       <li *ngIf="hasCreateOption" class="editable-select__item">
-        <button class="editable-select__button">
+        <button class="editable-select__button" (click)="onClickCreateButton()">
           Erstelle "{{ inputValue }}"
         </button>
       </li>

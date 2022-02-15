@@ -139,5 +139,7 @@
   </div>
 </section>
 <admin-space-create-dish-modal
+  [allergenes]="allergenes"
+  [dishGroups]="dishGroups"
   (clickSaveButton)="onClickCreateModalSaveButton($event)"
 ></admin-space-create-dish-modal>

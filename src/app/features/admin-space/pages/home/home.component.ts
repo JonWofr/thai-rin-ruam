@@ -5,6 +5,7 @@ import { Tab } from 'src/app/shared/models/tab.model';
 import { Dish } from 'src/app/shared/models/dish.model';
 import { Allergene } from 'src/app/shared/models/allergene.model';
 import { NgForm } from '@angular/forms';
+import { dishGroups } from 'src/app/shared/data/dish-groups.data';
 
 @Component({
   selector: 'admin-space-home',
@@ -14,6 +15,7 @@ import { NgForm } from '@angular/forms';
 export class HomeComponent implements OnInit {
   dishes = dishes;
   allergenes = allergenes;
+  dishGroups = dishGroups;
   tabs: Tab[] = [
     {
       value: 'dishes',
