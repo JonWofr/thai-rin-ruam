@@ -18,6 +18,8 @@ import { CreateDishModalComponent } from './components/create-dish-modal/create-
 import { MultiSelectComponent } from './components/multi-select/multi-select.component';
 import { EditableSelectComponent } from './components/editable-select/editable-select.component';
 import { ChipComponent } from './components/chip/chip.component';
+import { MapAllergenesToOptionsPipe } from './pipes/map-allergenes-to-options/map-allergenes-to-options.pipe';
+import { MapDishgroupsToOptionsPipe } from './pipes/map-dishgroups-to-options/map-dishgroups-to-options.pipe';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { ChipComponent } from './components/chip/chip.component';
     MultiSelectComponent,
     EditableSelectComponent,
     ChipComponent,
+    MapAllergenesToOptionsPipe,
+    MapDishgroupsToOptionsPipe,
   ],
   imports: [CommonModule, AdminSpaceRoutingModule, FormsModule, SharedModule],
 })

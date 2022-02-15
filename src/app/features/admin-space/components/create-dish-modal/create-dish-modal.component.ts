@@ -7,6 +7,8 @@ import { dishCategories } from 'src/app/shared/data/dish-categories.data';
 import { DishGroup } from 'src/app/shared/models/dish-group.model';
 import { SelectType } from '../../enums/select-type.enum';
 import { Dish } from 'src/app/shared/models/dish.model';
+import { v4 as uuidv4 } from 'uuid';
+import { DishOption } from 'src/app/shared/models/dish-option.model';
 
 @Component({
   selector: 'admin-space-create-dish-modal',
@@ -14,41 +16,9 @@ import { Dish } from 'src/app/shared/models/dish.model';
   styleUrls: ['./create-dish-modal.component.scss'],
 })
 export class CreateDishModalComponent implements OnInit {
-  get dish() {
-    return this._dish;
-  }
-  @Input() set dish(dish: Dish) {
-    this.selectedAllergeneOptions = this.mapAllergenesToAllergeneOptions(
-      dish.allergenes
-    );
-    if (dish.group) {
-      this.selectedDishGroupOptions = this.mapDishGroupsToDishGroupOptions([
-        dish.group,
-      ]);
-    }
-    this._dish = dish;
-  }
-  get allergenes() {
-    return this._allergenes;
-  }
-  @Input() set allergenes(allergenes: Allergene[]) {
-    this.allergeneOptions = this.mapAllergenesToAllergeneOptions(allergenes);
-    this._allergenes = allergenes;
-  }
-  get dishGroups() {
-    return this._dishGroups;
-  }
-  @Input() set dishGroups(dishGroups: DishGroup[]) {
-    this.dishGroupOptions = this.mapDishGroupsToDishGroupOptions(dishGroups);
-    this._dishGroups = dishGroups;
-  }
-  @Output() clickCloseButton = new EventEmitter<void>();
-  @Output() clickCancelButton = new EventEmitter<void>();
-  @Output() clickSaveButton = new EventEmitter<NgForm>();
-
-  private _dish: Dish = {
+  @Input() dish: Dish = {
     id: '',
-    number: NaN,
+    number: 0,
     name: '',
     thaiName: '',
     hotnessLevel: HotnessLevel.NOT_HOT,
@@ -57,12 +27,12 @@ export class CreateDishModalComponent implements OnInit {
     description: '',
     options: [],
   };
-  private _allergenes: Allergene[] = [];
-  private _dishGroups: DishGroup[] = [];
-  allergeneOptions: Option[] = [];
-  selectedAllergeneOptions: Option[] = [];
-  dishGroupOptions: Option[] = [];
-  selectedDishGroupOptions: Option[] = [];
+  @Input() allergenes: Allergene[] = [];
+  @Input() dishGroups: DishGroup[] = [];
+  @Output() clickCloseButton = new EventEmitter<void>();
+  @Output() clickCancelButton = new EventEmitter<void>();
+  @Output() clickSaveButton = new EventEmitter<NgForm>();
+
   hotnessLevels = Object.values(HotnessLevel);
   dishCategories = dishCategories;
 
@@ -72,39 +42,33 @@ export class CreateDishModalComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  mapAllergenesToAllergeneOptions(allergenes: Allergene[]) {
-    return allergenes.map<Option>((allergene) => ({
-      label: allergene.abbreviation,
-      value: allergene.id,
-    }));
-  }
-
-  mapDishGroupsToDishGroupOptions(dishGroups: DishGroup[]) {
-    return dishGroups.map<Option>((dishGroup) => ({
-      value: dishGroup.id,
-      label: dishGroup.name,
-    }));
-  }
-
-  onChangeSelectedAllergeneOptions(selectedAllergeneOptions: Option[]) {
-    const selectedAllergenes = selectedAllergeneOptions.map(
-      (selectedAllergeneOption) =>
-        this.allergenes.find(
-          (allergene) => allergene.id === selectedAllergeneOption.value
-        )!
+  mapOptionsToAllergenes(options: Option[]) {
+    return options.map(
+      (option) =>
+        this.allergenes.find((allergene) => allergene.id === option.value)!
     );
-    this.dish.allergenes = selectedAllergenes;
   }
 
-  onChangeSelectedDishGroupOptions(selectedDishGroupOptions: Option[]) {
-    const selectedDishGroups = selectedDishGroupOptions.map(
-      (selectedDishGroupOption) =>
-        this.dishGroups.find(
-          (dishGroup) => dishGroup.id === selectedDishGroupOption.value
-        )!
+  mapOptionsToDishGroups(options: Option[]) {
+    return options.map(
+      (option) =>
+        this.dishGroups.find((dishGroup) => dishGroup.id === option.value)!
     );
-    this.dish.group = selectedDishGroups[0];
   }
 
-  onClickAddDishOptionButton() {}
+  onClickAddDishOptionButton() {
+    this.dish.options.push({
+      id: uuidv4(),
+      letter: '',
+      name: '',
+      allergenes: [],
+      price: 0,
+    });
+  }
+
+  onClickRemoveDishOptionButton(dishOption: DishOption) {
+    this.dish.options = this.dish.options.filter(
+      (option) => option.id !== dishOption.id
+    );
+  }
 }

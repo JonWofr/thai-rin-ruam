@@ -19,6 +19,7 @@ export const dishes: Dish[] = [
       'Cupidatat aute pariatur fugiat incididunt sunt et eiusmod nisi minim.',
     options: [
       {
+        id: '587c4791-2472-45bc-8470-ed7d0882d6c0',
         letter: 'a',
         name: 'Mit Hühnchen',
         allergenes: [],
@@ -53,18 +54,21 @@ export const dishes: Dish[] = [
       'Aliqua enim dolor aliquip aute veniam magna tempor incididunt dolore qui ea tempor.',
     options: [
       {
+        id: '1cc90120-581d-4c18-84b2-017009379316',
         letter: 'a',
         name: 'Mit Hühnchen',
         allergenes: [allergenes[0], allergenes[3]],
         price: 4.99,
       },
       {
+        id: '9ee71eca-b335-4eea-818a-5fad2d95a535',
         letter: 'c',
         name: 'Mit Garnelen',
         allergenes: [],
         price: 4.99,
       },
       {
+        id: '0adb475e-1fec-4873-a30f-3e382da64bfb',
         letter: 'b',
         name: 'Mit Rind',
         allergenes: [],
@@ -85,18 +89,21 @@ export const dishes: Dish[] = [
       'Aliqua enim dolor aliquip aute veniam magna tempor incididunt dolore qui ea tempor.',
     options: [
       {
+        id: '39375e04-b391-43d4-b5d3-b07c530a6f47',
         letter: 'a',
         name: 'Mit Hühnchen',
         allergenes: [allergenes[3], allergenes[4]],
         price: 4.99,
       },
       {
+        id: '42f9bea9-ee19-4ac8-94c6-2e6dac0afbed',
         letter: 'c',
         name: 'Mit Garnelen',
         allergenes: [],
         price: 4.99,
       },
       {
+        id: '67b2f5fb-e5b7-40cf-95f2-b2e1425ba34f',
         letter: 'b',
         name: 'Mit Rind',
         allergenes: [],

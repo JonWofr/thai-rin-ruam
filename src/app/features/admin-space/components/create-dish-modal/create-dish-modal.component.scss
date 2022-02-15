@@ -3,9 +3,39 @@
 }
 
 .divider {
-  margin: 2rem 0;
+  margin-top: 2rem;
+}
+
+.create-dish-modal {
+  &__options-list {
+    padding-left: 3rem;
+    margin: 2rem 0;
+  }
+
+  &__option-item {
+    padding: 1rem 0;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+
+    &:first-child {
+      padding-top: 0;
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+
+    &:not(:last-child) {
+      border-bottom: 1px solid var(--divider-color);
+    }
+  }
+
+  &__option-item-left-side {
+    flex: 1;
+  }
 }
 
 .button {
-  padding-left: 4rem;
+  margin-left: 3rem;
 }

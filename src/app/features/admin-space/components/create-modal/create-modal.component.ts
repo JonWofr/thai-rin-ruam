@@ -8,7 +8,6 @@ import { NgForm } from '@angular/forms';
 })
 export class CreateModalComponent implements OnInit {
   @Output() clickCloseButton = new EventEmitter<void>();
-  @Output() clickSaveButton = new EventEmitter<NgForm>();
   @Output() clickCancelButton = new EventEmitter<void>();
 
   constructor() {}

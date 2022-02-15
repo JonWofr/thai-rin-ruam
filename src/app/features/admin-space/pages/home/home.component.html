@@ -109,7 +109,7 @@
         </li>
       </ng-container>
     </ul>
-    <button class="button button--embedded">
+    <button class="button button--embedded" (click)="onClickCreateButton()">
       <svg
         class="button__icon button__icon--embedded"
         width="20"
@@ -138,8 +138,13 @@
     </button>
   </div>
 </section>
-<admin-space-create-dish-modal
-  [allergenes]="allergenes"
-  [dishGroups]="dishGroups"
-  (clickSaveButton)="onClickCreateModalSaveButton($event)"
-></admin-space-create-dish-modal>
+<ng-container [ngSwitch]="currentlyVisibleModal">
+  <admin-space-create-dish-modal
+    *ngSwitchCase="HomeModal.CREATE_DISH"
+    [allergenes]="allergenes"
+    [dishGroups]="dishGroups"
+    (clickSaveButton)="onClickCreateModalSaveButton($event)"
+    (clickCloseButton)="onClickModalCloseButton()"
+    (clickCancelButton)="onClickModalCancelButton()"
+  ></admin-space-create-dish-modal>
+</ng-container>
