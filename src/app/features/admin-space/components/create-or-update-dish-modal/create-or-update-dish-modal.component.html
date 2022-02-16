@@ -1,5 +1,11 @@
-<admin-space-create-modal
-  title="Gericht erstellen"
+<admin-space-modal
+  [title]="
+    type === ModalType.CREATE
+      ? 'Gericht erstellen'
+      : 'Gericht ' + dish.name + ' bearbeiten'
+  "
+  [isValid]="form.valid ?? false"
+  [type]="type"
   (clickCloseButton)="clickCloseButton.emit()"
   (clickCancelButton)="clickCancelButton.emit()"
 >
@@ -7,7 +13,7 @@
     id="create-form"
     class="form"
     #form="ngForm"
-    (ngSubmit)="clickSaveButton.emit(form)"
+    (ngSubmit)="clickSaveButton.emit(dish)"
   >
     <div class="form__group">
       <input
@@ -108,12 +114,12 @@
       <select
         class="form__control"
         name="category"
-        [(ngModel)]="dish.category"
+        [(ngModel)]="dish.category.id"
         #category="ngModel"
         required
       >
         <option value="" selected disabled hidden>Kategorie</option>
-        <option *ngFor="let category of dishCategories">
+        <option *ngFor="let category of dishCategories" [value]="category.id">
           {{ category.name }}
         </option>
       </select>
@@ -149,12 +155,12 @@
       </textarea>
     </div>
     <hr class="divider" />
-    <ul class="create-dish-modal__options-list">
+    <ul class="create-or-update-dish-modal__options-list">
       <li
         *ngFor="let dishOption of dish.options; let i = index"
-        class="create-dish-modal__option-item"
+        class="create-or-update-dish-modal__option-item"
       >
-        <div class="create-dish-modal__option-item-left-side">
+        <div class="create-or-update-dish-modal__option-item-left-side">
           <div class="form__group">
             <input
               class="form__control"
@@ -265,4 +271,4 @@
       <p class="button__label button__label--embedded">Option hinzufügen</p>
     </button>
   </form>
-</admin-space-create-modal>
+</admin-space-modal>

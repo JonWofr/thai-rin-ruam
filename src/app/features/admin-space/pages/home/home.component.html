@@ -26,6 +26,8 @@
               <div class="document-list__more-button-inner-container">
                 <admin-space-context-menu
                   *ngIf="dish.id === selectedDish?.id"
+                  (clickEditButton)="onClickContextMenuEditButton()"
+                  (clickDeleteButton)="onClickContextMenuDeleteButton()"
                 ></admin-space-context-menu>
                 <button
                   class="icon-button"
@@ -128,23 +130,41 @@
         class="button__label button__label--embedded"
         [ngSwitch]="selectedTab.value"
       >
-        <ng-container *ngSwitchCase="tabs[0].value">
+        <ng-container *ngSwitchCase="HomeTab.DISHES">
           Neues Gericht erstellen
         </ng-container>
-        <ng-container *ngSwitchCase="tabs[1].value">
+        <ng-container *ngSwitchCase="HomeTab.ALLERGENES">
           Neues Allergen erstellen
         </ng-container>
       </p>
     </button>
   </div>
 </section>
-<ng-container [ngSwitch]="currentlyVisibleModal">
-  <admin-space-create-dish-modal
-    *ngSwitchCase="HomeModal.CREATE_DISH"
-    [allergenes]="allergenes"
-    [dishGroups]="dishGroups"
-    (clickSaveButton)="onClickCreateModalSaveButton($event)"
-    (clickCloseButton)="onClickModalCloseButton()"
-    (clickCancelButton)="onClickModalCancelButton()"
-  ></admin-space-create-dish-modal>
+<ng-container [ngSwitch]="selectedTab.value">
+  <ng-container
+    *ngSwitchCase="HomeTab.DISHES"
+    [ngSwitch]="currentlyVisibleModalType"
+  >
+    <admin-space-create-or-update-dish-modal
+      *ngSwitchCase="ModalType.CREATE"
+      [type]="ModalType.CREATE"
+      [allergenes]="allergenes"
+      [dishGroups]="dishGroups"
+      (clickSaveButton)="onClickCreateModalSaveButton($event)"
+      (clickCloseButton)="onClickModalCloseButton()"
+      (clickCancelButton)="onClickModalCancelButton()"
+    ></admin-space-create-or-update-dish-modal>
+    <ng-container *ngSwitchCase="ModalType.UPDATE">
+      <admin-space-create-or-update-dish-modal
+        *ngIf="selectedDish"
+        [type]="ModalType.UPDATE"
+        [dish]="selectedDish"
+        [allergenes]="allergenes"
+        [dishGroups]="dishGroups"
+        (clickSaveButton)="onClickCreateModalSaveButton($event)"
+        (clickCloseButton)="onClickModalCloseButton()"
+        (clickCancelButton)="onClickModalCancelButton()"
+      ></admin-space-create-or-update-dish-modal>
+    </ng-container>
+  </ng-container>
 </ng-container>

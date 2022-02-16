@@ -13,13 +13,13 @@ import { ContextMenuComponent } from './components/context-menu/context-menu.com
 import { NewsComponent } from './pages/news/news.component';
 import { AddItemCardComponent } from './components/add-item-card/add-item-card.component';
 import { ModalComponent } from './components/modal/modal.component';
-import { CreateModalComponent } from './components/create-modal/create-modal.component';
-import { CreateDishModalComponent } from './components/create-dish-modal/create-dish-modal.component';
+import { CreateOrUpdateDishModalComponent } from './components/create-or-update-dish-modal/create-or-update-dish-modal.component';
 import { MultiSelectComponent } from './components/multi-select/multi-select.component';
 import { EditableSelectComponent } from './components/editable-select/editable-select.component';
 import { ChipComponent } from './components/chip/chip.component';
 import { MapAllergenesToOptionsPipe } from './pipes/map-allergenes-to-options/map-allergenes-to-options.pipe';
 import { MapDishgroupsToOptionsPipe } from './pipes/map-dishgroups-to-options/map-dishgroups-to-options.pipe';
+import { DeleteDishModalComponent } from './components/delete-dish-modal/delete-dish-modal.component';
 
 @NgModule({
   declarations: [
@@ -32,13 +32,13 @@ import { MapDishgroupsToOptionsPipe } from './pipes/map-dishgroups-to-options/ma
     NewsComponent,
     AddItemCardComponent,
     ModalComponent,
-    CreateModalComponent,
-    CreateDishModalComponent,
+    CreateOrUpdateDishModalComponent,
     MultiSelectComponent,
     EditableSelectComponent,
     ChipComponent,
     MapAllergenesToOptionsPipe,
     MapDishgroupsToOptionsPipe,
+    DeleteDishModalComponent,
   ],
   imports: [CommonModule, AdminSpaceRoutingModule, FormsModule, SharedModule],
 })

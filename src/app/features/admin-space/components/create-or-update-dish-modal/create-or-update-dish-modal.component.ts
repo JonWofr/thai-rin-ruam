@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { HotnessLevel } from 'src/app/shared/enums/hotness-level.enum';
 import { Allergene } from 'src/app/shared/models/allergene.model';
 import { Option } from 'src/app/features/admin-space/models/option.model';
@@ -9,13 +8,15 @@ import { SelectType } from '../../enums/select-type.enum';
 import { Dish } from 'src/app/shared/models/dish.model';
 import { v4 as uuidv4 } from 'uuid';
 import { DishOption } from 'src/app/shared/models/dish-option.model';
+import { ModalType } from '../../enums/modal-type.enum';
 
 @Component({
-  selector: 'admin-space-create-dish-modal',
-  templateUrl: './create-dish-modal.component.html',
-  styleUrls: ['./create-dish-modal.component.scss'],
+  selector: 'admin-space-create-or-update-dish-modal',
+  templateUrl: './create-or-update-dish-modal.component.html',
+  styleUrls: ['./create-or-update-dish-modal.component.scss'],
 })
-export class CreateDishModalComponent implements OnInit {
+export class CreateOrUpdateDishModalComponent implements OnInit {
+  @Input() type?: ModalType;
   @Input() dish: Dish = {
     id: '',
     number: 0,
@@ -31,12 +32,14 @@ export class CreateDishModalComponent implements OnInit {
   @Input() dishGroups: DishGroup[] = [];
   @Output() clickCloseButton = new EventEmitter<void>();
   @Output() clickCancelButton = new EventEmitter<void>();
-  @Output() clickSaveButton = new EventEmitter<NgForm>();
+  @Output() clickSaveButton = new EventEmitter<Dish>();
 
   hotnessLevels = Object.values(HotnessLevel);
   dishCategories = dishCategories;
+  isFormValid = false;
 
   SelectType = SelectType;
+  ModalType = ModalType;
 
   constructor() {}
 
@@ -57,6 +60,7 @@ export class CreateDishModalComponent implements OnInit {
   }
 
   onClickAddDishOptionButton() {
+    console.log(this.dish);
     this.dish.options.push({
       id: uuidv4(),
       letter: '',
