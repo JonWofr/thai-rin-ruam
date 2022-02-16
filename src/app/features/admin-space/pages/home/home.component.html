@@ -168,28 +168,26 @@
         (clickSaveButton)="onClickModalCreateButton($event)"
       ></admin-space-create-or-update-dish-modal>
     </ng-container>
-    <ng-container *ngSwitchCase="ModalType.DELETE">
-      <admin-space-delete-dish-modal
-        [dish]="selectedDish"
-        (clickCloseButton)="onClickModalCloseButton()"
-        (clickCancelButton)="onClickModalCancelButton()"
-        (clickDeleteButton)="onClickModalDeleteButton()"
-      ></admin-space-delete-dish-modal>
-    </ng-container>
+    <admin-space-delete-dish-modal
+      *ngSwitchCase="ModalType.DELETE"
+      [dish]="selectedDish"
+      (clickCloseButton)="onClickModalCloseButton()"
+      (clickCancelButton)="onClickModalCancelButton()"
+      (clickDeleteButton)="onClickModalDeleteButton()"
+    ></admin-space-delete-dish-modal>
   </ng-container>
   <ng-container
     *ngSwitchCase="HomeTab.ALLERGENES"
     [ngSwitch]="currentlyVisibleModalType"
   >
-    <ng-container *ngSwitchCase="ModalType.CREATE">
-      <admin-space-create-or-update-allergene-modal
-        [type]="ModalType.CREATE"
-        (clickSaveButton)="onClickModalCreateButton($event)"
-        (clickCloseButton)="onClickModalCloseButton()"
-        (clickCancelButton)="onClickModalCancelButton()"
-      >
-      </admin-space-create-or-update-allergene-modal>
-    </ng-container>
+    <admin-space-create-or-update-allergene-modal
+      *ngSwitchCase="ModalType.CREATE"
+      [type]="ModalType.CREATE"
+      (clickSaveButton)="onClickModalCreateButton($event)"
+      (clickCloseButton)="onClickModalCloseButton()"
+      (clickCancelButton)="onClickModalCancelButton()"
+    >
+    </admin-space-create-or-update-allergene-modal>
     <ng-container *ngSwitchCase="ModalType.UPDATE">
       <admin-space-create-or-update-allergene-modal
         *ngIf="selectedAllergene"
@@ -201,14 +199,13 @@
       >
       </admin-space-create-or-update-allergene-modal>
     </ng-container>
-    <ng-container *ngSwitchCase="ModalType.DELETE">
-      <admin-space-delete-allergene-modal
-        [allergene]="selectedAllergene"
-        (clickCloseButton)="onClickModalCloseButton()"
-        (clickCancelButton)="onClickModalCancelButton()"
-        (clickDeleteButton)="onClickModalDeleteButton()"
-      >
-      </admin-space-delete-allergene-modal>
-    </ng-container>
+    <admin-space-delete-allergene-modal
+      *ngSwitchCase="ModalType.DELETE"
+      [allergene]="selectedAllergene"
+      (clickCloseButton)="onClickModalCloseButton()"
+      (clickCancelButton)="onClickModalCancelButton()"
+      (clickDeleteButton)="onClickModalDeleteButton()"
+    >
+    </admin-space-delete-allergene-modal>
   </ng-container>
 </ng-container>

@@ -7,6 +7,7 @@ import { dishGroups } from 'src/app/shared/data/dish-groups.data';
 import { ModalType } from '../../enums/modal-type.enum';
 import { Option } from '../../models/option.model';
 import { HomeTab } from '../../enums/home-tab.enum';
+import { cloneDeep } from 'lodash';
 
 @Component({
   selector: 'admin-space-home',
@@ -51,7 +52,9 @@ export class HomeComponent implements OnInit {
 
   onClickDishMoreButton(selectedDish: Dish, event: MouseEvent) {
     this.selectedDish =
-      this.selectedDish?.id === selectedDish.id ? undefined : selectedDish;
+      this.selectedDish?.id === selectedDish.id
+        ? undefined
+        : cloneDeep(selectedDish);
     event.stopPropagation();
   }
 
@@ -59,7 +62,7 @@ export class HomeComponent implements OnInit {
     this.selectedAllergene =
       this.selectedAllergene?.id === selectedAllergene.id
         ? undefined
-        : selectedAllergene;
+        : cloneDeep(selectedAllergene);
     event.stopPropagation();
   }
 

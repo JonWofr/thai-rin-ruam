@@ -26,6 +26,7 @@ import { CreateOrUpdateNewsModalComponent } from './components/create-or-update-
 import { FileInputComponent } from './components/file-input/file-input.component';
 import { ImagesPickerComponent } from './components/images-picker/images-picker.component';
 import { FilePreviewComponent } from './components/file-preview/file-preview.component';
+import { DeleteNewsModalComponent } from './components/delete-news-modal/delete-news-modal.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { FilePreviewComponent } from './components/file-preview/file-preview.com
     FileInputComponent,
     ImagesPickerComponent,
     FilePreviewComponent,
+    DeleteNewsModalComponent,
   ],
   imports: [CommonModule, AdminSpaceRoutingModule, FormsModule, SharedModule],
 })

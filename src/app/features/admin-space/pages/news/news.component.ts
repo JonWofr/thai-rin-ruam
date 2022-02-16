@@ -2,6 +2,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { news } from 'src/app/shared/data/news.data';
 import { News } from 'src/app/shared/models/news.model';
 import { ModalType } from '../../enums/modal-type.enum';
+import { cloneDeep } from 'lodash';
 
 @Component({
   selector: 'admin-space-news',
@@ -12,9 +13,11 @@ export class NewsComponent implements OnInit {
   news = news;
   selectedNews?: News;
   @HostListener('document:click') onClickDocument() {
-    this.selectedNews = undefined;
+    if (this.currentlyVisibleModalType === null) {
+      this.selectedNews = undefined;
+    }
   }
-  currentlyVisibleModalType: ModalType | null = ModalType.CREATE;
+  currentlyVisibleModalType: ModalType | null = null;
 
   ModalType = ModalType;
 
@@ -24,7 +27,9 @@ export class NewsComponent implements OnInit {
 
   onClickMoreButton(selectedNews: News, event: MouseEvent) {
     this.selectedNews =
-      this.selectedNews?.id === selectedNews.id ? undefined : selectedNews;
+      this.selectedNews?.id === selectedNews.id
+        ? undefined
+        : cloneDeep(selectedNews);
     event.stopPropagation();
   }
 
@@ -49,4 +54,6 @@ export class NewsComponent implements OnInit {
   }
 
   onClickModalSaveButton() {}
+
+  onClickModalDeleteButton() {}
 }

@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Allergene } from 'src/app/shared/models/allergene.model';
-import { Dish } from 'src/app/shared/models/dish.model';
 import { ModalType } from '../../enums/modal-type.enum';
 
 @Component({
