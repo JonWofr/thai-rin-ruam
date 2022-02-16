@@ -7,6 +7,8 @@
         <div class="news__more-button-container">
           <admin-space-context-menu
             *ngIf="value.id === selectedNews?.id"
+            (clickEditButton)="onClickContextMenuEditButton()"
+            (clickDeleteButton)="onClickContextMenuDeleteButton()"
           ></admin-space-context-menu>
           <button
             class="news__more-button"
@@ -40,7 +42,36 @@
           </button>
         </div>
       </div>
-      <admin-space-add-item-card></admin-space-add-item-card>
+      <admin-space-add-item-card
+        (clickAddItemCard)="onClickAddItemCard()"
+      ></admin-space-add-item-card>
     </div>
   </div>
 </section>
+<ng-container [ngSwitch]="currentlyVisibleModalType">
+  <admin-space-create-or-update-news-modal
+    *ngSwitchCase="ModalType.CREATE"
+    [type]="ModalType.CREATE"
+    (clickCloseButton)="onClickModalCloseButton()"
+    (clickCancelButton)="onClickModalCancelButton()"
+    (clickSaveButton)="onClickModalSaveButton()"
+  ></admin-space-create-or-update-news-modal>
+  <ng-container *ngSwitchCase="ModalType.UPDATE">
+    <admin-space-create-or-update-news-modal
+      *ngIf="selectedNews"
+      [type]="ModalType.UPDATE"
+      [news]="selectedNews"
+      (clickCloseButton)="onClickModalCloseButton()"
+      (clickCancelButton)="onClickModalCancelButton()"
+      (clickSaveButton)="onClickModalSaveButton()"
+    ></admin-space-create-or-update-news-modal>
+  </ng-container>
+  <admin-space-delete-news-modal
+    *ngSwitchCase="ModalType.DELETE"
+    [news]="selectedNews"
+    (clickCloseButton)="onClickModalCloseButton()"
+    (clickCancelButton)="onClickModalCancelButton()"
+    (clickDeleteButton)="onClickModalDeleteButton()"
+  >
+  </admin-space-delete-news-modal>
+</ng-container>

@@ -1,6 +1,6 @@
 export enum HotnessLevel {
-  'NOT_HOT' = 'nicht scharf',
-  'HOT' = 'scharf',
-  'VERY_HOT' = 'sehr scharf',
-  'EXTREMELY_HOT' = 'extrem sharf',
+  'NOT_HOT' = 'Nicht scharf',
+  'HOT' = 'Leicht scharf',
+  'VERY_HOT' = 'Mittel scharf',
+  'EXTREMELY_HOT' = 'Sehr scharf',
 }

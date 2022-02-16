@@ -14,6 +14,10 @@
     &:hover {
       background-color: var(--primary-accent-color-hover);
     }
+
+    &:disabled {
+      background-color: var(--primary-accent-color-disabled);
+    }
   }
 
   &--primary-accent-color-inverted {
@@ -76,5 +80,16 @@
       color: var(--primary-accent-color);
       @include with-transition(color);
     }
+  }
+}
+
+.icon-button {
+  padding: 0.5rem;
+  margin: -0.5rem;
+  fill: var(--secondary-font-color);
+
+  &__icon {
+    width: 24px;
+    height: 24px;
   }
 }

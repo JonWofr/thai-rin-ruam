@@ -2,6 +2,10 @@
   display: block;
 }
 
+.section {
+  min-height: 100vh;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -39,16 +43,6 @@
   &__allergene {
     color: var(--primary-font-color);
     line-height: 2rem;
-  }
-}
-
-.icon-button {
-  padding: 0.5rem;
-  margin: -0.5rem;
-
-  &__icon {
-    width: 24px;
-    height: 24px;
   }
 }
 

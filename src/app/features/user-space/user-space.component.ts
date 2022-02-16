@@ -15,18 +15,32 @@ export class UserSpaceComponent implements OnInit, OnDestroy {
     {
       name: 'Aktuelles',
       link: '/news',
+      linkActiveOptions: {
+        exact: true,
+      },
     },
     {
       name: 'Speisekarte',
       link: '/menu',
+      linkActiveOptions: {
+        // Set to false so that the route is still considered active with query
+        // params
+        exact: false,
+      },
     },
     {
       name: 'Über Uns',
       link: '/about-us',
+      linkActiveOptions: {
+        exact: true,
+      },
     },
     {
       name: 'Kontakt',
       link: '/contact',
+      linkActiveOptions: {
+        exact: true,
+      },
     },
   ];
 

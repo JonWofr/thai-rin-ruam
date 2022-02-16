@@ -1,0 +1,54 @@
+<admin-space-modal
+  [title]="
+    type === ModalType.CREATE
+      ? 'Allergen erstellen'
+      : 'Allergen ' + allergene.abbreviation + ' bearbeiten'
+  "
+  [isValid]="form.valid ?? false"
+  [type]="type"
+  (clickCloseButton)="clickCloseButton.emit()"
+  (clickCancelButton)="clickCancelButton.emit()"
+>
+  <form
+    id="modal-form"
+    class="form"
+    #form="ngForm"
+    (ngSubmit)="clickSaveButton.emit(allergene)"
+  >
+    <div class="form__group">
+      <input
+        class="form__control"
+        type="text"
+        placeholder="Abkürzung"
+        name="abbreviation"
+        [(ngModel)]="allergene.abbreviation"
+        #abbreviation="ngModel"
+        required
+      />
+      <div
+        *ngIf="abbreviation.touched && abbreviation.invalid"
+        class="form__alerts-container"
+      >
+        <p *ngIf="abbreviation.errors?.['required']" class="form__alert">
+          Du musst etwas eingeben
+        </p>
+      </div>
+    </div>
+    <div class="form__group">
+      <input
+        class="form__control"
+        type="text"
+        placeholder="Name"
+        name="name"
+        [(ngModel)]="allergene.name"
+        #name="ngModel"
+        required
+      />
+      <div *ngIf="name.touched && name.invalid" class="form__alerts-container">
+        <p *ngIf="name.errors?.['required']" class="form__alert">
+          Du musst etwas eingeben
+        </p>
+      </div>
+    </div>
+  </form>
+</admin-space-modal>

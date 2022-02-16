@@ -6,6 +6,7 @@
   animation: rotate 2s linear infinite;
   width: 75px;
   height: 75px;
+  margin: 0 auto;
 
   &__path {
     stroke: var(--primary-accent-color);

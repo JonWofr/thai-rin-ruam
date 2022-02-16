@@ -1,0 +1,17 @@
+<admin-space-modal
+  *ngIf="allergene"
+  [title]="'Allergen ' + allergene.abbreviation + ' löschen'"
+  [type]="ModalType.DELETE"
+  [isValid]="true"
+  (clickCloseButton)="clickCloseButton.emit()"
+  (clickCancelButton)="clickCancelButton.emit()"
+>
+  <form (ngSubmit)="clickDeleteButton.emit()">
+    <p>
+      Das Allergen {{ allergene.abbreviation }} wird
+      <strong class="delete-allergene-modal__strong"
+        >unwiderruflich gelöscht</strong
+      >. Bist du dir sicher, dass du fortfahren möchtest?
+    </p>
+  </form>
+</admin-space-modal>

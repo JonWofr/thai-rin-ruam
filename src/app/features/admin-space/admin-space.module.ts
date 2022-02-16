@@ -12,6 +12,21 @@ import { HomeComponent } from './pages/home/home.component';
 import { ContextMenuComponent } from './components/context-menu/context-menu.component';
 import { NewsComponent } from './pages/news/news.component';
 import { AddItemCardComponent } from './components/add-item-card/add-item-card.component';
+import { ModalComponent } from './components/modal/modal.component';
+import { CreateOrUpdateDishModalComponent } from './components/create-or-update-dish-modal/create-or-update-dish-modal.component';
+import { MultiSelectComponent } from './components/multi-select/multi-select.component';
+import { EditableSelectComponent } from './components/editable-select/editable-select.component';
+import { ChipComponent } from './components/chip/chip.component';
+import { MapAllergenesToOptionsPipe } from './pipes/map-allergenes-to-options/map-allergenes-to-options.pipe';
+import { MapDishgroupsToOptionsPipe } from './pipes/map-dishgroups-to-options/map-dishgroups-to-options.pipe';
+import { DeleteDishModalComponent } from './components/delete-dish-modal/delete-dish-modal.component';
+import { CreateOrUpdateAllergeneModalComponent } from './components/create-or-update-allergene-modal/create-or-update-allergene-modal.component';
+import { DeleteAllergeneModalComponent } from './components/delete-allergene-modal/delete-allergene-modal.component';
+import { CreateOrUpdateNewsModalComponent } from './components/create-or-update-news-modal/create-or-update-news-modal.component';
+import { FileInputComponent } from './components/file-input/file-input.component';
+import { ImagesPickerComponent } from './components/images-picker/images-picker.component';
+import { FilePreviewComponent } from './components/file-preview/file-preview.component';
+import { DeleteNewsModalComponent } from './components/delete-news-modal/delete-news-modal.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +38,21 @@ import { AddItemCardComponent } from './components/add-item-card/add-item-card.c
     ContextMenuComponent,
     NewsComponent,
     AddItemCardComponent,
+    ModalComponent,
+    CreateOrUpdateDishModalComponent,
+    MultiSelectComponent,
+    EditableSelectComponent,
+    ChipComponent,
+    MapAllergenesToOptionsPipe,
+    MapDishgroupsToOptionsPipe,
+    DeleteDishModalComponent,
+    CreateOrUpdateAllergeneModalComponent,
+    DeleteAllergeneModalComponent,
+    CreateOrUpdateNewsModalComponent,
+    FileInputComponent,
+    ImagesPickerComponent,
+    FilePreviewComponent,
+    DeleteNewsModalComponent,
   ],
   imports: [CommonModule, AdminSpaceRoutingModule, FormsModule, SharedModule],
 })

@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'admin-space-add-item-card',
@@ -6,7 +6,7 @@ import { Component, OnInit, EventEmitter } from '@angular/core';
   styleUrls: ['./add-item-card.component.scss'],
 })
 export class AddItemCardComponent implements OnInit {
-  clickAddItemCard = new EventEmitter<void>();
+  @Output() clickAddItemCard = new EventEmitter<void>();
 
   constructor() {}
 

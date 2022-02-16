@@ -1,0 +1,16 @@
+<admin-space-modal
+  *ngIf="dish"
+  [title]="'Gericht ' + dish.name + ' löschen'"
+  [type]="ModalType.DELETE"
+  [isValid]="true"
+  (clickCloseButton)="clickCloseButton.emit()"
+  (clickCancelButton)="clickCancelButton.emit()"
+>
+  <form (ngSubmit)="clickDeleteButton.emit()">
+    <p>
+      Das Gericht {{ dish.name }} wird
+      <strong class="delete-dish-modal__strong">unwiderruflich gelöscht</strong
+      >. Bist du dir sicher, dass du fortfahren möchtest?
+    </p>
+  </form>
+</admin-space-modal>
