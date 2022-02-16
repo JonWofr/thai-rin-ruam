@@ -1,0 +1,12 @@
+<div class="images-picker">
+  <admin-space-file-preview
+    class="images-picker__item"
+    *ngFor="let imageUrl of imageUrls; let i = index"
+    [imageUrl]="imageUrl"
+    (clickRemoveButton)="onClickRemoveButton(i)"
+  ></admin-space-file-preview>
+  <admin-space-file-input
+    class="images-picker__item"
+    (changeFileInput)="onChangeFileInput($event)"
+  ></admin-space-file-input>
+</div>

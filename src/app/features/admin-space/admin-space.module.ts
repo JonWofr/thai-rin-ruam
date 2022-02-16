@@ -22,6 +22,10 @@ import { MapDishgroupsToOptionsPipe } from './pipes/map-dishgroups-to-options/ma
 import { DeleteDishModalComponent } from './components/delete-dish-modal/delete-dish-modal.component';
 import { CreateOrUpdateAllergeneModalComponent } from './components/create-or-update-allergene-modal/create-or-update-allergene-modal.component';
 import { DeleteAllergeneModalComponent } from './components/delete-allergene-modal/delete-allergene-modal.component';
+import { CreateOrUpdateNewsModalComponent } from './components/create-or-update-news-modal/create-or-update-news-modal.component';
+import { FileInputComponent } from './components/file-input/file-input.component';
+import { ImagesPickerComponent } from './components/images-picker/images-picker.component';
+import { FilePreviewComponent } from './components/file-preview/file-preview.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +47,10 @@ import { DeleteAllergeneModalComponent } from './components/delete-allergene-mod
     DeleteDishModalComponent,
     CreateOrUpdateAllergeneModalComponent,
     DeleteAllergeneModalComponent,
+    CreateOrUpdateNewsModalComponent,
+    FileInputComponent,
+    ImagesPickerComponent,
+    FilePreviewComponent,
   ],
   imports: [CommonModule, AdminSpaceRoutingModule, FormsModule, SharedModule],
 })

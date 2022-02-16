@@ -36,7 +36,6 @@ export class CreateOrUpdateDishModalComponent implements OnInit {
 
   hotnessLevels = Object.values(HotnessLevel);
   dishCategories = dishCategories;
-  isFormValid = false;
 
   SelectType = SelectType;
   ModalType = ModalType;

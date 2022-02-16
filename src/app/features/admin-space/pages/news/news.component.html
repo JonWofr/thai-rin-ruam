@@ -40,7 +40,18 @@
           </button>
         </div>
       </div>
-      <admin-space-add-item-card></admin-space-add-item-card>
+      <admin-space-add-item-card
+        (clickAddItemCard)="onClickAddItemCard()"
+      ></admin-space-add-item-card>
     </div>
   </div>
 </section>
+<ng-container [ngSwitch]="currentlyVisibleModalType">
+  <admin-space-create-or-update-news-modal
+    *ngSwitchCase="ModalType.CREATE"
+    [type]="ModalType.CREATE"
+    (clickCloseButton)="onClickModalCloseButton()"
+    (clickCancelButton)="onClickModalCancelButton()"
+    (clickSaveButton)="onClickModalSaveButton()"
+  ></admin-space-create-or-update-news-modal>
+</ng-container>

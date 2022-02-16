@@ -1,0 +1,27 @@
+<div class="file-input">
+  <div class="aspect-ratio aspect-ratio--4-by-3">
+    <div class="aspect-ratio__inner-container">
+      <label class="form__control">
+        <svg
+          class="file-input__icon"
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M20 8.33333H11.6667V0H8.33333V8.33333H0V11.6667H8.33333V20H11.6667V11.6667H20V8.33333Z"
+          />
+        </svg>
+        <p class="file-input__label">Bild(er) auswählen</p>
+        <input
+          #input
+          type="file"
+          class="file-input__input"
+          multiple
+          (change)="changeFileInput.emit(input.files)"
+      /></label>
+    </div>
+  </div>
+</div>

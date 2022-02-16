@@ -84,7 +84,6 @@ export class HomeComponent implements OnInit {
   }
 
   onClickModalCreateButton(document: Dish | Allergene) {
-    console.log(document);
     this.currentlyVisibleModalType = null;
   }
 

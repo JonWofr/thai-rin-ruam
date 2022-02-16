@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { news } from 'src/app/shared/data/news.data';
 import { News } from 'src/app/shared/models/news.model';
+import { ModalType } from '../../enums/modal-type.enum';
 
 @Component({
   selector: 'admin-space-news',
@@ -13,6 +14,9 @@ export class NewsComponent implements OnInit {
   @HostListener('document:click') onClickDocument() {
     this.selectedNews = undefined;
   }
+  currentlyVisibleModalType: ModalType | null = ModalType.CREATE;
+
+  ModalType = ModalType;
 
   constructor() {}
 
@@ -23,4 +27,26 @@ export class NewsComponent implements OnInit {
       this.selectedNews?.id === selectedNews.id ? undefined : selectedNews;
     event.stopPropagation();
   }
+
+  onClickAddItemCard() {
+    this.currentlyVisibleModalType = ModalType.CREATE;
+  }
+
+  onClickContextMenuEditButton() {
+    this.currentlyVisibleModalType = ModalType.UPDATE;
+  }
+
+  onClickContextMenuDeleteButton() {
+    this.currentlyVisibleModalType = ModalType.DELETE;
+  }
+
+  onClickModalCloseButton() {
+    this.currentlyVisibleModalType = null;
+  }
+
+  onClickModalCancelButton() {
+    this.currentlyVisibleModalType = null;
+  }
+
+  onClickModalSaveButton() {}
 }
