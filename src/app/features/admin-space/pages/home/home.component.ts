@@ -75,10 +75,6 @@ export class HomeComponent implements OnInit {
     this.currentlyVisibleModalType = ModalType.DELETE;
   }
 
-  onClickCreateModalSaveButton(dish: Dish) {
-    console.log(dish);
-  }
-
   onClickModalCloseButton() {
     this.currentlyVisibleModalType = null;
   }
@@ -86,4 +82,11 @@ export class HomeComponent implements OnInit {
   onClickModalCancelButton() {
     this.currentlyVisibleModalType = null;
   }
+
+  onClickModalCreateButton(document: Dish | Allergene) {
+    console.log(document);
+    this.currentlyVisibleModalType = null;
+  }
+
+  onClickModalDeleteButton() {}
 }

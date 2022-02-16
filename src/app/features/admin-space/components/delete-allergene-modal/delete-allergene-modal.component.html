@@ -1,6 +1,6 @@
 <admin-space-modal
-  *ngIf="dish"
-  [title]="'Gericht ' + dish.name + ' löschen'"
+  *ngIf="allergene"
+  [title]="'Allergen ' + allergene.abbreviation + ' löschen'"
   [type]="ModalType.DELETE"
   [isValid]="true"
   (clickCloseButton)="clickCloseButton.emit()"
@@ -8,8 +8,9 @@
 >
   <form (ngSubmit)="clickDeleteButton.emit()">
     <p>
-      Das Gericht {{ dish.name }} wird
-      <strong class="delete-dish-modal__strong">unwiderruflich gelöscht</strong
+      Das Allergen {{ allergene.abbreviation }} wird
+      <strong class="delete-allergene-modal__strong"
+        >unwiderruflich gelöscht</strong
       >. Bist du dir sicher, dass du fortfahren möchtest?
     </p>
   </form>
