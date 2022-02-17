@@ -1,6 +1,14 @@
+@import "abstracts/mixins";
+
 .form {
-  &__group:not(:last-child) {
-    margin-bottom: 1rem;
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  &__group {
+    flex: none;
+    width: 100%;
   }
 
   &__control {
@@ -26,5 +34,15 @@
   &__alert {
     font-size: 0.75rem;
     color: var(--error-color);
+  }
+
+  @include media-breakpoint-up("md") {
+    &__group {
+      width: calc(50% - 0.5rem);
+
+      &--full-width {
+        width: 100%;
+      }
+    }
   }
 }

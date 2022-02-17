@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { HotnessLevel } from 'src/app/shared/enums/hotness-level.enum';
 import { Allergene } from 'src/app/shared/models/allergene.model';
-import { Option } from 'src/app/features/admin-space/models/option.model';
+import { Option } from 'src/app/shared/models/option.model';
 import { dishCategories } from 'src/app/shared/data/dish-categories.data';
 import { DishGroup } from 'src/app/shared/models/dish-group.model';
 import { SelectType } from '../../enums/select-type.enum';
@@ -56,6 +56,12 @@ export class CreateOrUpdateDishModalComponent implements OnInit {
       (option) =>
         this.dishGroups.find((dishGroup) => dishGroup.id === option.value)!
     );
+  }
+
+  mapOptionToDishCategory(option: Option) {
+    return this.dishCategories.find(
+      (dishCategory) => dishCategory.id === option.value
+    )!;
   }
 
   onClickAddDishOptionButton() {

@@ -5,7 +5,7 @@
   display: block;
 }
 
-.dish-categories-tab-bar {
+.tab-bar {
   display: flex;
   gap: 2rem;
   justify-content: center;
@@ -14,7 +14,7 @@
   &__radio-input {
     display: none;
 
-    &:checked + .dish-categories-tab-bar__radio-label {
+    &:checked + .tab-bar__radio-label {
       color: var(--secondary-font-color);
 
       &::before {

@@ -103,26 +103,23 @@
     <div class="form__group">
       <admin-space-editable-select
         placeholder="Allergene/Zusatzstoffe"
-        [options]="allergenes | mapAllergenesToOptions"
+        [options]="allergenes | mapToOptions: 'id':'abbreviation'"
         [isEditable]="false"
         name="selectedAllergenes"
-        [ngModel]="dish.allergenes | mapAllergenesToOptions"
+        [ngModel]="dish.allergenes | mapToOptions: 'id':'abbreviation'"
         (ngModelChange)="dish.allergenes = mapOptionsToAllergenes($event)"
       ></admin-space-editable-select>
     </div>
     <div class="form__group">
-      <select
-        class="form__control"
+      <shared-select
+        placeholder="Kategorie"
+        [options]="dishCategories | mapToOptions: 'id':'name'"
         name="category"
-        [(ngModel)]="dish.category.id"
+        [ngModel]="([dish.category] | mapToOptions: 'id':'name')[0]"
+        (ngModelChange)="dish.category = mapOptionToDishCategory($event)"
         #category="ngModel"
         required
-      >
-        <option value="" selected disabled hidden>Kategorie</option>
-        <option *ngFor="let category of dishCategories" [value]="category.id">
-          {{ category.name }}
-        </option>
-      </select>
+      ></shared-select>
       <div
         *ngIf="category.touched && category.invalid"
         class="form__alerts-container"
@@ -135,16 +132,16 @@
     <div class="form__group">
       <admin-space-editable-select
         placeholder="Gruppe"
-        [options]="dishGroups | mapDishgroupsToOptions"
+        [options]="dishGroups | mapToOptions: 'id':'name'"
         [type]="SelectType.SINGLE"
         name="group"
         [ngModel]="
-          dish.group ? ([dish.group] | mapDishgroupsToOptions) : undefined
+          dish.group ? ([dish.group] | mapToOptions: 'id':'name') : undefined
         "
         (ngModelChange)="dish.group = mapOptionsToDishGroups($event)[0]"
       ></admin-space-editable-select>
     </div>
-    <div class="form__group">
+    <div class="form__group form__group--full-width">
       <textarea
         class="form__control"
         placeholder="Beschreibung"
@@ -155,7 +152,10 @@
       </textarea>
     </div>
     <hr class="divider" />
-    <ul class="create-or-update-dish-modal__options-list">
+    <ul
+      *ngIf="dish.options.length > 0"
+      class="create-or-update-dish-modal__options-list"
+    >
       <li
         *ngFor="let dishOption of dish.options; let i = index"
         class="create-or-update-dish-modal__option-item"
@@ -202,9 +202,11 @@
           <div class="form__group">
             <admin-space-editable-select
               placeholder="Allergen"
-              [options]="allergenes | mapAllergenesToOptions"
+              [options]="allergenes | mapToOptions: 'id':'abbreviation'"
               [name]="'optionAllergene' + dishOption.id"
-              [ngModel]="dishOption.allergenes | mapAllergenesToOptions"
+              [ngModel]="
+                dishOption.allergenes | mapToOptions: 'id':'abbreviation'
+              "
               (ngModelChange)="
                 dishOption.allergenes = mapOptionsToAllergenes($event)
               "

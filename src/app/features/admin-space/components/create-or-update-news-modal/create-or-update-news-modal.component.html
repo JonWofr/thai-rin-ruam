@@ -35,6 +35,25 @@
       </div>
     </div>
     <div class="form__group">
+      <shared-select
+        placeholder="Autor"
+        [options]="authors | mapToOptions: 'id':'name'"
+        name="author"
+        [ngModel]="([news.author] | mapToOptions: 'id':'name')[0]"
+        (ngModelChange)="news.author = mapOptionToAuthor($event)"
+        #author="ngModel"
+        required
+      ></shared-select>
+      <div
+        *ngIf="author.touched && author.invalid"
+        class="form__alerts-container"
+      >
+        <p *ngIf="author.errors?.['required']" class="form__alert">
+          Du musst etwas eingeben
+        </p>
+      </div>
+    </div>
+    <div class="form__group form__group--full-width">
       <textarea
         class="form__control"
         placeholder="Beschreibung"
@@ -51,29 +70,7 @@
         </p>
       </div>
     </div>
-    <div class="form__group">
-      <select
-        class="form__control"
-        name="author"
-        [(ngModel)]="news.author.id"
-        #author="ngModel"
-        required
-      >
-        <option value="" selected disabled hidden>Autor</option>
-        <option *ngFor="let author of authors" [value]="author.id">
-          {{ author.name }}
-        </option>
-      </select>
-      <div
-        *ngIf="author.touched && author.invalid"
-        class="form__alerts-container"
-      >
-        <p *ngIf="author.errors?.['required']" class="form__alert">
-          Du musst etwas eingeben
-        </p>
-      </div>
-    </div>
-    <div class="form__group">
+    <div class="form__group form__group--full-width">
       <admin-space-images-picker
         name="imageUrls"
         [(ngModel)]="news.imageUrls"

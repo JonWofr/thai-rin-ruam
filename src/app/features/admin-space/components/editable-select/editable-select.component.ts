@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { SelectType } from '../../enums/select-type.enum';
-import { Option } from '../../models/option.model';
+import { Option } from '../../../../shared/models/option.model';
 import { v4 as uuidv4 } from 'uuid';
 
 @Component({

@@ -1,5 +1,11 @@
+@use "sass:map";
+@import "abstracts/mixins";
+@import "abstracts/variables";
+
 :host {
   display: block;
+  width: 100%;
+  max-width: map.get($container-widths, "sm");
 }
 
 .login-card {
@@ -21,6 +27,10 @@
 
   &__footer {
     margin-top: 2rem;
+  }
+
+  @include media-breakpoint-up("sm") {
+    padding: 2rem;
   }
 }
 

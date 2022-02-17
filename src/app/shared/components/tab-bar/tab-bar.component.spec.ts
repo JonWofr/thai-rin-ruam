@@ -1,20 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DishCategoriesTabBarComponent } from './dish-categories-tab-bar.component';
+import { TabBarComponent } from './tab-bar.component';
 
 describe('DishCategoriesTabBarComponent', () => {
-  let component: DishCategoriesTabBarComponent;
-  let fixture: ComponentFixture<DishCategoriesTabBarComponent>;
+  let component: TabBarComponent;
+  let fixture: ComponentFixture<TabBarComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DishCategoriesTabBarComponent ]
-    })
-    .compileComponents();
+      declarations: [TabBarComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DishCategoriesTabBarComponent);
+    fixture = TestBed.createComponent(TabBarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

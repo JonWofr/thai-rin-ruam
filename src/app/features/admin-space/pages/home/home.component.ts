@@ -5,7 +5,7 @@ import { Dish } from 'src/app/shared/models/dish.model';
 import { Allergene } from 'src/app/shared/models/allergene.model';
 import { dishGroups } from 'src/app/shared/data/dish-groups.data';
 import { ModalType } from '../../enums/modal-type.enum';
-import { Option } from '../../models/option.model';
+import { Option } from '../../../../shared/models/option.model';
 import { HomeTab } from '../../enums/home-tab.enum';
 import { cloneDeep } from 'lodash';
 
@@ -45,10 +45,6 @@ export class HomeComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
-
-  onChangeSelect(tabValue: string) {
-    this.selectedTab = this.tabs.find((tab) => tab.value === tabValue)!;
-  }
 
   onClickDishMoreButton(selectedDish: Dish, event: MouseEvent) {
     this.selectedDish =

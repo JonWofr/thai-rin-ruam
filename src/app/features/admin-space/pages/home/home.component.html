@@ -1,19 +1,24 @@
 <section class="section section--secondary-background-color">
   <div class="container">
     <h1 class="secondary-heading">Speisekarte</h1>
-    <select
-      #select
-      class="form__control"
-      (change)="onChangeSelect(select.value)"
-    >
-      <option
-        *ngFor="let tab of tabs"
-        [value]="tab.value"
-        [selected]="selectedTab.value === tab.value"
-      >
-        {{ tab.label }}
-      </option>
-    </select>
+    <shared-select
+      *sharedMedia="'(max-width: 767px)'"
+      placeholder="Tab"
+      [options]="tabs"
+      [(ngModel)]="selectedTab"
+      [ngModelOptions]="{
+        standalone: true
+      }"
+    ></shared-select>
+    <shared-tab-bar
+      *sharedMedia="'(min-width: 768px)'"
+      [options]="tabs"
+      [(ngModel)]="selectedTab"
+      [ngModelOptions]="{
+        standalone: true
+      }"
+      sharedFadeIn
+    ></shared-tab-bar>
     <ul class="document-list" [ngSwitch]="selectedTab.value">
       <ng-container *ngSwitchCase="tabs[0].value">
         <li *ngFor="let dish of dishes">

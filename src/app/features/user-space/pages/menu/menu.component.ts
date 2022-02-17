@@ -6,6 +6,7 @@ import { dishCategories } from 'src/app/shared/data/dish-categories.data';
 import { dishes } from 'src/app/shared/data/dishes.data';
 import { DishCategory } from 'src/app/shared/models/dish-category.model';
 import { Dish } from 'src/app/shared/models/dish.model';
+import { Option } from 'src/app/shared/models/option.model';
 
 type DishGroup = { name: string | undefined; dishes: Dish[] };
 
@@ -41,13 +42,10 @@ export class MenuComponent implements OnInit {
     this.preprocessDishes();
   }
 
-  onChangeSelect(selectedDishCategoryName: string) {
-    console.log(selectedDishCategoryName);
-    const selectedDishCategory =
-      this.dishCategories.find(
-        (dishCategory) => dishCategory.name === selectedDishCategoryName
-      ) ?? this.dishCategories[0];
-    this.selectedDishCategory = selectedDishCategory;
+  onChangeSelectedOption(selectedOption: Option): void {
+    this.selectedDishCategory = this.dishCategories.find(
+      (dishCategory) => dishCategory.id === selectedOption.value
+    )!;
     this.preprocessDishes();
   }
 

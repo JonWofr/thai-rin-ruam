@@ -17,8 +17,6 @@ import { CreateOrUpdateDishModalComponent } from './components/create-or-update-
 import { MultiSelectComponent } from './components/multi-select/multi-select.component';
 import { EditableSelectComponent } from './components/editable-select/editable-select.component';
 import { ChipComponent } from './components/chip/chip.component';
-import { MapAllergenesToOptionsPipe } from './pipes/map-allergenes-to-options/map-allergenes-to-options.pipe';
-import { MapDishgroupsToOptionsPipe } from './pipes/map-dishgroups-to-options/map-dishgroups-to-options.pipe';
 import { DeleteDishModalComponent } from './components/delete-dish-modal/delete-dish-modal.component';
 import { CreateOrUpdateAllergeneModalComponent } from './components/create-or-update-allergene-modal/create-or-update-allergene-modal.component';
 import { DeleteAllergeneModalComponent } from './components/delete-allergene-modal/delete-allergene-modal.component';
@@ -43,8 +41,6 @@ import { DeleteNewsModalComponent } from './components/delete-news-modal/delete-
     MultiSelectComponent,
     EditableSelectComponent,
     ChipComponent,
-    MapAllergenesToOptionsPipe,
-    MapDishgroupsToOptionsPipe,
     DeleteDishModalComponent,
     CreateOrUpdateAllergeneModalComponent,
     DeleteAllergeneModalComponent,

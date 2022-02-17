@@ -1,10 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { authors } from 'src/app/shared/data/authors.data';
-import { dishCategories } from 'src/app/shared/data/dish-categories.data';
-import { HotnessLevel } from 'src/app/shared/enums/hotness-level.enum';
 import { News } from 'src/app/shared/models/news.model';
 import { ModalType } from '../../enums/modal-type.enum';
 import { SelectType } from '../../enums/select-type.enum';
+import { Option } from 'src/app/shared/models/option.model';
 
 @Component({
   selector: 'admin-space-create-or-update-news-modal',
@@ -33,4 +32,8 @@ export class CreateOrUpdateNewsModalComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  mapOptionToAuthor(option: Option) {
+    return this.authors.find((author) => author.id === option.value)!;
+  }
 }
