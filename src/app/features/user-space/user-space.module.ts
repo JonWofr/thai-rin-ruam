@@ -26,8 +26,6 @@ import { MenuComponent } from './pages/menu/menu.component';
 import { FormsModule } from '@angular/forms';
 import { DishCategoryTabHeaderComponent } from './components/dish-category-tab-header/dish-category-tab-header.component';
 import { MenuLegendComponent } from './components/menu-legend/menu-legend.component';
-import { DishCategoriesTabBarComponent } from './components/dish-categories-tab-bar/dish-categories-tab-bar.component';
-import { DishCategoriesSelectComponent } from './components/dish-categories-select/dish-categories-select.component';
 
 @NgModule({
   declarations: [
@@ -53,8 +51,6 @@ import { DishCategoriesSelectComponent } from './components/dish-categories-sele
     MenuComponent,
     DishCategoryTabHeaderComponent,
     MenuLegendComponent,
-    DishCategoriesTabBarComponent,
-    DishCategoriesSelectComponent,
   ],
   imports: [CommonModule, UserSpaceRoutingModule, SharedModule, FormsModule],
 })

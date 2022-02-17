@@ -6,20 +6,35 @@
   class="reduced-section-padding section section--primary-background-color"
 >
   <div class="container">
-    <user-space-dish-categories-select
+    <shared-select
       *sharedMedia="'(max-width: 767px)'"
-      [dishCategories]="dishCategories"
-      [selectedDishCategory]="selectedDishCategory"
-      (changeSelect)="onChangeSelect($event)"
+      placeholder="Kategorie"
+      [options]="dishCategories | mapToOptions: 'id':'name'"
+      [ngModel]="
+        selectedDishCategory
+          ? ([selectedDishCategory] | mapToOptions: 'id':'name')[0]
+          : undefined
+      "
+      [ngModelOptions]="{
+        standalone: true
+      }"
+      (ngModelChange)="onChangeSelectedOption($event)"
       sharedFadeIn
-    ></user-space-dish-categories-select>
-    <user-space-dish-categories-tab-bar
+    ></shared-select>
+    <shared-tab-bar
       *sharedMedia="'(min-width: 768px)'"
-      [dishCategories]="dishCategories"
-      [selectedDishCategory]="selectedDishCategory"
-      (changeTab)="onChangeSelect($event)"
+      [options]="dishCategories | mapToOptions: 'id':'name'"
+      [ngModel]="
+        selectedDishCategory
+          ? ([selectedDishCategory] | mapToOptions: 'id':'name')[0]
+          : undefined
+      "
+      [ngModelOptions]="{
+        standalone: true
+      }"
+      (ngModelChange)="onChangeSelectedOption($event)"
       sharedFadeIn
-    ></user-space-dish-categories-tab-bar>
+    ></shared-tab-bar>
     <user-space-dish-category-tab-header
       class="menu__dish-category-tab-header"
       [title]="selectedDishCategory.description"

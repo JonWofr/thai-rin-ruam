@@ -52,18 +52,15 @@
       </div>
     </div>
     <div class="form__group">
-      <select
-        class="form__control"
+      <shared-select
+        placeholder="Autor"
+        [options]="authors | mapToOptions: 'id':'name'"
         name="author"
-        [(ngModel)]="news.author.id"
+        [ngModel]="([news.author] | mapToOptions: 'id':'name')[0]"
+        (ngModelChange)="news.author = mapOptionToAuthor($event)"
         #author="ngModel"
         required
-      >
-        <option value="" selected disabled hidden>Autor</option>
-        <option *ngFor="let author of authors" [value]="author.id">
-          {{ author.name }}
-        </option>
-      </select>
+      ></shared-select>
       <div
         *ngIf="author.touched && author.invalid"
         class="form__alerts-container"

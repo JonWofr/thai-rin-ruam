@@ -10,6 +10,9 @@ import { RouterModule } from '@angular/router';
 import { MenuItemComponent } from './components/menu-item/menu-item.component';
 import { AllergenesPipe } from './pipes/allergenes/allergenes.pipe';
 import { NewsCardComponent } from './components/news-card/news-card.component';
+import { TabBarComponent } from './components/tab-bar/tab-bar.component';
+import { SelectComponent } from './components/select/select.component';
+import { MapToOptionsPipe } from './pipes/map-to-options/map-to-options.pipe';
 
 @NgModule({
   declarations: [
@@ -22,6 +25,9 @@ import { NewsCardComponent } from './components/news-card/news-card.component';
     MenuItemComponent,
     AllergenesPipe,
     NewsCardComponent,
+    TabBarComponent,
+    SelectComponent,
+    MapToOptionsPipe,
   ],
   imports: [CommonModule, RouterModule.forChild([])],
   exports: [
@@ -33,6 +39,9 @@ import { NewsCardComponent } from './components/news-card/news-card.component';
     DesktopHeaderComponent,
     MenuItemComponent,
     NewsCardComponent,
+    TabBarComponent,
+    SelectComponent,
+    MapToOptionsPipe,
   ],
 })
 export class SharedModule {}

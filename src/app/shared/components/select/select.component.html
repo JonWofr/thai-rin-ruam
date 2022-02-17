@@ -1,0 +1,17 @@
+<select
+  #select
+  class="form__control"
+  (change)="onChangeSelect(select.value)"
+  (blur)="onBlur()"
+>
+  <option value="" disabled hidden [selected]="!selectedOption">
+    {{ placeholder }}
+  </option>
+  <option
+    *ngFor="let option of options"
+    [value]="option.value"
+    [selected]="option.value === selectedOption?.value"
+  >
+    {{ option.label }}
+  </option>
+</select>
