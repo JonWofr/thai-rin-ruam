@@ -1,11 +1,14 @@
+<!-- Set to lg breakpoint to avoid clipping between the logout
+button and the navigation items
+-->
 <shared-header
-  *sharedMedia="'(max-width: 767px)'"
+  *sharedMedia="'(max-width: 991px)'"
   [navigationItems]="navigationItems"
   [feature]="Feature.ADMIN_SPACE"
   (clickLogoutButton)="onClickLogoutButton()"
 ></shared-header>
 <shared-desktop-header
-  *sharedMedia="'(min-width: 768px)'"
+  *sharedMedia="'(min-width: 992px)'"
   [navigationItems]="navigationItems"
   [feature]="Feature.ADMIN_SPACE"
   (clickLogoutButton)="onClickLogoutButton()"

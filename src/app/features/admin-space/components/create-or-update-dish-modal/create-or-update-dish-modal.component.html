@@ -141,7 +141,7 @@
         (ngModelChange)="dish.group = mapOptionsToDishGroups($event)[0]"
       ></admin-space-editable-select>
     </div>
-    <div class="form__group">
+    <div class="form__group form__group--full-width">
       <textarea
         class="form__control"
         placeholder="Beschreibung"
@@ -152,7 +152,10 @@
       </textarea>
     </div>
     <hr class="divider" />
-    <ul class="create-or-update-dish-modal__options-list">
+    <ul
+      *ngIf="dish.options.length > 0"
+      class="create-or-update-dish-modal__options-list"
+    >
       <li
         *ngFor="let dishOption of dish.options; let i = index"
         class="create-or-update-dish-modal__option-item"

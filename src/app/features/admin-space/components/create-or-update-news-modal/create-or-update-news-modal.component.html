@@ -35,23 +35,6 @@
       </div>
     </div>
     <div class="form__group">
-      <textarea
-        class="form__control"
-        placeholder="Beschreibung"
-        rows="10"
-        name="text"
-        [(ngModel)]="news.text"
-        #text="ngModel"
-        required
-      >
-      </textarea>
-      <div *ngIf="text.touched && text.invalid" class="form__alerts-container">
-        <p *ngIf="text.errors?.['required']" class="form__alert">
-          Du musst etwas eingeben
-        </p>
-      </div>
-    </div>
-    <div class="form__group">
       <shared-select
         placeholder="Autor"
         [options]="authors | mapToOptions: 'id':'name'"
@@ -70,7 +53,24 @@
         </p>
       </div>
     </div>
-    <div class="form__group">
+    <div class="form__group form__group--full-width">
+      <textarea
+        class="form__control"
+        placeholder="Beschreibung"
+        rows="10"
+        name="text"
+        [(ngModel)]="news.text"
+        #text="ngModel"
+        required
+      >
+      </textarea>
+      <div *ngIf="text.touched && text.invalid" class="form__alerts-container">
+        <p *ngIf="text.errors?.['required']" class="form__alert">
+          Du musst etwas eingeben
+        </p>
+      </div>
+    </div>
+    <div class="form__group form__group--full-width">
       <admin-space-images-picker
         name="imageUrls"
         [(ngModel)]="news.imageUrls"

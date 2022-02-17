@@ -34,7 +34,7 @@
     }"
     [style.height]="
       shouldShowDropdownMenu && (filteredOptions.length > 0 || hasCreateOption)
-        ? 'calc(0.5rem * 2 + 2.25rem * ' +
+        ? 'calc(3.25rem * ' +
           (hasCreateOption
             ? filteredOptions.length + 1
             : filteredOptions.length) +
@@ -42,7 +42,7 @@
         : '0px'
     "
   >
-    <ul class="editable-select__dropdown-menu">
+    <ul>
       <li
         *ngFor="let filteredOption of filteredOptions"
         class="editable-select__item"

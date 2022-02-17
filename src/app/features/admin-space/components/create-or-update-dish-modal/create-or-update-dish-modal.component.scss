@@ -1,15 +1,21 @@
+@use "sass:map";
+@import "abstracts/variables";
+@import "abstracts/mixins";
+
 :host {
   display: block;
 }
 
 .divider {
-  margin-top: 2rem;
+  margin-top: 1rem;
+  width: 100%;
 }
 
 .create-or-update-dish-modal {
   &__options-list {
     padding-left: 3rem;
-    margin: 2rem 0;
+    margin: 1rem 0;
+    width: 100%;
   }
 
   &__option-item {
@@ -33,6 +39,10 @@
 
   &__option-item-left-side {
     flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 1rem;
   }
 }
 
