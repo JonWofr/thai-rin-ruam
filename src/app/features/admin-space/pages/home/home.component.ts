@@ -8,6 +8,7 @@ import { ModalType } from '../../enums/modal-type.enum';
 import { Option } from '../../../../shared/models/option.model';
 import { HomeTab } from '../../enums/home-tab.enum';
 import { cloneDeep } from 'lodash';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'admin-space-home',
@@ -42,7 +43,9 @@ export class HomeComponent implements OnInit {
   ModalType = ModalType;
   HomeTab = HomeTab;
 
-  constructor() {}
+  constructor(title: Title) {
+    title.setTitle('Speisekarte – Admin-Bereich – Thai Rin Ruam');
+  }
 
   ngOnInit(): void {}
 
