@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Auth, AuthError, signOut } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { Feature } from 'src/app/shared/enums/feature.enum';
@@ -27,7 +28,8 @@ export class AdminSpaceComponent implements OnInit {
   constructor(
     private toastController: ToastControllerService,
     private spinnerController: SpinnerControllerService,
-    private router: Router
+    private router: Router,
+    private auth: Auth
   ) {}
 
   ngOnInit(): void {
@@ -80,14 +82,17 @@ export class AdminSpaceComponent implements OnInit {
   }
 
   onClickLogoutButton() {
-    this.spinnerController.subject.next(true);
-    setTimeout(() => {
-      this.spinnerController.subject.next(false);
-      this.toastController.subject.next({
-        type: ToastType.SUCCESS,
-        message: 'Erfolgreich ausgeloggt',
+    this.spinnerController.showSpinner();
+    signOut(this.auth)
+      .then(() => {
+        this.toastController.showSuccessToast('Erfolgreich ausgeloggt!');
+        this.router.navigateByUrl('/admin/login');
+      })
+      .catch((err: AuthError) => {
+        this.toastController.showErrorToast(err.message);
+      })
+      .finally(() => {
+        this.spinnerController.hideSpinner();
       });
-      this.router.navigateByUrl('/admin');
-    }, 1000);
   }
 }

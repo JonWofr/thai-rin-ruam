@@ -8,4 +8,12 @@ export class SpinnerControllerService {
   subject = new Subject<boolean>();
 
   constructor() {}
+
+  showSpinner() {
+    this.subject.next(true);
+  }
+
+  hideSpinner() {
+    this.subject.next(false);
+  }
 }
