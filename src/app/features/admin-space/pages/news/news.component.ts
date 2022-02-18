@@ -3,6 +3,7 @@ import { news } from 'src/app/shared/data/news.data';
 import { News } from 'src/app/shared/models/news.model';
 import { ModalType } from '../../enums/modal-type.enum';
 import { cloneDeep } from 'lodash';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'admin-space-news',
@@ -21,7 +22,9 @@ export class NewsComponent implements OnInit {
 
   ModalType = ModalType;
 
-  constructor() {}
+  constructor(title: Title) {
+    title.setTitle('Aktuelles  – Thai Rin Ruam');
+  }
 
   ngOnInit(): void {}
 
