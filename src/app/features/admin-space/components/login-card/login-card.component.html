@@ -164,26 +164,31 @@
       </defs>
     </svg>
   </header>
-  <form id="login-form" class="form" #form="ngForm" (ngSubmit)="onSubmit(form)">
+  <form
+    id="login-form"
+    class="form"
+    #form="ngForm"
+    (ngSubmit)="submitLoginForm.emit(form)"
+  >
     <div class="form__group form__group--full-width">
       <input
         class="form__control"
         type="text"
         placeholder="E-Mail"
-        name="eMail"
+        name="email"
         ngModel
-        #eMail="ngModel"
+        #email="ngModel"
         required
         email
       />
       <div
-        *ngIf="eMail.touched && eMail.invalid"
+        *ngIf="email.touched && email.invalid"
         class="form__alerts-container"
       >
-        <p *ngIf="eMail.errors?.['email']" class="form__alert">
+        <p *ngIf="email.errors?.['email']" class="form__alert">
           Die E-Mail ist ungültig
         </p>
-        <p *ngIf="eMail.errors?.['required']" class="form__alert">
+        <p *ngIf="email.errors?.['required']" class="form__alert">
           Du musst etwas eingeben
         </p>
       </div>
@@ -191,7 +196,7 @@
     <div class="form__group form__group--full-width">
       <input
         class="form__control"
-        type="text"
+        type="password"
         placeholder="Passwort"
         name="password"
         ngModel
@@ -213,6 +218,7 @@
       class="button button--primary-accent-color dark-theme"
       type="submit"
       form="login-form"
+      [disabled]="form.invalid"
     >
       <svg
         class="button__icon"
