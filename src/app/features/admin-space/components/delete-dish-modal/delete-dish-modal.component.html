@@ -6,7 +6,7 @@
   (clickCloseButton)="clickCloseButton.emit()"
   (clickCancelButton)="clickCancelButton.emit()"
 >
-  <form (ngSubmit)="clickDeleteButton.emit()">
+  <form id="modal-form" (ngSubmit)="clickDeleteButton.emit()">
     <p>
       Das Gericht {{ dish.name }} wird
       <strong class="delete-dish-modal__strong">unwiderruflich gelöscht</strong

@@ -9,6 +9,7 @@ import { Dish } from 'src/app/shared/models/dish.model';
 import { v4 as uuidv4 } from 'uuid';
 import { DishOption } from 'src/app/shared/models/dish-option.model';
 import { ModalType } from '../../enums/modal-type.enum';
+import { DishGroupsHelperService } from 'src/app/core/services/dish-groups-helper/dish-groups-helper.service';
 
 @Component({
   selector: 'admin-space-create-or-update-dish-modal',
@@ -29,20 +30,24 @@ export class CreateOrUpdateDishModalComponent implements OnInit {
     options: [],
   };
   @Input() allergenes: Allergene[] = [];
-  @Input() dishGroups: DishGroup[] = [];
   @Output() clickCloseButton = new EventEmitter<void>();
   @Output() clickCancelButton = new EventEmitter<void>();
   @Output() clickSaveButton = new EventEmitter<Dish>();
 
+  dishGroups: DishGroup[] = [];
   hotnessLevels = Object.values(HotnessLevel);
   dishCategories = dishCategories;
 
   SelectType = SelectType;
   ModalType = ModalType;
 
-  constructor() {}
+  constructor(private dishGroupsHelper: DishGroupsHelperService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.dishGroupsHelper.fetchAll().subscribe((dishGroups: DishGroup[]) => {
+      this.dishGroups = dishGroups;
+    });
+  }
 
   mapOptionsToAllergenes(options: Option[]) {
     return options.map(
@@ -79,5 +84,17 @@ export class CreateOrUpdateDishModalComponent implements OnInit {
     this.dish.options = this.dish.options.filter(
       (option) => option.id !== dishOption.id
     );
+  }
+
+  async onClickCreateDishGroupButton(name: string) {
+    const dishGroup: DishGroup = {
+      id: '',
+      name,
+    };
+    const docRef = await this.dishGroupsHelper.create(dishGroup);
+    this.dish.group = {
+      id: docRef.id,
+      name,
+    };
   }
 }

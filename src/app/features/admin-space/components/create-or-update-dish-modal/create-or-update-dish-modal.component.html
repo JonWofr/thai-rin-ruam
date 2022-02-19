@@ -134,6 +134,7 @@
         placeholder="Gruppe"
         [options]="dishGroups | mapToOptions: 'id':'name'"
         [type]="SelectType.SINGLE"
+        (clickCreateButton)="onClickCreateDishGroupButton($event)"
         name="group"
         [ngModel]="
           dish.group ? ([dish.group] | mapToOptions: 'id':'name') : undefined

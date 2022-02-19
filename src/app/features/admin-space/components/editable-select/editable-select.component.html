@@ -49,13 +49,18 @@
       >
         <button
           class="editable-select__button"
+          type="button"
           (click)="onClickDropdownMenuItem(filteredOption)"
         >
           {{ filteredOption.label }}
         </button>
       </li>
       <li *ngIf="hasCreateOption" class="editable-select__item">
-        <button class="editable-select__button" (click)="onClickCreateButton()">
+        <button
+          class="editable-select__button"
+          type="button"
+          (click)="onClickCreateButton()"
+        >
           Erstelle "{{ inputValue }}"
         </button>
       </li>

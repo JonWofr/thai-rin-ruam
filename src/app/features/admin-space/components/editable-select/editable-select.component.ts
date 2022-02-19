@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { SelectType } from '../../enums/select-type.enum';
 import { Option } from '../../../../shared/models/option.model';
@@ -21,6 +21,7 @@ export class EditableSelectComponent implements OnInit, ControlValueAccessor {
   @Input() placeholder = '';
   @Input() type: SelectType = SelectType.MULTI;
   @Input() isEditable = true;
+  @Output() clickCreateButton = new EventEmitter<string>();
 
   filteredOptions: Option[] = this.options;
   selectedOptions: Option[] = [];
@@ -124,6 +125,9 @@ export class EditableSelectComponent implements OnInit, ControlValueAccessor {
   }
 
   onClickCreateButton() {
-    // TODO: Implement logic for creation
+    this.clickCreateButton.emit(this.inputValue);
+    this.inputValue = '';
+    this.filterOptions();
+    this.hasCreateOption = false;
   }
 }
