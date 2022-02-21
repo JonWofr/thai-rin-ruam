@@ -41,6 +41,7 @@ export abstract class DatabaseHelper {
       await crudFunction();
       this.toastController.showSuccessToast(successMessage);
     } catch (err) {
+      console.error(err);
       this.toastController.showErrorToast(errorMessage ?? (err as string));
     } finally {
       this.spinnerController.hideSpinner();

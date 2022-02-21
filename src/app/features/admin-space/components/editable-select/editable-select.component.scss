@@ -50,10 +50,11 @@
   }
 
   &__button {
-    display: block;
     width: 100%;
-    text-align: left;
     padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
     &:hover {
       background: #eee;
@@ -63,4 +64,9 @@
 
 .form__control {
   padding: 0.5rem 1rem;
+}
+
+.icon-button__icon {
+  width: 20px;
+  height: 20px;
 }

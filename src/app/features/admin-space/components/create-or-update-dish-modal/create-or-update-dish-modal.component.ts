@@ -97,4 +97,9 @@ export class CreateOrUpdateDishModalComponent implements OnInit {
       name,
     };
   }
+
+  onClickDeleteDishGroupButton(option: Option) {
+    const dishGroup = this.mapOptionsToDishGroups([option])[0];
+    this.dishGroupsHelper.delete(dishGroup);
+  }
 }
