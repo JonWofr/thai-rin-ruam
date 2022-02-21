@@ -8,6 +8,7 @@
   <div class="container">
     <shared-select
       *sharedMedia="'(max-width: 767px)'"
+      class="menu__select"
       placeholder="Kategorie"
       [options]="dishCategories | mapToOptions: 'id':'name'"
       [ngModel]="
@@ -36,7 +37,6 @@
       sharedFadeIn
     ></shared-tab-bar>
     <user-space-dish-category-tab-header
-      class="menu__dish-category-tab-header"
       [title]="selectedDishCategory.description"
       [subtitle]="selectedDishCategory.name"
       [imageUrl]="selectedDishCategory.imageUrl"
@@ -44,6 +44,10 @@
     >
     </user-space-dish-category-tab-header>
     <div class="menu__dish-groups-container">
+      <shared-spinner
+        *ngIf="isFetchingDishes"
+        class="centered"
+      ></shared-spinner>
       <div *ngFor="let dishGroup of dishGroups" class="dish-group">
         <h3
           *ngIf="dishGroup.name"
@@ -80,6 +84,15 @@
       </div>
     </div>
     <hr class="divider" sharedFadeIn />
-    <user-space-menu-legend [allergenes]="allergenes"></user-space-menu-legend>
+    <div class="menu__legend-container">
+      <shared-spinner
+        *ngIf="isFetchingAllergenes"
+        class="centered"
+      ></shared-spinner>
+      <user-space-menu-legend
+        *ngIf="!isFetchingAllergenes"
+        [allergenes]="allergenes"
+      ></user-space-menu-legend>
+    </div>
   </div>
 </section>

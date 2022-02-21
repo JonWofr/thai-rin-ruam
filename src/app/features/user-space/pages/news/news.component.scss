@@ -2,6 +2,11 @@
   display: block;
 }
 
+.section {
+  min-height: 65vh;
+  position: relative;
+}
+
 .container {
   display: grid;
   // 320px is just too much to fit 4 items next to each other

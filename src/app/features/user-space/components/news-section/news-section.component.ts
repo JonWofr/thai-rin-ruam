@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { NewsHelperService } from 'src/app/core/services/news-helper/news-helper.service';
 import { news } from 'src/app/shared/data/news.data';
 import { News } from 'src/app/shared/models/news.model';
 
@@ -8,9 +9,19 @@ import { News } from 'src/app/shared/models/news.model';
   styleUrls: ['./news-section.component.scss'],
 })
 export class NewsSectionComponent implements OnInit {
-  news: News = news[0];
+  news?: News;
 
-  constructor() {}
+  isFetchingNews = false;
 
-  ngOnInit(): void {}
+  constructor(private newsHelper: NewsHelperService) {}
+
+  ngOnInit(): void {
+    this.isFetchingNews = true;
+    this.newsHelper.fetchLatest().subscribe((news) => {
+      this.isFetchingNews = false;
+      if (news.length > 0) {
+        this.news = news[0];
+      }
+    });
+  }
 }

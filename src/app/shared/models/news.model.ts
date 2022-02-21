@@ -4,7 +4,7 @@ import { Timestamp } from '@angular/fire/firestore';
 export interface News {
   id: string;
   title: string;
-  date: Timestamp;
+  creationDate: Timestamp;
   text: string;
   imageUrls: string[];
   author: Author;

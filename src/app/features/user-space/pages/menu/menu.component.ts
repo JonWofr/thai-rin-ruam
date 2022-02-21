@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
+import { AllergenesHelperService } from 'src/app/core/services/allergenes-helper/allergenes-helper.service';
+import { DishesHelperService } from 'src/app/core/services/dishes-helper/dishes-helper.service';
 import { allergenes } from 'src/app/shared/data/allergenes.data';
 import { dishCategories } from 'src/app/shared/data/dish-categories.data';
 import { dishes } from 'src/app/shared/data/dishes.data';
+import { Allergene } from 'src/app/shared/models/allergene.model';
 import { DishCategory } from 'src/app/shared/models/dish-category.model';
 import { Dish } from 'src/app/shared/models/dish.model';
 import { Option } from 'src/app/shared/models/option.model';
@@ -16,30 +19,49 @@ type DishGroup = { name: string | undefined; dishes: Dish[] };
   styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent implements OnInit {
+  dishes: Dish[] = [];
+  allergenes: Allergene[] = [];
+  dishGroups: DishGroup[] = [];
   dishCategories: DishCategory[] = dishCategories;
   selectedDishCategory: DishCategory = dishCategories[0];
-  dishes = dishes;
-  dishGroups: DishGroup[] = [];
-  allergenes = allergenes;
+  isFetchingDishes = false;
+  isFetchingAllergenes = false;
+
   Math = Math;
 
-  constructor(private route: ActivatedRoute, title: Title) {
+  constructor(
+    private route: ActivatedRoute,
+    title: Title,
+    private dishesHelper: DishesHelperService,
+    private allergenesHelper: AllergenesHelperService
+  ) {
     title.setTitle('Speisekarte – Thai Rin Ruam');
   }
 
   ngOnInit(): void {
-    const selectedDishCategoryName =
-      this.route.snapshot.queryParamMap.get('category');
-    if (selectedDishCategoryName) {
+    const selectedDishCategoryId =
+      this.route.snapshot.queryParamMap.get('categoryId');
+    if (selectedDishCategoryId) {
       const selectedDishCategory = this.dishCategories.find(
-        (dishCategory) => dishCategory.name === selectedDishCategoryName
+        (dishCategory) => dishCategory.id === selectedDishCategoryId
       );
       if (selectedDishCategory) {
         this.selectedDishCategory = selectedDishCategory;
       }
     }
 
-    this.preprocessDishes();
+    this.isFetchingAllergenes = true;
+    this.allergenesHelper.fetchAll().subscribe((allergenes) => {
+      this.isFetchingAllergenes = false;
+      this.allergenes = allergenes;
+    });
+
+    this.isFetchingDishes = true;
+    this.dishesHelper.fetchAll().subscribe((dishes) => {
+      this.isFetchingDishes = false;
+      this.dishes = dishes;
+      this.preprocessDishes();
+    });
   }
 
   onChangeSelectedOption(selectedOption: Option): void {

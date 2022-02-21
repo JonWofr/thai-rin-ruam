@@ -5,11 +5,22 @@
 .news-section {
   text-align: center;
 
+  &__header {
+    margin-bottom: 0;
+  }
+
   &__body {
     display: flex;
     flex-direction: column;
     gap: 3rem;
     align-items: center;
+  }
+
+  &__news-card-container {
+    padding-top: 3rem;
+    width: 100%;
+    min-height: 400px;
+    position: relative;
   }
 
   &__news-card {

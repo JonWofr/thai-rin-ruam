@@ -9,6 +9,8 @@ import {
   deleteDoc,
   collectionData,
   Timestamp,
+  limit,
+  orderBy,
 } from '@angular/fire/firestore';
 import {
   ref,
@@ -42,8 +44,15 @@ export class NewsHelperService extends DatabaseHelper {
     super(spinnerController, toastController);
   }
 
+  fetchLatest() {
+    const q = query(this.col, orderBy('creationDate', 'desc'), limit(1));
+    return collectionData(q, {
+      idField: 'id',
+    });
+  }
+
   fetchAll() {
-    const q = query(this.col);
+    const q = query(this.col, orderBy('creationDate', 'desc'));
     return collectionData(q, {
       idField: 'id',
     });
@@ -53,7 +62,7 @@ export class NewsHelperService extends DatabaseHelper {
     await this.withSpinnerAndToast(async () => {
       await this.replaceDataUrls(news);
       // Update the creation time
-      news.date = Timestamp.now();
+      news.creationDate = Timestamp.now();
       await addDoc(this.col, news);
     }, `Neuigkeit ${news.title} erfolgreich erstellt`);
   }
