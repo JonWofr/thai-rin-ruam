@@ -1,9 +1,10 @@
 import { Author } from './author.model';
+import { Timestamp } from '@angular/fire/firestore';
 
 export interface News {
   id: string;
   title: string;
-  date: Date;
+  date: Timestamp;
   text: string;
   imageUrls: string[];
   author: Author;

@@ -54,7 +54,7 @@
     [type]="ModalType.CREATE"
     (clickCloseButton)="onClickModalCloseButton()"
     (clickCancelButton)="onClickModalCancelButton()"
-    (clickSaveButton)="onClickModalSaveButton()"
+    (clickSaveButton)="createNews($event)"
   ></admin-space-create-or-update-news-modal>
   <ng-container *ngSwitchCase="ModalType.UPDATE">
     <admin-space-create-or-update-news-modal
@@ -63,7 +63,7 @@
       [news]="selectedNews"
       (clickCloseButton)="onClickModalCloseButton()"
       (clickCancelButton)="onClickModalCancelButton()"
-      (clickSaveButton)="onClickModalSaveButton()"
+      (clickSaveButton)="updateNews($event)"
     ></admin-space-create-or-update-news-modal>
   </ng-container>
   <admin-space-delete-news-modal
@@ -71,7 +71,7 @@
     [news]="selectedNews"
     (clickCloseButton)="onClickModalCloseButton()"
     (clickCancelButton)="onClickModalCancelButton()"
-    (clickDeleteButton)="onClickModalDeleteButton()"
+    (clickDeleteButton)="deleteNews()"
   >
   </admin-space-delete-news-modal>
 </ng-container>
