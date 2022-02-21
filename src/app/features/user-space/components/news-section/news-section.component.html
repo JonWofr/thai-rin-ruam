@@ -1,16 +1,24 @@
 <section class="section section--secondary-background-color news-section">
   <div class="container">
     <user-space-section-header
+      class="news-section__header"
       title="Neuigkeiten von Thai Rin Ruam"
       subtitle="Aktuelles"
       sharedFadeIn
     ></user-space-section-header>
     <div class="news-section__body">
-      <shared-news-card
-        [news]="news"
-        class="news-section__news-card"
-        sharedFadeIn
-      ></shared-news-card>
+      <div class="news-section__news-card-container">
+        <shared-spinner
+          *ngIf="isFetchingNews"
+          class="centered"
+        ></shared-spinner>
+        <shared-news-card
+          *ngIf="news"
+          [news]="news"
+          class="news-section__news-card"
+          sharedFadeIn
+        ></shared-news-card>
+      </div>
       <a class="button button--embedded" routerLink="/news" sharedFadeIn>
         <svg
           class="button__icon button__icon--embedded"

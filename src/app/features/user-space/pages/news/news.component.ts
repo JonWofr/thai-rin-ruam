@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { news } from 'src/app/shared/data/news.data';
+import { NewsHelperService } from 'src/app/core/services/news-helper/news-helper.service';
+import { News } from 'src/app/shared/models/news.model';
 
 @Component({
   selector: 'user-space-news',
@@ -8,11 +9,18 @@ import { news } from 'src/app/shared/data/news.data';
   styleUrls: ['./news.component.scss'],
 })
 export class NewsComponent implements OnInit {
-  news = news;
+  news: News[] = [];
+  isFetchingNews = false;
 
-  constructor(title: Title) {
+  constructor(title: Title, private newsHelper: NewsHelperService) {
     title.setTitle('Aktuelles – Thai Rin Ruam');
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.isFetchingNews = true;
+    this.newsHelper.fetchAll().subscribe((news) => {
+      this.isFetchingNews = false;
+      this.news = news;
+    });
+  }
 }

@@ -163,7 +163,5 @@
       </li>
     </ul>
   </div>
-  <p *ngIf="dish.options.length === 0" class="menu-item__price">
-    {{ dish.price }}€
-  </p>
+  <p *ngIf="dish.price" class="menu-item__price">{{ dish.price }}€</p>
 </li>

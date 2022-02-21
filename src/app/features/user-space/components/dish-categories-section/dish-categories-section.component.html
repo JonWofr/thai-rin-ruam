@@ -12,7 +12,7 @@
         <a
           *ngFor="let dishCategory of dishCategories.slice(0, 6)"
           routerLink="/menu"
-          [queryParams]="{ category: dishCategory.name }"
+          [queryParams]="{ categoryId: dishCategory.id }"
           sharedFadeIn
         >
           <user-space-dish-category-card

@@ -17,7 +17,7 @@ export class CreateOrUpdateNewsModalComponent implements OnInit {
     id: '',
     title: '',
     text: '',
-    date: Timestamp.now(),
+    creationDate: Timestamp.now(),
     imageUrls: [],
     author: authors[0],
   };

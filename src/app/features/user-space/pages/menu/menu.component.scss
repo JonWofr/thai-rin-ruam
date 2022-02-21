@@ -6,12 +6,19 @@
 }
 
 .menu {
-  &__dish-category-tab-header {
-    margin-bottom: 4rem;
+  &__select {
+    margin-bottom: 2rem;
   }
 
   &__dish-groups-container {
     min-height: 500px;
+    position: relative;
+    padding-top: 4rem;
+  }
+
+  &__legend-container {
+    min-height: 200px;
+    position: relative;
   }
 }
 

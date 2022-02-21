@@ -24,7 +24,7 @@ export class NewsComponent implements OnInit {
   ModalType = ModalType;
 
   constructor(title: Title, private newsHelper: NewsHelperService) {
-    title.setTitle('Aktuelles  – Thai Rin Ruam');
+    title.setTitle('Aktuelles – Admin-Bereich – Thai Rin Ruam');
   }
 
   ngOnInit(): void {
