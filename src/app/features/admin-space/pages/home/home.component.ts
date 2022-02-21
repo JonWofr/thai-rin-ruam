@@ -1,14 +1,13 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { dishes } from 'src/app/shared/data/dishes.data';
-import { allergenes } from 'src/app/shared/data/allergenes.data';
-import { Dish } from 'src/app/shared/models/dish.model';
 import { Allergene } from 'src/app/shared/models/allergene.model';
-import { dishGroups } from 'src/app/shared/data/dish-groups.data';
 import { ModalType } from '../../enums/modal-type.enum';
 import { Option } from '../../../../shared/models/option.model';
 import { HomeTab } from '../../enums/home-tab.enum';
 import { cloneDeep } from 'lodash';
 import { Title } from '@angular/platform-browser';
+import { DishesHelperService } from 'src/app/core/services/dishes-helper/dishes-helper.service';
+import { AllergenesHelperService } from 'src/app/core/services/allergenes-helper/allergenes-helper.service';
+import { Dish } from 'src/app/shared/models/dish.model';
 
 @Component({
   selector: 'admin-space-home',
@@ -16,9 +15,8 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  dishes = dishes;
-  allergenes = allergenes;
-  dishGroups = dishGroups;
+  dishes: Dish[] = [];
+  allergenes: Allergene[] = [];
   tabs: Option[] = [
     {
       value: HomeTab.DISHES,
@@ -43,11 +41,22 @@ export class HomeComponent implements OnInit {
   ModalType = ModalType;
   HomeTab = HomeTab;
 
-  constructor(title: Title) {
+  constructor(
+    title: Title,
+    private dishesHelper: DishesHelperService,
+    private allergenesHelper: AllergenesHelperService
+  ) {
     title.setTitle('Speisekarte – Admin-Bereich – Thai Rin Ruam');
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.dishesHelper.fetchAll().subscribe((dishes) => {
+      this.dishes = dishes;
+    });
+    this.allergenesHelper.fetchAll().subscribe((allergenes) => {
+      this.allergenes = allergenes;
+    });
+  }
 
   onClickDishMoreButton(selectedDish: Dish, event: MouseEvent) {
     this.selectedDish =
@@ -85,9 +94,35 @@ export class HomeComponent implements OnInit {
     this.currentlyVisibleModalType = null;
   }
 
-  onClickModalCreateButton(document: Dish | Allergene) {
+  async createDish(dish: Dish) {
+    await this.dishesHelper.create(dish);
     this.currentlyVisibleModalType = null;
   }
 
-  onClickModalDeleteButton() {}
+  async updateDish(dish: Dish) {
+    await this.dishesHelper.update(dish);
+    this.currentlyVisibleModalType = null;
+  }
+
+  async deleteDish() {
+    if (!this.selectedDish) return;
+    await this.dishesHelper.delete(this.selectedDish);
+    this.currentlyVisibleModalType = null;
+  }
+
+  async createAllergene(allergene: Allergene) {
+    await this.allergenesHelper.create(allergene);
+    this.currentlyVisibleModalType = null;
+  }
+
+  async updateAllergene(allergene: Allergene) {
+    await this.allergenesHelper.update(allergene);
+    this.currentlyVisibleModalType = null;
+  }
+
+  async deleteAllergene() {
+    if (!this.selectedAllergene) return;
+    await this.allergenesHelper.delete(this.selectedAllergene);
+    this.currentlyVisibleModalType = null;
+  }
 }

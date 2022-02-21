@@ -6,7 +6,7 @@
   (clickCloseButton)="clickCloseButton.emit()"
   (clickCancelButton)="clickCancelButton.emit()"
 >
-  <form (ngSubmit)="clickDeleteButton.emit()">
+  <form id="modal-form" (ngSubmit)="clickDeleteButton.emit()">
     <p>
       Das Allergen {{ allergene.abbreviation }} wird
       <strong class="delete-allergene-modal__strong"

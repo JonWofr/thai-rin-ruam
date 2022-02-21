@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Timestamp } from '@angular/fire/firestore';
 import { authors } from 'src/app/shared/data/authors.data';
 import { News } from 'src/app/shared/models/news.model';
 import { ModalType } from '../../enums/modal-type.enum';
@@ -16,7 +17,7 @@ export class CreateOrUpdateNewsModalComponent implements OnInit {
     id: '',
     title: '',
     text: '',
-    date: new Date(),
+    date: Timestamp.now(),
     imageUrls: [],
     author: authors[0],
   };

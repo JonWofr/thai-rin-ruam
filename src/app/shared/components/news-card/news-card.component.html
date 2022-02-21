@@ -1,7 +1,9 @@
 <article *ngIf="news" class="card news-card">
   <header class="news-card__header">
     <h3 class="tertiary-heading">{{ news.title }}</h3>
-    <time class="news-card__date">{{ news.date | date: "dd.MM.yyyy" }}</time>
+    <time class="news-card__date">{{
+      news.date.seconds * 1000 | date: "dd.MM.yyyy"
+    }}</time>
   </header>
   <div class="news-card__body">
     <p [innerText]="news.text"> </p>

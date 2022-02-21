@@ -4,6 +4,7 @@ import { News } from 'src/app/shared/models/news.model';
 import { ModalType } from '../../enums/modal-type.enum';
 import { cloneDeep } from 'lodash';
 import { Title } from '@angular/platform-browser';
+import { NewsHelperService } from 'src/app/core/services/news-helper/news-helper.service';
 
 @Component({
   selector: 'admin-space-news',
@@ -11,7 +12,7 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./news.component.scss'],
 })
 export class NewsComponent implements OnInit {
-  news = news;
+  news: News[] = [];
   selectedNews?: News;
   @HostListener('document:click') onClickDocument() {
     if (this.currentlyVisibleModalType === null) {
@@ -22,11 +23,15 @@ export class NewsComponent implements OnInit {
 
   ModalType = ModalType;
 
-  constructor(title: Title) {
+  constructor(title: Title, private newsHelper: NewsHelperService) {
     title.setTitle('Aktuelles  – Thai Rin Ruam');
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.newsHelper.fetchAll().subscribe((news) => {
+      this.news = news;
+    });
+  }
 
   onClickMoreButton(selectedNews: News, event: MouseEvent) {
     this.selectedNews =
@@ -56,7 +61,19 @@ export class NewsComponent implements OnInit {
     this.currentlyVisibleModalType = null;
   }
 
-  onClickModalSaveButton() {}
+  async createNews(news: News) {
+    await this.newsHelper.create(news);
+    this.currentlyVisibleModalType = null;
+  }
 
-  onClickModalDeleteButton() {}
+  async updateNews(news: News) {
+    await this.newsHelper.update(news);
+    this.currentlyVisibleModalType = null;
+  }
+
+  async deleteNews() {
+    if (!this.selectedNews) return;
+    await this.newsHelper.delete(this.selectedNews);
+    this.currentlyVisibleModalType = null;
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { SelectType } from '../../enums/select-type.enum';
 import { Option } from '../../../../shared/models/option.model';
@@ -17,12 +17,22 @@ import { v4 as uuidv4 } from 'uuid';
   ],
 })
 export class EditableSelectComponent implements OnInit, ControlValueAccessor {
-  @Input() options: Option[] = [];
+  get options() {
+    return this._options;
+  }
+  @Input() set options(options: Option[]) {
+    this._options = options;
+    this.filterOptions();
+    this.shouldShowCreateOption();
+  }
   @Input() placeholder = '';
   @Input() type: SelectType = SelectType.MULTI;
   @Input() isEditable = true;
+  @Output() clickCreateButton = new EventEmitter<string>();
+  @Output() clickDeleteButton = new EventEmitter<Option>();
 
-  filteredOptions: Option[] = this.options;
+  private _options: Option[] = [];
+  filteredOptions: Option[] = [];
   selectedOptions: Option[] = [];
   inputValue = '';
   shouldShowDropdownMenu = false;
@@ -48,6 +58,7 @@ export class EditableSelectComponent implements OnInit, ControlValueAccessor {
       this.selectedOptions = selectedOptions;
     }
     this.filterOptions();
+    this.shouldShowCreateOption();
   }
 
   registerOnChange(onChange: any): void {
@@ -62,8 +73,7 @@ export class EditableSelectComponent implements OnInit, ControlValueAccessor {
   onKeyUp(value: string) {
     this.inputValue = value;
     this.filterOptions();
-    this.hasCreateOption = this.isEditable && this.inputValue !== '';
-    this.showDropdownMenu();
+    this.shouldShowCreateOption();
   }
 
   /**
@@ -93,7 +103,7 @@ export class EditableSelectComponent implements OnInit, ControlValueAccessor {
     this.onChange(this.selectedOptions);
     this.inputValue = '';
     this.filterOptions();
-    this.hasCreateOption = false;
+    this.shouldShowCreateOption();
   }
 
   onClickChip(option: Option) {
@@ -102,7 +112,7 @@ export class EditableSelectComponent implements OnInit, ControlValueAccessor {
     );
     this.onChange(this.selectedOptions);
     this.filterOptions();
-    this.hasCreateOption = this.isEditable && this.inputValue !== '';
+    this.shouldShowCreateOption();
   }
 
   // Prevent default text input behaviour triggered on enter
@@ -123,7 +133,22 @@ export class EditableSelectComponent implements OnInit, ControlValueAccessor {
     }
   }
 
+  shouldShowCreateOption() {
+    this.hasCreateOption = this.isEditable && this.inputValue !== '';
+  }
+
   onClickCreateButton() {
-    // TODO: Implement logic for creation
+    this.clickCreateButton.emit(this.inputValue);
+    this.inputValue = '';
+    this.filterOptions();
+    this.shouldShowCreateOption();
+  }
+
+  onClickDeleteButton(option: Option, mouseEvent: MouseEvent) {
+    this.clickDeleteButton.emit(option);
+    this.inputValue = '';
+    this.filterOptions();
+    this.shouldShowCreateOption();
+    mouseEvent.stopPropagation();
   }
 }
