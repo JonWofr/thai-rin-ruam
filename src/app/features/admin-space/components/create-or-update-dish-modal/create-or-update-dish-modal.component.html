@@ -206,6 +206,7 @@
               placeholder="Allergen"
               [options]="allergenes | mapToOptions: 'id':'abbreviation'"
               [name]="'optionAllergene' + dishOption.id"
+              [isEditable]="false"
               [ngModel]="
                 dishOption.allergenes | mapToOptions: 'id':'abbreviation'
               "

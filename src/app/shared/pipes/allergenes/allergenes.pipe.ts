@@ -6,6 +6,9 @@ import { Allergene } from 'src/app/shared/models/allergene.model';
 })
 export class AllergenesPipe implements PipeTransform {
   transform(allergenes: Allergene[]): string {
-    return allergenes.map((allergene) => allergene.abbreviation).join(', ');
+    return allergenes
+      .map((allergene) => allergene.abbreviation)
+      .sort()
+      .join(', ');
   }
 }

@@ -159,9 +159,11 @@
             {{ option.allergenes | allergenes }}
           </span>
         </p>
-        <p class="menu-item__price">{{ option.price }}€</p>
+        <p class="menu-item__price">{{ option.price | currency: "EUR" }}</p>
       </li>
     </ul>
   </div>
-  <p *ngIf="dish.price" class="menu-item__price">{{ dish.price }}€</p>
+  <p *ngIf="dish.price" class="menu-item__price">
+    {{ dish.price | currency: "EUR" }}
+  </p>
 </li>

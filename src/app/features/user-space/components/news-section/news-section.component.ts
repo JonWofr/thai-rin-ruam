@@ -17,7 +17,7 @@ export class NewsSectionComponent implements OnInit {
 
   ngOnInit(): void {
     this.isFetchingNews = true;
-    this.newsHelper.fetchLatest().subscribe((news) => {
+    this.newsHelper.fetchAll().subscribe((news) => {
       this.isFetchingNews = false;
       if (news.length > 0) {
         this.news = news[0];

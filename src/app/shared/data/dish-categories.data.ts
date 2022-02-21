@@ -11,19 +11,13 @@ export const dishCategories: DishCategory[] = [
     id: '8df39b8a-b686-4023-9901-df67b92c2e42',
     name: 'Suppen',
     imageUrl: '/assets/images/soups-category-image.jpg',
-    description: 'Darf nicht fehlen',
-  },
-  {
-    id: 'bede7475-0bfd-4c6c-8976-8ad464a2322d',
-    name: 'Vegetarisches',
-    imageUrl: '/assets/images/vegetarian-category-image.jpg',
-    description: 'Frisch aus dem Wok',
+    description: 'Dürfen nicht fehlen',
   },
   {
     id: '8cefba45-cce1-4713-a3d4-41d9f99ffa39',
     name: 'Hauptspeisen',
     imageUrl: '/assets/images/main-dishes-category-image.jpg',
-    description: 'Mit Liebe zubereitet',
+    description: 'Frisch aus dem Wok',
   },
   {
     id: '49c1ef19-c8f3-4e37-ab47-2459e79a51ac',

@@ -41,11 +41,6 @@ export class DishGroupsHelperService extends DatabaseHelper {
     });
   }
 
-  fetchOne(id: string) {
-    const docRef = doc(this.col, id);
-    return getDoc(docRef);
-  }
-
   async create(dishGroup: DishGroup) {
     let docRef: DocumentReference<DishGroup>;
     await this.withSpinnerAndToast(async () => {
