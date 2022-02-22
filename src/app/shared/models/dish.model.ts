@@ -6,9 +6,9 @@ import { DishOption } from './dish-option.model';
 
 export interface Dish {
   id: string;
-  number: number;
+  number?: number;
   name: string;
-  thaiName: string;
+  thaiName?: string;
   price?: number;
   hotnessLevel: HotnessLevel;
   allergenes: Allergene[];

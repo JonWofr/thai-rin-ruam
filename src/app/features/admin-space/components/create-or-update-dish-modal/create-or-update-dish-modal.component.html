@@ -9,7 +9,6 @@
   (clickCloseButton)="clickCloseButton.emit()"
   (clickCancelButton)="clickCancelButton.emit()"
 >
-  {{ dish | json }}
   <form
     id="modal-form"
     class="form"
@@ -24,16 +23,7 @@
         name="number"
         [(ngModel)]="dish.number"
         #number="ngModel"
-        required
       />
-      <div
-        *ngIf="number.touched && number.invalid"
-        class="form__alerts-container"
-      >
-        <p *ngIf="number.errors?.['required']" class="form__alert">
-          Du musst etwas eingeben
-        </p>
-      </div>
     </div>
     <div class="form__group">
       <input
@@ -59,16 +49,7 @@
         name="thaiName"
         [(ngModel)]="dish.thaiName"
         #thaiName="ngModel"
-        required
       />
-      <div
-        *ngIf="thaiName.touched && thaiName.invalid"
-        class="form__alerts-container"
-      >
-        <p *ngIf="thaiName.errors?.['required']" class="form__alert">
-          Du musst etwas eingeben
-        </p>
-      </div>
     </div>
     <div class="form__group">
       <input

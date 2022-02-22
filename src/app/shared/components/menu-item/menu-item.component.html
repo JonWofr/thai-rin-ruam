@@ -1,9 +1,11 @@
 <li *ngIf="dish" class="menu-item">
-  <p class="tertiary-heading menu-item__number">{{ dish.number }}.</p>
+  <p *ngIf="dish.number" class="tertiary-heading menu-item__number">
+    {{ dish.number }}.
+  </p>
   <div class="menu-item__main-content">
     <h3 class="tertiary-heading">
       {{ dish.name }}
-      <span class="menu-item__thai-name">
+      <span *ngIf="dish.thaiName" class="menu-item__thai-name">
         {{ dish.thaiName }}
       </span>
       <ng-container [ngSwitch]="dish.hotnessLevel">
