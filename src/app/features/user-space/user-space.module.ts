@@ -21,7 +21,6 @@ import { UserSpaceComponent } from './user-space.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { NewsComponent } from './pages/news/news.component';
 import { ImpressumComponent } from './pages/impressum/impressum.component';
-import { DataPrivacyComponent } from './pages/data-privacy/data-privacy.component';
 import { MenuComponent } from './pages/menu/menu.component';
 import { FormsModule } from '@angular/forms';
 import { DishCategoryTabHeaderComponent } from './components/dish-category-tab-header/dish-category-tab-header.component';
@@ -47,7 +46,6 @@ import { MenuLegendComponent } from './components/menu-legend/menu-legend.compon
     ContactComponent,
     NewsComponent,
     ImpressumComponent,
-    DataPrivacyComponent,
     MenuComponent,
     DishCategoryTabHeaderComponent,
     MenuLegendComponent,

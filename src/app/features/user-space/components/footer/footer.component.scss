@@ -22,27 +22,9 @@
     gap: 3rem;
   }
 
-  &__links-container {
-    display: flex;
-    gap: 1rem;
-  }
-
   &__link {
-    width: 100px;
     font-size: 0.75rem;
-
-    &:first-child {
-      text-align: right;
-    }
-
-    &:last-child {
-      text-align: left;
-    }
-  }
-
-  &__vertical-divider {
-    width: 1px;
-    background-color: var(--secondary-font-color);
+    text-decoration: underline;
   }
 }
 
