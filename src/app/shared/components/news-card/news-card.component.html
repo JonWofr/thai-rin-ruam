@@ -26,7 +26,9 @@
   <footer class="news-card__footer">
     <img [src]="news.author.avatarUrl" alt="" class="news-card__author-image" />
     <p class="news-card__author">
-      <span class="subtitle subtitle--primary-accent-color">Ihr</span><br />
+      <span class="subtitle subtitle--primary-accent-color"
+        >Ihr{{ news.author.name === "Sunan" ? "e" : "" }}</span
+      ><br />
       {{ news.author.name }}
     </p>
   </footer>

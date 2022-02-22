@@ -19,6 +19,12 @@
   &__legend-container {
     min-height: 200px;
     position: relative;
+    margin-bottom: 2rem;
+  }
+
+  &__glutamat-note {
+    font-family: $secondary-font-bold;
+    font-size: 0.75rem;
   }
 }
 

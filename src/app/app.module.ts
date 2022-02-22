@@ -20,10 +20,10 @@ registerLocaleData(localeDe, 'de');
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     CoreModule,
     UserSpaceModule,
     AdminSpaceModule,
+    AppRoutingModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() =>

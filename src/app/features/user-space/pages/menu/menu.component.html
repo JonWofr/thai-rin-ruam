@@ -39,6 +39,7 @@
       <shared-spinner
         *ngIf="isFetchingDishes"
         class="centered"
+        sharedFadeIn
       ></shared-spinner>
       <div *ngFor="let dishGroup of dishGroups" class="dish-group">
         <h3
@@ -80,11 +81,15 @@
       <shared-spinner
         *ngIf="isFetchingAllergenes"
         class="centered"
+        sharedFadeIn
       ></shared-spinner>
       <user-space-menu-legend
         *ngIf="!isFetchingAllergenes"
         [allergenes]="allergenes"
       ></user-space-menu-legend>
     </div>
+    <p *ngIf="!isFetchingAllergenes" class="menu__glutamat-note" sharedFadeIn>
+      Unsere Speisen werden ohne zusätzliches Glutamat zubereitet!
+    </p>
   </div>
 </section>

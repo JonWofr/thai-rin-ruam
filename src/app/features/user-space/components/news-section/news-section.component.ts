@@ -1,6 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NewsHelperService } from 'src/app/core/services/news-helper/news-helper.service';
-import { news } from 'src/app/shared/data/news.data';
 import { News } from 'src/app/shared/models/news.model';
 
 @Component({

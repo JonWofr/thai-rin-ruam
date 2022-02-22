@@ -5,7 +5,11 @@
 <section
   class="reduced-section-padding section section--secondary-background-color"
 >
-  <shared-spinner *ngIf="isFetchingNews" class="centered"></shared-spinner>
+  <shared-spinner
+    *ngIf="isFetchingNews"
+    class="centered"
+    sharedFadeIn
+  ></shared-spinner>
   <div class="container">
     <shared-news-card
       *ngFor="let value of news"
