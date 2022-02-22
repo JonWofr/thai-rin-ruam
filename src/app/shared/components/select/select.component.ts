@@ -26,8 +26,10 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
 
   ngOnInit(): void {}
 
-  writeValue(selectedOption: Option): void {
-    this.selectedOption = selectedOption;
+  writeValue(selectedOption: Option | null): void {
+    if (selectedOption) {
+      this.selectedOption = selectedOption;
+    }
   }
   registerOnChange(onChange: any): void {
     this.onChange = onChange;

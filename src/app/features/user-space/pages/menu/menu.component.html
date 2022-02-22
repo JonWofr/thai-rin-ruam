@@ -11,11 +11,7 @@
       class="menu__select"
       placeholder="Kategorie"
       [options]="dishCategories | mapToOptions: 'id':'name'"
-      [ngModel]="
-        selectedDishCategory
-          ? ([selectedDishCategory] | mapToOptions: 'id':'name')[0]
-          : undefined
-      "
+      [ngModel]="selectedDishCategory | mapToOption: 'id':'name'"
       [ngModelOptions]="{
         standalone: true
       }"
@@ -25,11 +21,7 @@
     <shared-tab-bar
       *sharedMedia="'(min-width: 768px)'"
       [options]="dishCategories | mapToOptions: 'id':'name'"
-      [ngModel]="
-        selectedDishCategory
-          ? ([selectedDishCategory] | mapToOptions: 'id':'name')[0]
-          : undefined
-      "
+      [ngModel]="selectedDishCategory | mapToOption: 'id':'name'"
       [ngModelOptions]="{
         standalone: true
       }"

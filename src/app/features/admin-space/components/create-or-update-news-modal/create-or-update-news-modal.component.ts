@@ -13,13 +13,16 @@ import { Option } from 'src/app/shared/models/option.model';
 })
 export class CreateOrUpdateNewsModalComponent implements OnInit {
   @Input() type?: ModalType;
-  @Input() news: News = {
+  // Type is any because in order for the form to show defaults in an unfilled state everything
+  // that is not type string needs to have null. But null is not compatible with type Dish. So
+  // quick and dirty solution is to use any even though its use should be avoided.
+  @Input() news: any = {
     id: '',
     title: '',
     text: '',
     creationDate: Timestamp.now(),
     imageUrls: [],
-    author: authors[0],
+    author: null,
   };
   @Output() clickCloseButton = new EventEmitter<void>();
   @Output() clickCancelButton = new EventEmitter<void>();

@@ -11,6 +11,10 @@ import { environment } from '../environments/environment';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore, initializeFirestore } from '@angular/fire/firestore';
 import { provideStorage, getStorage } from '@angular/fire/storage';
+import { registerLocaleData } from '@angular/common';
+import localeDe from '@angular/common/locales/de';
+
+registerLocaleData(localeDe, 'de');
 
 @NgModule({
   declarations: [AppComponent],

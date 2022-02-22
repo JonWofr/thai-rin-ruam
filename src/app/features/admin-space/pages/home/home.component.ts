@@ -37,6 +37,8 @@ export class HomeComponent implements OnInit {
     }
   }
   currentlyVisibleModalType: ModalType | null = null;
+  isFetchingDishes = false;
+  isFetchingAllergenes = false;
 
   ModalType = ModalType;
   HomeTab = HomeTab;
@@ -50,10 +52,14 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.isFetchingDishes = true;
     this.dishesHelper.fetchAll().subscribe((dishes) => {
+      this.isFetchingDishes = false;
       this.dishes = dishes;
     });
+    this.isFetchingAllergenes = true;
     this.allergenesHelper.fetchAll().subscribe((allergenes) => {
+      this.isFetchingAllergenes = false;
       this.allergenes = allergenes;
     });
   }

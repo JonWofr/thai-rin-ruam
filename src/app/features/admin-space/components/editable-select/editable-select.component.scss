@@ -35,6 +35,10 @@
     border: none;
     outline: none;
     line-height: 2.25rem;
+
+    &::placeholder {
+      color: var(--placeholder-color);
+    }
   }
 
   &__dropdown-menu-container {

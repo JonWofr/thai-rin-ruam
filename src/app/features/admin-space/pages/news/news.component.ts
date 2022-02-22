@@ -20,6 +20,7 @@ export class NewsComponent implements OnInit {
     }
   }
   currentlyVisibleModalType: ModalType | null = null;
+  isFetchingNews = false;
 
   ModalType = ModalType;
 
@@ -28,7 +29,9 @@ export class NewsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.isFetchingNews = true;
     this.newsHelper.fetchAll().subscribe((news) => {
+      this.isFetchingNews = false;
       this.news = news;
     });
   }

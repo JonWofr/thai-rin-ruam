@@ -21,6 +21,10 @@
     &::placeholder {
       color: var(--placeholder-color);
     }
+
+    &--placeholder {
+      color: var(--placeholder-color);
+    }
   }
 
   &__alerts-container {

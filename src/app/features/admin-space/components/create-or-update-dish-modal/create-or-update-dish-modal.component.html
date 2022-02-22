@@ -9,6 +9,7 @@
   (clickCloseButton)="clickCloseButton.emit()"
   (clickCancelButton)="clickCancelButton.emit()"
 >
+  {{ dish | json }}
   <form
     id="modal-form"
     class="form"
@@ -81,12 +82,15 @@
     <div class="form__group">
       <select
         class="form__control"
+        [ngClass]="{
+          'form__control--placeholder': dish.hotnessLevel === ''
+        }"
         name="hotnessLevel"
         [(ngModel)]="dish.hotnessLevel"
         #hotnessLevel="ngModel"
         required
       >
-        <option value="" selected disabled hidden>Schärfe</option>
+        <option value="" disabled>Schärfe</option>
         <option *ngFor="let hotnessLevel of hotnessLevels">
           {{ hotnessLevel }}
         </option>
@@ -115,7 +119,7 @@
         placeholder="Kategorie"
         [options]="dishCategories | mapToOptions: 'id':'name'"
         name="category"
-        [ngModel]="([dish.category] | mapToOptions: 'id':'name')[0]"
+        [ngModel]="dish.category | mapToOption: 'id':'name'"
         (ngModelChange)="dish.category = mapOptionToDishCategory($event)"
         #category="ngModel"
         required
@@ -138,7 +142,7 @@
         (clickDeleteButton)="onClickDeleteDishGroupButton($event)"
         name="group"
         [ngModel]="
-          dish.group ? ([dish.group] | mapToOptions: 'id':'name') : undefined
+          dish.group ? ([dish.group] | mapToOptions: 'id':'name') : null
         "
         (ngModelChange)="dish.group = mapOptionsToDishGroups($event)[0]"
       ></admin-space-editable-select>

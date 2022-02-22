@@ -14,6 +14,6 @@ export interface Dish {
   allergenes: Allergene[];
   category: DishCategory;
   group?: DishGroup;
-  description: string;
+  description?: string;
   options: DishOption[];
 }

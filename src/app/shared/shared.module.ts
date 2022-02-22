@@ -13,6 +13,7 @@ import { NewsCardComponent } from './components/news-card/news-card.component';
 import { TabBarComponent } from './components/tab-bar/tab-bar.component';
 import { SelectComponent } from './components/select/select.component';
 import { MapToOptionsPipe } from './pipes/map-to-options/map-to-options.pipe';
+import { MapToOptionPipe } from './pipes/map-to-option/map-to-option.pipe';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { MapToOptionsPipe } from './pipes/map-to-options/map-to-options.pipe';
     TabBarComponent,
     SelectComponent,
     MapToOptionsPipe,
+    MapToOptionPipe,
   ],
   imports: [CommonModule, RouterModule.forChild([])],
   exports: [
@@ -42,6 +44,7 @@ import { MapToOptionsPipe } from './pipes/map-to-options/map-to-options.pipe';
     TabBarComponent,
     SelectComponent,
     MapToOptionsPipe,
+    MapToOptionPipe,
   ],
 })
 export class SharedModule {}

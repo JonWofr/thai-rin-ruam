@@ -1,10 +1,13 @@
 <select
   #select
   class="form__control"
+  [ngClass]="{
+    'form__control--placeholder': !selectedOption
+  }"
   (change)="onChangeSelect(select.value)"
   (blur)="onBlur()"
 >
-  <option value="" disabled hidden [selected]="!selectedOption">
+  <option value="" disabled [selected]="!selectedOption">
     {{ placeholder }}
   </option>
   <option

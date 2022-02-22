@@ -19,105 +19,117 @@
       }"
       sharedFadeIn
     ></shared-tab-bar>
-    <ul class="document-list" [ngSwitch]="selectedTab.value">
+    <div class="document-list__container" [ngSwitch]="selectedTab.value">
       <ng-container *ngSwitchCase="tabs[0].value">
-        <li *ngFor="let dish of dishes">
-          <div class="document-list__item-content">
-            <shared-menu-item
-              class="document-list__item-content-left-side"
-              [dish]="dish"
-            ></shared-menu-item>
-            <div class="document-list__more-button-container">
-              <div class="document-list__more-button-inner-container">
-                <admin-space-context-menu
-                  *ngIf="dish.id === selectedDish?.id"
-                  (clickEditButton)="onClickContextMenuEditButton()"
-                  (clickDeleteButton)="onClickContextMenuDeleteButton()"
-                ></admin-space-context-menu>
-                <button
-                  class="icon-button"
-                  (click)="onClickDishMoreButton(dish, $event)"
-                >
-                  <svg
-                    class="icon-button__icon"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
+        <shared-spinner
+          *ngIf="isFetchingDishes"
+          class="centered"
+        ></shared-spinner>
+        <ul class="document-list">
+          <li *ngFor="let dish of dishes">
+            <div class="document-list__item-content">
+              <shared-menu-item
+                class="document-list__item-content-left-side"
+                [dish]="dish"
+              ></shared-menu-item>
+              <div class="document-list__more-button-container">
+                <div class="document-list__more-button-inner-container">
+                  <admin-space-context-menu
+                    *ngIf="dish.id === selectedDish?.id"
+                    (clickEditButton)="onClickContextMenuEditButton()"
+                    (clickDeleteButton)="onClickContextMenuDeleteButton()"
+                  ></admin-space-context-menu>
+                  <button
+                    class="icon-button"
+                    (click)="onClickDishMoreButton(dish, $event)"
                   >
-                    <g clip-path="url(#clip0_571_8875)">
-                      <path
-                        d="M12 18.2773C13.657 18.2773 15 19.6203 15 21.2773C15 22.9343 13.657 24.2773 12 24.2773C10.343 24.2773 9 22.9343 9 21.2773C9 19.6203 10.343 18.2773 12 18.2773ZM12 9.27734C13.657 9.27734 15 10.6203 15 12.2773C15 13.9343 13.657 15.2773 12 15.2773C10.343 15.2773 9 13.9343 9 12.2773C9 10.6203 10.343 9.27734 12 9.27734ZM12 0.277344C13.657 0.277344 15 1.62034 15 3.27734C15 4.93434 13.657 6.27734 12 6.27734C10.343 6.27734 9 4.93434 9 3.27734C9 1.62034 10.343 0.277344 12 0.277344Z"
-                        fill="#303030"
-                      />
-                    </g>
-                    <defs>
-                      <clipPath id="clip0_571_8875">
-                        <rect
-                          width="24"
-                          height="24"
-                          fill="white"
-                          transform="translate(0 0.277344)"
+                    <svg
+                      class="icon-button__icon"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g clip-path="url(#clip0_571_8875)">
+                        <path
+                          d="M12 18.2773C13.657 18.2773 15 19.6203 15 21.2773C15 22.9343 13.657 24.2773 12 24.2773C10.343 24.2773 9 22.9343 9 21.2773C9 19.6203 10.343 18.2773 12 18.2773ZM12 9.27734C13.657 9.27734 15 10.6203 15 12.2773C15 13.9343 13.657 15.2773 12 15.2773C10.343 15.2773 9 13.9343 9 12.2773C9 10.6203 10.343 9.27734 12 9.27734ZM12 0.277344C13.657 0.277344 15 1.62034 15 3.27734C15 4.93434 13.657 6.27734 12 6.27734C10.343 6.27734 9 4.93434 9 3.27734C9 1.62034 10.343 0.277344 12 0.277344Z"
+                          fill="#303030"
                         />
-                      </clipPath>
-                    </defs>
-                  </svg>
-                </button>
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_571_8875">
+                          <rect
+                            width="24"
+                            height="24"
+                            fill="white"
+                            transform="translate(0 0.277344)"
+                          />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="divider"></div>
-        </li>
+            <div class="divider"></div>
+          </li>
+        </ul>
       </ng-container>
       <ng-container *ngSwitchCase="tabs[1].value">
-        <li *ngFor="let allergene of allergenes">
-          <div class="document-list__item-content">
-            <p
-              class="document-list__item-content-left-side document-list__allergene"
-            >
-              {{ allergene.abbreviation }}
-            </p>
-            <div class="document-list__more-button-container">
-              <div class="document-list__more-button-inner-container">
-                <admin-space-context-menu
-                  *ngIf="allergene.id === selectedAllergene?.id"
-                  (clickEditButton)="onClickContextMenuEditButton()"
-                  (clickDeleteButton)="onClickContextMenuDeleteButton()"
-                ></admin-space-context-menu>
-                <button
-                  class="icon-button"
-                  (click)="onClickAllergeneMoreButton(allergene, $event)"
-                >
-                  <svg
-                    class="icon-button__icon"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
+        <shared-spinner
+          *ngIf="isFetchingDishes"
+          class="centered"
+        ></shared-spinner>
+        <ul class="document-list">
+          <li *ngFor="let allergene of allergenes">
+            <div class="document-list__item-content">
+              <p
+                class="document-list__item-content-left-side document-list__allergene"
+              >
+                {{ allergene.abbreviation }}
+              </p>
+              <div class="document-list__more-button-container">
+                <div class="document-list__more-button-inner-container">
+                  <admin-space-context-menu
+                    *ngIf="allergene.id === selectedAllergene?.id"
+                    (clickEditButton)="onClickContextMenuEditButton()"
+                    (clickDeleteButton)="onClickContextMenuDeleteButton()"
+                  ></admin-space-context-menu>
+                  <button
+                    class="icon-button"
+                    (click)="onClickAllergeneMoreButton(allergene, $event)"
                   >
-                    <g clip-path="url(#clip0_571_8875)">
-                      <path
-                        d="M12 18.2773C13.657 18.2773 15 19.6203 15 21.2773C15 22.9343 13.657 24.2773 12 24.2773C10.343 24.2773 9 22.9343 9 21.2773C9 19.6203 10.343 18.2773 12 18.2773ZM12 9.27734C13.657 9.27734 15 10.6203 15 12.2773C15 13.9343 13.657 15.2773 12 15.2773C10.343 15.2773 9 13.9343 9 12.2773C9 10.6203 10.343 9.27734 12 9.27734ZM12 0.277344C13.657 0.277344 15 1.62034 15 3.27734C15 4.93434 13.657 6.27734 12 6.27734C10.343 6.27734 9 4.93434 9 3.27734C9 1.62034 10.343 0.277344 12 0.277344Z"
-                        fill="#303030"
-                      />
-                    </g>
-                    <defs>
-                      <clipPath id="clip0_571_8875">
-                        <rect
-                          width="24"
-                          height="24"
-                          fill="white"
-                          transform="translate(0 0.277344)"
+                    <svg
+                      class="icon-button__icon"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g clip-path="url(#clip0_571_8875)">
+                        <path
+                          d="M12 18.2773C13.657 18.2773 15 19.6203 15 21.2773C15 22.9343 13.657 24.2773 12 24.2773C10.343 24.2773 9 22.9343 9 21.2773C9 19.6203 10.343 18.2773 12 18.2773ZM12 9.27734C13.657 9.27734 15 10.6203 15 12.2773C15 13.9343 13.657 15.2773 12 15.2773C10.343 15.2773 9 13.9343 9 12.2773C9 10.6203 10.343 9.27734 12 9.27734ZM12 0.277344C13.657 0.277344 15 1.62034 15 3.27734C15 4.93434 13.657 6.27734 12 6.27734C10.343 6.27734 9 4.93434 9 3.27734C9 1.62034 10.343 0.277344 12 0.277344Z"
+                          fill="#303030"
                         />
-                      </clipPath>
-                    </defs>
-                  </svg>
-                </button>
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_571_8875">
+                          <rect
+                            width="24"
+                            height="24"
+                            fill="white"
+                            transform="translate(0 0.277344)"
+                          />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="divider"></div>
-        </li>
+            <div class="divider"></div>
+          </li>
+        </ul>
       </ng-container>
-    </ul>
+    </div>
     <button class="button button--embedded" (click)="onClickCreateButton()">
       <svg
         class="button__icon button__icon--embedded"

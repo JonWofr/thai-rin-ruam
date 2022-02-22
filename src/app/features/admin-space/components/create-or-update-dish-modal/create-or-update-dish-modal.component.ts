@@ -18,15 +18,19 @@ import { DishGroupsHelperService } from 'src/app/core/services/dish-groups-helpe
 })
 export class CreateOrUpdateDishModalComponent implements OnInit {
   @Input() type?: ModalType;
-  @Input() dish: Dish = {
+  // Type is any because in order for the form to show defaults in an unfilled state everything
+  // that is not type string needs to have null. But null is not compatible with type Dish. So
+  // quick and dirty solution is to use any even though its use should be avoided.
+  @Input() dish: any = {
     id: '',
-    number: 0,
+    number: null,
     name: '',
     thaiName: '',
-    hotnessLevel: HotnessLevel.NOT_HOT,
+    // The default for property hotnessLevel is an empty string rather than null because the type
+    // of hotnessLevel when filled is string and not some sort of object
+    hotnessLevel: '',
     allergenes: [],
-    category: dishCategories[0],
-    description: '',
+    category: null,
     options: [],
   };
   @Input() allergenes: Allergene[] = [];
@@ -76,13 +80,13 @@ export class CreateOrUpdateDishModalComponent implements OnInit {
       letter: '',
       name: '',
       allergenes: [],
-      price: 0,
+      price: null,
     });
   }
 
   onClickRemoveDishOptionButton(dishOption: DishOption) {
     this.dish.options = this.dish.options.filter(
-      (option) => option.id !== dishOption.id
+      (option: DishOption) => option.id !== dishOption.id
     );
   }
 
