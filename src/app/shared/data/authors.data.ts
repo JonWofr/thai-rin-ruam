@@ -13,7 +13,7 @@ export const authors: Author[] = [
   },
   {
     id: '7378a15f-0738-4e4a-b965-96a0c30a736a',
-    name: 'Sunan',
+    name: 'Nan',
     avatarUrl: '/assets/images/sunan.png',
   },
 ];
