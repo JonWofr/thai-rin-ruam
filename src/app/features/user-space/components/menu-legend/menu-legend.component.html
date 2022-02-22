@@ -1,5 +1,5 @@
 <ul class="menu-legend">
-  <li class="menu-legend__item" sharedFadeIn>
+  <li class="menu-legend__item">
     <div class="menu-legend__icon-container">
       <svg
         class="menu-legend__icon"
@@ -36,7 +36,7 @@
       <span class="menu-legend__equal-sign">=</span>Leicht scharf
     </p>
   </li>
-  <li class="menu-legend__item" sharedFadeIn>
+  <li class="menu-legend__item">
     <div class="menu-legend__icon-container">
       <svg
         class="menu-legend__icon"
@@ -87,7 +87,7 @@
       <span class="menu-legend__equal-sign">=</span>Mittel scharf
     </p>
   </li>
-  <li class="menu-legend__item" sharedFadeIn>
+  <li class="menu-legend__item">
     <div class="menu-legend__icon-container">
       <svg
         class="menu-legend__icon"
@@ -152,11 +152,7 @@
       <span class="menu-legend__equal-sign">=</span>Sehr scharf
     </p>
   </li>
-  <li
-    *ngFor="let allergene of allergenes"
-    class="menu-legend__item"
-    sharedFadeIn
-  >
+  <li *ngFor="let allergene of allergenes" class="menu-legend__item">
     <div class="menu-legend__icon-container">
       <p class="menu-legend__allergene-abbreviation">
         {{ allergene.abbreviation }}

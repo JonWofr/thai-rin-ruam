@@ -86,6 +86,7 @@
       <user-space-menu-legend
         *ngIf="!isFetchingAllergenes"
         [allergenes]="allergenes"
+        sharedFadeIn
       ></user-space-menu-legend>
     </div>
     <p *ngIf="!isFetchingAllergenes" class="menu__glutamat-note" sharedFadeIn>
