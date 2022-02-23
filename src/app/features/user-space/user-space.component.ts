@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subject, Subscription, takeUntil } from 'rxjs';
 import { NavigationItem } from 'src/app/shared/models/navigation-item.model';
 import { TitleIntersectionService } from './services/title-intersection/title-intersection.service';
 
@@ -10,7 +10,6 @@ import { TitleIntersectionService } from './services/title-intersection/title-in
 })
 export class UserSpaceComponent implements OnInit, OnDestroy {
   isPageTitleIntersecting?: boolean;
-  titleIntersectionSubscription?: Subscription;
   navigationItems: NavigationItem[] = [
     {
       name: 'Aktuelles',
@@ -43,18 +42,20 @@ export class UserSpaceComponent implements OnInit, OnDestroy {
       },
     },
   ];
+  endSubscriptions = new Subject<void>();
 
   constructor(titleIntersection: TitleIntersectionService) {
-    this.titleIntersectionSubscription = titleIntersection.subject.subscribe(
-      (isIntersecting) => {
+    titleIntersection.subject
+      .pipe(takeUntil(this.endSubscriptions))
+      .subscribe((isIntersecting) => {
         this.isPageTitleIntersecting = isIntersecting;
-      }
-    );
+      });
   }
 
   ngOnInit(): void {}
 
   ngOnDestroy(): void {
-    this.titleIntersectionSubscription?.unsubscribe();
+    this.endSubscriptions.next();
+    this.endSubscriptions.complete();
   }
 }

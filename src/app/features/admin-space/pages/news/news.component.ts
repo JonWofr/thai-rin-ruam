@@ -1,16 +1,17 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { News } from 'src/app/shared/models/news.model';
 import { ModalType } from '../../enums/modal-type.enum';
-import { cloneDeep } from 'lodash';
+import { cloneDeep, take } from 'lodash';
 import { Title } from '@angular/platform-browser';
 import { NewsHelperService } from 'src/app/core/services/news-helper/news-helper.service';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'admin-space-news',
   templateUrl: './news.component.html',
   styleUrls: ['./news.component.scss'],
 })
-export class NewsComponent implements OnInit {
+export class NewsComponent implements OnInit, OnDestroy {
   news: News[] = [];
   selectedNews?: News;
   @HostListener('document:click') onClickDocument() {
@@ -20,6 +21,7 @@ export class NewsComponent implements OnInit {
   }
   currentlyVisibleModalType: ModalType | null = null;
   isFetchingNews = false;
+  endSubscriptions = new Subject<void>();
 
   ModalType = ModalType;
 
@@ -29,10 +31,18 @@ export class NewsComponent implements OnInit {
 
   ngOnInit(): void {
     this.isFetchingNews = true;
-    this.newsHelper.fetchAll().subscribe((news) => {
-      this.isFetchingNews = false;
-      this.news = news;
-    });
+    this.newsHelper
+      .fetchAll()
+      .pipe(takeUntil(this.endSubscriptions))
+      .subscribe((news) => {
+        this.isFetchingNews = false;
+        this.news = news;
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.endSubscriptions.next();
+    this.endSubscriptions.complete();
   }
 
   onClickMoreButton(selectedNews: News, event: MouseEvent) {
