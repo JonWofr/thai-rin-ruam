@@ -23,7 +23,11 @@
           >
         </li>
       </ul>
-      <a class="header__logo-link" routerLink="/">
+      <a
+        class="header__logo-link"
+        [ngClass]="isPageTitleIntersecting ? ColorTheme.DARK : ColorTheme.LIGHT"
+        routerLink="/"
+      >
         <svg
           class="header__logo"
           [ngClass]="{

@@ -11,7 +11,7 @@
   min-height: 700px;
   position: relative;
   background-image: $radial-dark-overlay, $solid-dark-overlay,
-    url("/assets/images/hero-background-image.jpeg");
+    url("/assets/images/hero-background-image-xs.jpg");
   background-size: cover;
   background-position: center;
 
@@ -100,7 +100,15 @@
     }
   }
 
+  @include media-breakpoint-up("sm") {
+    background-image: $radial-dark-overlay, $solid-dark-overlay,
+      url("/assets/images/hero-background-image-sm.jpg");
+  }
+
   @include media-breakpoint-up("md") {
+    background-image: $radial-dark-overlay, $solid-dark-overlay,
+      url("/assets/images/hero-background-image-md.jpg");
+
     &__content {
       // For tablet + layouts the content is slightly moved down to give the header more space
       top: calc(
@@ -111,6 +119,26 @@
           ) / 2
       );
     }
+  }
+
+  @include media-breakpoint-up("lg") {
+    background-image: $radial-dark-overlay, $solid-dark-overlay,
+      url("/assets/images/hero-background-image-lg.jpg");
+  }
+
+  @include media-breakpoint-up("xl") {
+    background-image: $radial-dark-overlay, $solid-dark-overlay,
+      url("/assets/images/hero-background-image-xl.jpg");
+  }
+
+  @include media-breakpoint-up("xxl") {
+    background-image: $radial-dark-overlay, $solid-dark-overlay,
+      url("/assets/images/hero-background-image-xxl.jpg");
+  }
+
+  @media only screen and (min-width: 1921px) {
+    background-image: $radial-dark-overlay, $solid-dark-overlay,
+      url("/assets/images/hero-background-image-4k.jpg");
   }
 }
 
