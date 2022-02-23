@@ -1,5 +1,10 @@
 <li *ngIf="dish" class="menu-item">
-  <p *ngIf="dish.number" class="tertiary-heading menu-item__number">
+  <p
+    *ngIf="
+      dish.category.name !== 'Beilagen' && dish.category.name !== 'Getränke'
+    "
+    class="tertiary-heading menu-item__number"
+  >
     {{ dish.number }}.
   </p>
   <div class="menu-item__main-content">

@@ -23,6 +23,7 @@ export class CreateOrUpdateDishModalComponent implements OnInit {
   // quick and dirty solution is to use any even though its use should be avoided.
   @Input() dish: any = {
     id: '',
+    number: null,
     name: '',
     // The default for property hotnessLevel is an empty string rather than null because the type
     // of hotnessLevel when filled is string and not some sort of object

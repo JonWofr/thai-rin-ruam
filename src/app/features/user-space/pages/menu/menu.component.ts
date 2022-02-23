@@ -83,17 +83,9 @@ export class MenuComponent implements OnInit {
   }
 
   sortDishesByNumber(dishes: Dish[]) {
-    return dishes.sort((previousDish, currentDish) => {
-      if (!('number' in previousDish) && !('number' in currentDish)) {
-        return 0;
-      } else if ('number' in previousDish && !('number' in currentDish)) {
-        return +1;
-      } else if (!('number' in previousDish) && 'number' in currentDish) {
-        return -1;
-      } else {
-        return previousDish.number! - currentDish.number!;
-      }
-    });
+    return dishes.sort(
+      (previousDish, currentDish) => previousDish.number - currentDish.number
+    );
   }
 
   groupDishes(dishes: Dish[]) {
