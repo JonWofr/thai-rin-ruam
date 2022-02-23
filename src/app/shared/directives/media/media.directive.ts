@@ -17,6 +17,7 @@ export class MediaDirective {
     private templateRef: TemplateRef<any>,
     private viewContainer: ViewContainerRef
   ) {}
+
   private setListener(query: string) {
     const mediaQueryList = window.matchMedia(query);
     const listener = (event: MediaQueryList | MediaQueryListEvent) => {

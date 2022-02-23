@@ -15,7 +15,12 @@ import { TitleIntersectionService } from '../../services/title-intersection/titl
 })
 export class PageBannerComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() title = '';
-  @Input() imageUrl = '';
+  @Input() xsImageUrl = '';
+  @Input() smImageUrl = '';
+  @Input() mdImageUrl = '';
+  @Input() lgImageUrl = '';
+  @Input() xlImageUrl = '';
+  @Input() xxlImageUrl = '';
 
   titleIntersectionObserver?: IntersectionObserver;
 
