@@ -44,13 +44,6 @@ export class NewsHelperService extends DatabaseHelper {
     super(spinnerController, toastController);
   }
 
-  fetchLatest() {
-    const q = query(this.col, orderBy('creationDate', 'desc'), limit(1));
-    return collectionData(q, {
-      idField: 'id',
-    });
-  }
-
   fetchAll() {
     const q = query(this.col, orderBy('creationDate', 'desc'));
     return collectionData(q, {

@@ -8,12 +8,12 @@ export interface Dish {
   id: string;
   number: number;
   name: string;
-  thaiName: string;
+  thaiName?: string;
   price?: number;
   hotnessLevel: HotnessLevel;
   allergenes: Allergene[];
   category: DishCategory;
   group?: DishGroup;
-  description: string;
+  description?: string;
   options: DishOption[];
 }

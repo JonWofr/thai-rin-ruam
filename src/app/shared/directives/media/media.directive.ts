@@ -13,12 +13,11 @@ export class MediaDirective {
   }
   private hasView = false;
 
-  // TODO: Maybe the event listener should be removed. Could cause leaks.
-
   constructor(
     private templateRef: TemplateRef<any>,
     private viewContainer: ViewContainerRef
   ) {}
+
   private setListener(query: string) {
     const mediaQueryList = window.matchMedia(query);
     const listener = (event: MediaQueryList | MediaQueryListEvent) => {

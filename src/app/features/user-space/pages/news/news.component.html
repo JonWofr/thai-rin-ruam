@@ -1,11 +1,20 @@
 <user-space-page-banner
   title="Aktuelles"
-  imageUrl="/assets/images/news-page-banner-image.jpg"
+  xsImageUrl="/assets/images/news-page-banner-image.jpg"
+  smImageUrl="/assets/images/news-page-banner-image.jpg"
+  mdImageUrl="/assets/images/news-page-banner-image.jpg"
+  lgImageUrl="/assets/images/news-page-banner-image.jpg"
+  xlImageUrl="/assets/images/news-page-banner-image.jpg"
+  xxlImageUrl="/assets/images/news-page-banner-image.jpg"
 ></user-space-page-banner>
 <section
   class="reduced-section-padding section section--secondary-background-color"
 >
-  <shared-spinner *ngIf="isFetchingNews" class="centered"></shared-spinner>
+  <shared-spinner
+    *ngIf="isFetchingNews"
+    class="centered"
+    sharedFadeIn
+  ></shared-spinner>
   <div class="container">
     <shared-news-card
       *ngFor="let value of news"

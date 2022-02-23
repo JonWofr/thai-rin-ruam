@@ -9,21 +9,21 @@ import { UserSpaceModule } from './features/user-space/user-space.module';
 import { initializeApp, provideFirebaseApp, getApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth, getAuth } from '@angular/fire/auth';
-import {
-  provideFirestore,
-  getFirestore,
-  initializeFirestore,
-} from '@angular/fire/firestore';
+import { provideFirestore, initializeFirestore } from '@angular/fire/firestore';
 import { provideStorage, getStorage } from '@angular/fire/storage';
+import { registerLocaleData } from '@angular/common';
+import localeDe from '@angular/common/locales/de';
+
+registerLocaleData(localeDe, 'de');
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     CoreModule,
     UserSpaceModule,
     AdminSpaceModule,
+    AppRoutingModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() =>

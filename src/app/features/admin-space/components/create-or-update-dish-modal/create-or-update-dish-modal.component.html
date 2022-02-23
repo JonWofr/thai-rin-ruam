@@ -23,7 +23,6 @@
         name="number"
         [(ngModel)]="dish.number"
         #number="ngModel"
-        required
       />
       <div
         *ngIf="number.touched && number.invalid"
@@ -58,16 +57,7 @@
         name="thaiName"
         [(ngModel)]="dish.thaiName"
         #thaiName="ngModel"
-        required
       />
-      <div
-        *ngIf="thaiName.touched && thaiName.invalid"
-        class="form__alerts-container"
-      >
-        <p *ngIf="thaiName.errors?.['required']" class="form__alert">
-          Du musst etwas eingeben
-        </p>
-      </div>
     </div>
     <div class="form__group">
       <input
@@ -80,13 +70,16 @@
     </div>
     <div class="form__group">
       <select
-        class="form__control"
+        class="form__control form__control--select"
+        [ngClass]="{
+          'form__control--placeholder': dish.hotnessLevel === ''
+        }"
         name="hotnessLevel"
         [(ngModel)]="dish.hotnessLevel"
         #hotnessLevel="ngModel"
         required
       >
-        <option value="" selected disabled hidden>Schärfe</option>
+        <option value="" disabled>Schärfe</option>
         <option *ngFor="let hotnessLevel of hotnessLevels">
           {{ hotnessLevel }}
         </option>
@@ -115,7 +108,7 @@
         placeholder="Kategorie"
         [options]="dishCategories | mapToOptions: 'id':'name'"
         name="category"
-        [ngModel]="([dish.category] | mapToOptions: 'id':'name')[0]"
+        [ngModel]="dish.category | mapToOption: 'id':'name'"
         (ngModelChange)="dish.category = mapOptionToDishCategory($event)"
         #category="ngModel"
         required
@@ -138,7 +131,7 @@
         (clickDeleteButton)="onClickDeleteDishGroupButton($event)"
         name="group"
         [ngModel]="
-          dish.group ? ([dish.group] | mapToOptions: 'id':'name') : undefined
+          dish.group ? ([dish.group] | mapToOptions: 'id':'name') : null
         "
         (ngModelChange)="dish.group = mapOptionsToDishGroups($event)[0]"
       ></admin-space-editable-select>
@@ -206,6 +199,7 @@
               placeholder="Allergen"
               [options]="allergenes | mapToOptions: 'id':'abbreviation'"
               [name]="'optionAllergene' + dishOption.id"
+              [isEditable]="false"
               [ngModel]="
                 dishOption.allergenes | mapToOptions: 'id':'abbreviation'
               "

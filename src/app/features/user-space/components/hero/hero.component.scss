@@ -11,7 +11,7 @@
   min-height: 700px;
   position: relative;
   background-image: $radial-dark-overlay, $solid-dark-overlay,
-    url("/assets/images/hero-background-image.jpeg");
+    url("/assets/images/hero-background-image-xs.jpeg");
   background-size: cover;
   background-position: center;
 
@@ -24,8 +24,8 @@
     top: calc(
       50% -
         (
-          13.5rem + 5rem + 1px + 1.25rem + 0.75rem + 3.75rem + 1rem + 1.25rem +
-            2rem + 2.75rem
+          3.75rem * 3 + 1.25rem + 2rem + 1px + 2rem + 1.25rem + 0.75rem +
+            3.75rem + 1rem + 1.25rem + 2rem + 2.75rem
         ) / 2
     );
   }
@@ -99,13 +99,54 @@
       height: 100%;
     }
   }
+
+  @include media-breakpoint-up("sm") {
+    background-image: $radial-dark-overlay, $solid-dark-overlay,
+      url("/assets/images/hero-background-image-sm.jpeg");
+  }
+
+  @include media-breakpoint-up("md") {
+    background-image: $radial-dark-overlay, $solid-dark-overlay,
+      url("/assets/images/hero-background-image-md.jpeg");
+
+    &__content {
+      // For tablet + layouts the content is slightly moved down to give the header more space
+      top: calc(
+        50% -
+          (
+            3.75rem * 3 + 1.25rem + 2rem + 1px + 2rem + 1.25rem + 0.75rem +
+              3.75rem + 1rem + 1.25rem
+          ) / 2
+      );
+    }
+  }
+
+  @include media-breakpoint-up("lg") {
+    background-image: $radial-dark-overlay, $solid-dark-overlay,
+      url("/assets/images/hero-background-image-lg.jpeg");
+  }
+
+  @include media-breakpoint-up("xl") {
+    background-image: $radial-dark-overlay, $solid-dark-overlay,
+      url("/assets/images/hero-background-image-xl.jpeg");
+  }
+
+  @include media-breakpoint-up("xxl") {
+    background-image: $radial-dark-overlay, $solid-dark-overlay,
+      url("/assets/images/hero-background-image-xxl.jpeg");
+  }
+
+  @media only screen and (min-width: 1921px) {
+    background-image: $radial-dark-overlay, $solid-dark-overlay,
+      url("/assets/images/hero-background-image-4k.jpeg");
+  }
 }
 
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2.5rem;
+  gap: 2rem;
 }
 
 .divider {
@@ -118,4 +159,17 @@
   margin-bottom: 0.75rem;
   text-align: center;
   color: var(--primary-font-color);
+}
+
+.page-title {
+  line-height: 1.25;
+
+  &__first-word {
+    display: inline-block;
+    margin-bottom: 1rem;
+  }
+
+  @include media-breakpoint-up("md") {
+    font-size: 3rem;
+  }
 }

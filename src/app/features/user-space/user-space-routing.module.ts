@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { ContactComponent } from './pages/contact/contact.component';
-import { DataPrivacyComponent } from './pages/data-privacy/data-privacy.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ImpressumComponent } from './pages/impressum/impressum.component';
 import { MenuComponent } from './pages/menu/menu.component';
@@ -33,10 +32,6 @@ const routes: Routes = [
       {
         path: 'impressum',
         component: ImpressumComponent,
-      },
-      {
-        path: 'data-privacy',
-        component: DataPrivacyComponent,
       },
       {
         path: 'menu',

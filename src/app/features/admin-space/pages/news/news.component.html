@@ -2,8 +2,9 @@
   <div class="container">
     <h1 class="secondary-heading">Aktuelles</h1>
     <div class="news__cards-container">
+      <shared-spinner *ngIf="isFetchingNews" class="centered"></shared-spinner>
       <div *ngFor="let value of news" class="news__card-container">
-        <shared-news-card [news]="value" sharedFadeIn></shared-news-card>
+        <shared-news-card [news]="value"></shared-news-card>
         <div class="news__more-button-container">
           <admin-space-context-menu
             *ngIf="value.id === selectedNews?.id"
@@ -43,6 +44,7 @@
         </div>
       </div>
       <admin-space-add-item-card
+        *ngIf="!isFetchingNews"
         (clickAddItemCard)="onClickAddItemCard()"
       ></admin-space-add-item-card>
     </div>

@@ -1,11 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
+import { Subject, takeUntil } from 'rxjs';
 import { AllergenesHelperService } from 'src/app/core/services/allergenes-helper/allergenes-helper.service';
 import { DishesHelperService } from 'src/app/core/services/dishes-helper/dishes-helper.service';
-import { allergenes } from 'src/app/shared/data/allergenes.data';
 import { dishCategories } from 'src/app/shared/data/dish-categories.data';
-import { dishes } from 'src/app/shared/data/dishes.data';
 import { Allergene } from 'src/app/shared/models/allergene.model';
 import { DishCategory } from 'src/app/shared/models/dish-category.model';
 import { Dish } from 'src/app/shared/models/dish.model';
@@ -18,7 +17,7 @@ type DishGroup = { name: string | undefined; dishes: Dish[] };
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss'],
 })
-export class MenuComponent implements OnInit {
+export class MenuComponent implements OnInit, OnDestroy {
   dishes: Dish[] = [];
   allergenes: Allergene[] = [];
   dishGroups: DishGroup[] = [];
@@ -26,6 +25,7 @@ export class MenuComponent implements OnInit {
   selectedDishCategory: DishCategory = dishCategories[0];
   isFetchingDishes = false;
   isFetchingAllergenes = false;
+  endSubscriptions = new Subject<void>();
 
   Math = Math;
 
@@ -51,17 +51,28 @@ export class MenuComponent implements OnInit {
     }
 
     this.isFetchingAllergenes = true;
-    this.allergenesHelper.fetchAll().subscribe((allergenes) => {
-      this.isFetchingAllergenes = false;
-      this.allergenes = allergenes;
-    });
+    this.allergenesHelper
+      .fetchAll()
+      .pipe(takeUntil(this.endSubscriptions))
+      .subscribe((allergenes) => {
+        this.isFetchingAllergenes = false;
+        this.allergenes = allergenes;
+      });
 
     this.isFetchingDishes = true;
-    this.dishesHelper.fetchAll().subscribe((dishes) => {
-      this.isFetchingDishes = false;
-      this.dishes = dishes;
-      this.preprocessDishes();
-    });
+    this.dishesHelper
+      .fetchAll()
+      .pipe(takeUntil(this.endSubscriptions))
+      .subscribe((dishes) => {
+        this.isFetchingDishes = false;
+        this.dishes = dishes;
+        this.preprocessDishes();
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.endSubscriptions.next();
+    this.endSubscriptions.complete();
   }
 
   onChangeSelectedOption(selectedOption: Option): void {

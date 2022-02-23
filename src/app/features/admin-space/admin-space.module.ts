@@ -14,7 +14,6 @@ import { NewsComponent } from './pages/news/news.component';
 import { AddItemCardComponent } from './components/add-item-card/add-item-card.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { CreateOrUpdateDishModalComponent } from './components/create-or-update-dish-modal/create-or-update-dish-modal.component';
-import { MultiSelectComponent } from './components/multi-select/multi-select.component';
 import { EditableSelectComponent } from './components/editable-select/editable-select.component';
 import { ChipComponent } from './components/chip/chip.component';
 import { DeleteDishModalComponent } from './components/delete-dish-modal/delete-dish-modal.component';
@@ -38,7 +37,6 @@ import { DeleteNewsModalComponent } from './components/delete-news-modal/delete-
     AddItemCardComponent,
     ModalComponent,
     CreateOrUpdateDishModalComponent,
-    MultiSelectComponent,
     EditableSelectComponent,
     ChipComponent,
     DeleteDishModalComponent,

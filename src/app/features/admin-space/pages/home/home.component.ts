@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { Allergene } from 'src/app/shared/models/allergene.model';
 import { ModalType } from '../../enums/modal-type.enum';
 import { Option } from '../../../../shared/models/option.model';
@@ -8,13 +8,14 @@ import { Title } from '@angular/platform-browser';
 import { DishesHelperService } from 'src/app/core/services/dishes-helper/dishes-helper.service';
 import { AllergenesHelperService } from 'src/app/core/services/allergenes-helper/allergenes-helper.service';
 import { Dish } from 'src/app/shared/models/dish.model';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'admin-space-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   dishes: Dish[] = [];
   allergenes: Allergene[] = [];
   tabs: Option[] = [
@@ -37,6 +38,9 @@ export class HomeComponent implements OnInit {
     }
   }
   currentlyVisibleModalType: ModalType | null = null;
+  isFetchingDishes = false;
+  isFetchingAllergenes = false;
+  endSubscriptions = new Subject<void>();
 
   ModalType = ModalType;
   HomeTab = HomeTab;
@@ -50,12 +54,27 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dishesHelper.fetchAll().subscribe((dishes) => {
-      this.dishes = dishes;
-    });
-    this.allergenesHelper.fetchAll().subscribe((allergenes) => {
-      this.allergenes = allergenes;
-    });
+    this.isFetchingDishes = true;
+    this.dishesHelper
+      .fetchAll()
+      .pipe(takeUntil(this.endSubscriptions))
+      .subscribe((dishes) => {
+        this.isFetchingDishes = false;
+        this.dishes = dishes;
+      });
+    this.isFetchingAllergenes = true;
+    this.allergenesHelper
+      .fetchAll()
+      .pipe(takeUntil(this.endSubscriptions))
+      .subscribe((allergenes) => {
+        this.isFetchingAllergenes = false;
+        this.allergenes = allergenes;
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.endSubscriptions.next();
+    this.endSubscriptions.complete();
   }
 
   onClickDishMoreButton(selectedDish: Dish, event: MouseEvent) {

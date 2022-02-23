@@ -39,7 +39,7 @@
         placeholder="Autor"
         [options]="authors | mapToOptions: 'id':'name'"
         name="author"
-        [ngModel]="([news.author] | mapToOptions: 'id':'name')[0]"
+        [ngModel]="news.author | mapToOption: 'id':'name'"
         (ngModelChange)="news.author = mapOptionToAuthor($event)"
         #author="ngModel"
         required

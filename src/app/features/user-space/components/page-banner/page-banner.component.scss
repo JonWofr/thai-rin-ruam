@@ -8,8 +8,21 @@
   height: 45vh;
   max-height: 500px;
   position: relative;
-  background-size: cover;
-  background-position: center;
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: $radial-dark-overlay, $solid-dark-overlay;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
   &__title {
     position: absolute;

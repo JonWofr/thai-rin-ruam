@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subject, takeUntil } from 'rxjs';
 import { NewsHelperService } from 'src/app/core/services/news-helper/news-helper.service';
-import { news } from 'src/app/shared/data/news.data';
 import { News } from 'src/app/shared/models/news.model';
 
 @Component({
@@ -8,20 +8,29 @@ import { News } from 'src/app/shared/models/news.model';
   templateUrl: './news-section.component.html',
   styleUrls: ['./news-section.component.scss'],
 })
-export class NewsSectionComponent implements OnInit {
+export class NewsSectionComponent implements OnInit, OnDestroy {
   news?: News;
 
   isFetchingNews = false;
+  endSubscriptions = new Subject<void>();
 
   constructor(private newsHelper: NewsHelperService) {}
 
   ngOnInit(): void {
     this.isFetchingNews = true;
-    this.newsHelper.fetchLatest().subscribe((news) => {
-      this.isFetchingNews = false;
-      if (news.length > 0) {
-        this.news = news[0];
-      }
-    });
+    this.newsHelper
+      .fetchAll()
+      .pipe(takeUntil(this.endSubscriptions))
+      .subscribe((news) => {
+        this.isFetchingNews = false;
+        if (news.length > 0) {
+          this.news = news[0];
+        }
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.endSubscriptions.next();
+    this.endSubscriptions.complete();
   }
 }
