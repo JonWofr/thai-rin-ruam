@@ -7,6 +7,9 @@
       "hosting": {
         "dev": [
           "thai-rin-ruam-dev"
+        ],
+        "prod": [
+          "thai-rin-ruam"
         ]
       }
     }
