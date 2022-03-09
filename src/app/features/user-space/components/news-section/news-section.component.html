@@ -7,15 +7,15 @@
       sharedFadeIn
     ></user-space-section-header>
     <div class="news-section__body">
-      <div class="news-section__news-card-container">
+      <div class="news-section__news-cards-container">
         <shared-spinner
           *ngIf="isFetchingNews"
           class="centered"
           sharedFadeIn
         ></shared-spinner>
         <shared-news-card
-          *ngIf="news"
-          [news]="news"
+          *ngFor="let value of news"
+          [news]="value"
           class="news-section__news-card"
           sharedFadeIn
         ></shared-news-card>

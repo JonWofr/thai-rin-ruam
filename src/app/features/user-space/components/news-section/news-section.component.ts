@@ -9,7 +9,7 @@ import { News } from 'src/app/shared/models/news.model';
   styleUrls: ['./news-section.component.scss'],
 })
 export class NewsSectionComponent implements OnInit, OnDestroy {
-  news?: News;
+  news: News[] = [];
 
   isFetchingNews = false;
   endSubscriptions = new Subject<void>();
@@ -23,9 +23,7 @@ export class NewsSectionComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.endSubscriptions))
       .subscribe((news) => {
         this.isFetchingNews = false;
-        if (news.length > 0) {
-          this.news = news[0];
-        }
+        this.news = news.slice(0, 3);
       });
   }
 

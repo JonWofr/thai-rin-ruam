@@ -3,9 +3,9 @@ $radial-dark-overlay: radial-gradient(
   66.66% 50% at center,
   rgba(0, 0, 0, 0) 0%,
   rgba(0, 0, 0, 0) 80%,
-  rgba(0, 0, 0, 0.4) 100%
+  rgba(0, 0, 0, 0.3) 100%
 );
-$solid-dark-overlay: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+$solid-dark-overlay: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
 
 // Fonts
 $primary-font-regular: "Papyrus-Regular";
