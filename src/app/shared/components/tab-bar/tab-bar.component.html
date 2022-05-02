@@ -1,0 +1,16 @@
+<div class="tab-bar">
+  <ng-container *ngFor="let option of options">
+    <input
+      [id]="option.value"
+      class="tab-bar__radio-input"
+      type="radio"
+      [value]="option.value"
+      [checked]="option.value === selectedOption?.value"
+      (change)="onChangeOption(option)"
+      (blur)="onBlur()"
+    />
+    <label class="tab-bar__radio-label" [for]="option.value"
+      >{{ option.label }}
+    </label>
+  </ng-container>
+</div>

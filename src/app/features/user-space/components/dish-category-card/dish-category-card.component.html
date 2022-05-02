@@ -1,0 +1,12 @@
+<article *ngIf="dishCategory" class="card dish-category-card">
+  <div class="aspect-ratio">
+    <div class="aspect-ratio__inner-container">
+      <img
+        [src]="dishCategory.imageUrl"
+        alt=""
+        class="dish-category-card__image"
+      />
+    </div>
+  </div>
+  <h3 class="tertiary-heading">{{ dishCategory.name }}</h3>
+</article>

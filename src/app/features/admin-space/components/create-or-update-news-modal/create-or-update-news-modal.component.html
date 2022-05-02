@@ -1,0 +1,80 @@
+<admin-space-modal
+  [title]="
+    type === ModalType.CREATE
+      ? 'Neuigkeit erstellen'
+      : 'Neuigkeit ' + news.title + ' bearbeiten'
+  "
+  [isValid]="form.valid ?? false"
+  [type]="type"
+  (clickCloseButton)="clickCloseButton.emit()"
+  (clickCancelButton)="clickCancelButton.emit()"
+>
+  <form
+    id="modal-form"
+    class="form"
+    #form="ngForm"
+    (ngSubmit)="clickSaveButton.emit(news)"
+  >
+    <div class="form__group">
+      <input
+        class="form__control"
+        type="text"
+        placeholder="Titel"
+        name="title"
+        [(ngModel)]="news.title"
+        #title="ngModel"
+        required
+      />
+      <div
+        *ngIf="title.touched && title.invalid"
+        class="form__alerts-container"
+      >
+        <p *ngIf="title.errors?.['required']" class="form__alert">
+          Du musst etwas eingeben
+        </p>
+      </div>
+    </div>
+    <div class="form__group">
+      <shared-select
+        placeholder="Autor"
+        [options]="authors | mapToOptions: 'id':'name'"
+        name="author"
+        [ngModel]="news.author | mapToOption: 'id':'name'"
+        (ngModelChange)="news.author = mapOptionToAuthor($event)"
+        #author="ngModel"
+        required
+      ></shared-select>
+      <div
+        *ngIf="author.touched && author.invalid"
+        class="form__alerts-container"
+      >
+        <p *ngIf="author.errors?.['required']" class="form__alert">
+          Du musst etwas eingeben
+        </p>
+      </div>
+    </div>
+    <div class="form__group form__group--full-width">
+      <textarea
+        class="form__control"
+        placeholder="Beschreibung"
+        rows="10"
+        name="text"
+        [(ngModel)]="news.text"
+        #text="ngModel"
+        required
+      >
+      </textarea>
+      <div *ngIf="text.touched && text.invalid" class="form__alerts-container">
+        <p *ngIf="text.errors?.['required']" class="form__alert">
+          Du musst etwas eingeben
+        </p>
+      </div>
+    </div>
+    <div class="form__group form__group--full-width">
+      <admin-space-images-picker
+        name="imageUrls"
+        [(ngModel)]="news.imageUrls"
+      ></admin-space-images-picker>
+    </div>
+  </form>
+</admin-space-modal>

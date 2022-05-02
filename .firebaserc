@@ -1,0 +1,17 @@
+{
+  "projects": {
+    "default": "thai-rin-ruam"
+  },
+  "targets": {
+    "thai-rin-ruam": {
+      "hosting": {
+        "dev": [
+          "thai-rin-ruam-dev"
+        ],
+        "prod": [
+          "thai-rin-ruam"
+        ]
+      }
+    }
+  }
+}

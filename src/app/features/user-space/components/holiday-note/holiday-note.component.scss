@@ -1,0 +1,48 @@
+@import "abstracts/variables";
+
+:host {
+  display: block;
+}
+
+.holiday-note {
+  font-size: 0.75rem;
+
+  &__info-button-container {
+    position: relative;
+    display: inline-block;
+  }
+
+  &__info-button {
+    padding: 2rem;
+    margin: -2rem;
+  }
+
+  &__tooltip {
+    position: absolute;
+    width: 200px;
+    padding: 1rem;
+    background-color: var(--secondary-background-color);
+    box-shadow: $default-box-shadow;
+    font-size: 0.75rem;
+    border-radius: $default-border-radius;
+    text-align: left;
+
+    &--left {
+      top: 0;
+      right: 100%;
+      transform: translate(0, -100%);
+      border-bottom-right-radius: 0px;
+    }
+
+    &--right {
+      top: 0;
+      left: 100%;
+      transform: translate(0, -100%);
+      border-bottom-left-radius: 0px;
+    }
+  }
+
+  &__info-button {
+    vertical-align: middle;
+  }
+}

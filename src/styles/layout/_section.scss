@@ -1,0 +1,11 @@
+.section {
+  padding: var(--section-padding);
+
+  &--primary-background-color {
+    background-color: var(--primary-background-color);
+  }
+
+  &--secondary-background-color {
+    background-color: var(--secondary-background-color);
+  }
+}

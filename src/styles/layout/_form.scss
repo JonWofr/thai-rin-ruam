@@ -1,0 +1,61 @@
+@import "abstracts/mixins";
+
+.form {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  &__group {
+    flex: none;
+    width: 100%;
+  }
+
+  &__control {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--form-control-background-color);
+    border-radius: $default-border-radius;
+    border: none;
+
+    &::placeholder {
+      color: var(--placeholder-color);
+    }
+
+    // Used to apply the placeholder style to select placeholders which are actually option elements
+    &--placeholder {
+      color: var(--placeholder-color);
+    }
+
+    // On Safari padding does not work for the select element. This is a workaround.
+    &--select {
+      padding: 0;
+      text-indent: 1rem;
+      line-height: calc(1.25rem + 2 * 1rem);
+      height: calc(1.25rem + 2 * 1rem);
+    }
+  }
+
+  &__alerts-container {
+    margin-top: 0.5rem;
+    padding-left: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  &__alert {
+    font-size: 0.75rem;
+    color: var(--error-color);
+  }
+
+  @include media-breakpoint-up("md") {
+    &__group {
+      width: calc(50% - 0.5rem);
+
+      &--full-width {
+        width: 100%;
+      }
+    }
+  }
+}

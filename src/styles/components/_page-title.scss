@@ -1,0 +1,10 @@
+.page-title {
+  text-align: center;
+
+  &__first-word {
+    font-size: 2rem;
+    line-height: 4rem;
+    font-family: $primary-font-regular;
+    color: var(--primary-font-color);
+  }
+}

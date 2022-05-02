@@ -1,0 +1,51 @@
+@use "sass:map";
+@import "abstracts/variables";
+@import "abstracts/mixins";
+
+:host {
+  display: block;
+}
+
+.divider {
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.create-or-update-dish-modal {
+  &__options-list {
+    padding-left: 3rem;
+    margin: 1rem 0;
+    width: 100%;
+  }
+
+  &__option-item {
+    padding: 1rem 0;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+
+    &:first-child {
+      padding-top: 0;
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+
+    &:not(:last-child) {
+      border-bottom: 1px solid var(--divider-color);
+    }
+  }
+
+  &__option-item-left-side {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}
+
+.button {
+  margin-left: 3rem;
+}

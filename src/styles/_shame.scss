@@ -1,0 +1,33 @@
+@import "abstracts/mixins";
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.fade-in {
+  opacity: 0;
+  @include with-transition(opacity, 0.5s);
+
+  &--visible {
+    opacity: 1;
+  }
+}
+
+:root {
+  --section-padding: 7rem 0;
+
+  @include media-breakpoint-up("md") {
+    --section-padding: 9rem 0;
+  }
+}
+
+.reduced-section-padding {
+  --section-padding: 4.5rem 0 7rem 0;
+
+  @include media-breakpoint-up("md") {
+    --section-padding: 4.5rem 0 9rem 0;
+  }
+}

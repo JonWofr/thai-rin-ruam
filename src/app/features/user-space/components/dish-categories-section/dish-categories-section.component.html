@@ -1,0 +1,54 @@
+<section
+  class="section section--secondary-background-color dish-categories-section"
+>
+  <div class="container">
+    <user-space-section-header
+      title="Unsere Speisen kategorisiert"
+      subtitle="Speisekarte"
+      sharedFadeIn
+    ></user-space-section-header>
+    <div class="dish-categories-section__body">
+      <div class="dish-categories-section__dish-category-cards-container">
+        <a
+          *ngFor="let dishCategory of dishCategories.slice(0, 6)"
+          routerLink="/menu"
+          [queryParams]="{ categoryId: dishCategory.id }"
+          sharedFadeIn
+        >
+          <user-space-dish-category-card
+            [dishCategory]="dishCategory"
+          ></user-space-dish-category-card>
+        </a>
+      </div>
+      <a class="button button--embedded" routerLink="/menu" sharedFadeIn>
+        <svg
+          class="button__icon button__icon--embedded"
+          width="21"
+          height="21"
+          viewBox="0 0 21 21"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g clip-path="url(#clip0_312_7665)">
+            <path
+              d="M4.66666 3.30005L7.21416 0.800049L17.1667 10.8L7.21416 20.8L4.66666 18.3L12.1667 10.8L4.66666 3.30005Z"
+              fill="#5C5C5C"
+            />
+          </g>
+          <defs>
+            <clipPath id="clip0_312_7665">
+              <rect
+                width="20"
+                height="20"
+                fill="white"
+                transform="translate(0.5 0.800049)"
+              />
+            </clipPath>
+          </defs>
+        </svg>
+
+        <p class="button__label button__label--embedded">Zur Speisekarte</p>
+      </a>
+    </div>
+  </div>
+</section>

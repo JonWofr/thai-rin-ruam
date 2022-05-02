@@ -1,0 +1,35 @@
+<article *ngIf="news" class="card news-card">
+  <header class="news-card__header">
+    <h3 class="tertiary-heading">{{ news.title }}</h3>
+    <time class="news-card__date">{{
+      news.creationDate.seconds * 1000 | date: "dd.MM.yyyy"
+    }}</time>
+  </header>
+  <div class="news-card__body">
+    <p [innerText]="news.text"> </p>
+    <div class="news-card__content-image-links-container">
+      <a
+        *ngFor="let imageUrl of news.imageUrls"
+        class="news-card__content-image-link"
+        [href]="imageUrl"
+        target="_blank"
+      >
+        <div class="aspect-ratio aspect-ratio--4-by-3">
+          <div class="aspect-ratio__inner-container">
+            <img class="news-card__content-image" [src]="imageUrl" alt="" />
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+  <hr class="divider" />
+  <footer class="news-card__footer">
+    <img [src]="news.author.avatarUrl" alt="" class="news-card__author-image" />
+    <p class="news-card__author">
+      <span class="subtitle subtitle--primary-accent-color"
+        >Ihr{{ news.author.name === "Nan" ? "e" : "" }}</span
+      ><br />
+      {{ news.author.name }}
+    </p>
+  </footer>
+</article>

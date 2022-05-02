@@ -1,0 +1,109 @@
+<section class="section section--primary-background-color location-section">
+  <div class="container">
+    <div
+      class="location-section__grid"
+      [class.location-section__grid--without-section-header]="
+        !shouldHaveSectionHeader
+      "
+    >
+      <user-space-section-header
+        *ngIf="shouldHaveSectionHeader"
+        class="location-section__header"
+        title="So erreichen Sie uns"
+        subtitle="Anfahrt"
+        sharedFadeIn
+      >
+      </user-space-section-header>
+      <a
+        class="location-section__route-link"
+        href="https://www.google.de/maps/place/Thai+Rin+Ruam/@51.5806383,6.2539543,17z/data=!3m1!4b1!4m5!3m4!1s0x47c76646aaaaaaab:0x6c1b62bbf10696c9!8m2!3d51.5806681!4d6.2562322"
+        target="_blank"
+        sharedFadeIn
+      >
+        <div class="aspect-ratio aspect-ratio--4-by-3">
+          <div class="aspect-ratio__inner-container">
+            <img
+              src="/assets/images/map-image.png"
+              alt=""
+              class="location-section__image"
+            />
+          </div>
+        </div>
+      </a>
+      <div
+        class="location-section__content"
+        [class.location-section__content--without-section-header]="
+          !shouldHaveSectionHeader
+        "
+      >
+        <div class="contact-information-block" sharedFadeIn>
+          <h3 class="tertiary-heading">Adresse</h3>
+          <p>
+            Thai Rin Ruam <br />
+            Feldstraße (B9 Kreisverkehr Richtung Innenstadt) <br />
+            47623 Kevelaer
+          </p>
+        </div>
+        <div class="contact-information-block" sharedFadeIn>
+          <h3 class="tertiary-heading">Öffnungszeiten</h3>
+          <table class="contact-information-block__opening-hours-table">
+            <tbody>
+              <tr>
+                <td class="contact-information-block__table-cell">
+                  Montag u. Dienstag
+                </td>
+                <td class="contact-information-block__table-cell">Ruhetag</td>
+              </tr>
+              <tr>
+                <td class="contact-information-block__table-cell">
+                  Mittwoch – Samstag:
+                </td>
+                <td class="contact-information-block__table-cell">
+                  11:30 – 20:00 Uhr
+                </td>
+              </tr>
+              <tr>
+                <td class="contact-information-block__table-cell">Sonntag:</td>
+                <td class="contact-information-block__table-cell">
+                  14:00 – 20:00 Uhr
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <user-space-holiday-note
+            class="contact-information-block__holiday-note"
+          ></user-space-holiday-note>
+        </div>
+        <div class="contact-information-block" sharedFadeIn>
+          <h3 class="tertiary-heading">Kontakt</h3>
+          <table>
+            <tbody>
+              <tr>
+                <td class="contact-information-block__table-cell">
+                  Tel. (Festnetz):
+                </td>
+                <td class="contact-information-block__table-cell">
+                  <a href="tel:+4928329725711">+49 (0) 2832 / 9725711</a>
+                </td>
+              </tr>
+              <tr>
+                <td class="contact-information-block__table-cell">
+                  Tel. (mobil):
+                </td>
+                <td class="contact-information-block__table-cell">
+                  <a href="tel:+491637194632">+49 (0) 163 / 7194632</a>
+                </td>
+              </tr>
+              <tr>
+                <td class="contact-information-block__table-cell">E-Mail:</td>
+                <td class="contact-information-block__table-cell">
+                  <a href="mailto:info@thairinruam.de">info@thairinruam.de</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

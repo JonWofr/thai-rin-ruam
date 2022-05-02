@@ -1,0 +1,74 @@
+@import "abstracts/mixins";
+
+:host {
+  display: block;
+}
+
+.footer {
+  padding: 7rem 0;
+  background-color: var(--primary-background-color);
+  text-align: center;
+  position: relative;
+
+  &__logo {
+    width: 170.1px;
+    height: auto;
+  }
+
+  &__contact-information-blocks-container {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 3rem;
+  }
+
+  &__link {
+    font-size: 0.75rem;
+    text-decoration: underline;
+  }
+
+  &__author-note {
+    position: absolute;
+    bottom: 0.75rem;
+    left: 50%;
+    transform: translate(-50%, 0);
+    text-align: center;
+    font-size: 0.75rem;
+  }
+
+  &__jonas-wolfram-link {
+    font-size: inherit;
+    color: var(--primary-accent-color);
+    font-family: $secondary-font-bold;
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
+}
+
+.contact-information-block {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  &__icon {
+    width: 20px;
+    height: 20px;
+    fill: var(--primary-font-color);
+  }
+}

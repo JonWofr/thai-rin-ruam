@@ -1,0 +1,48 @@
+// Static colors which do not depend on the current color theme
+$radial-dark-overlay: radial-gradient(
+  66.66% 50% at center,
+  rgba(0, 0, 0, 0) 0%,
+  rgba(0, 0, 0, 0) 80%,
+  rgba(0, 0, 0, 0.3) 100%
+);
+$solid-dark-overlay: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+
+// Fonts
+$primary-font-regular: "Papyrus-Regular";
+$primary-font-bold: "Papyrus-Bold";
+
+$secondary-font-light: "Montserrat-Light";
+$secondary-font-medium: "Montserrat-Medium";
+$secondary-font-regular: "Montserrat-Regular";
+$secondary-font-bold: "Montserrat-Bold";
+
+$thai-font-regular: "Aksaramatee-Regular";
+$thai-font-bold: "Aksaramatee-Bold";
+
+// Bootstrap breakpoints
+$grid-breakpoints: (
+  "xs": 0,
+  "sm": 576px,
+  "md": 768px,
+  "lg": 992px,
+  "xl": 1200px,
+  "xxl": 1400px,
+);
+
+$container-widths: (
+  "xs": 100%,
+  "sm": 540px,
+  "md": 720px,
+  "lg": 960px,
+  "xl": 1140px,
+  "xxl": 1320px,
+);
+
+// Misc
+$default-border-radius: 0.5rem;
+$default-box-shadow: 0px 4px 4px rgba(95, 95, 95, 0.25);
+$default-header-height: 4rem;
+
+// Transitions
+$default-transition-duration: 0.25s;
+$default-transition-timing-function: ease-in-out;

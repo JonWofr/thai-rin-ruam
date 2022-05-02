@@ -1,0 +1,10 @@
+@import "abstracts/variables";
+
+:host {
+  display: block;
+}
+
+.delete-allergene-modal__strong {
+  font-weight: normal;
+  font-family: $secondary-font-bold;
+}

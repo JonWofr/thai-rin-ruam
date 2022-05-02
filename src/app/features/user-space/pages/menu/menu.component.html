@@ -1,0 +1,101 @@
+<user-space-page-banner
+  title="Speisekarte"
+  xsImageUrl="/assets/images/menu-page-banner-image.jpg"
+  smImageUrl="/assets/images/menu-page-banner-image.jpg"
+  mdImageUrl="/assets/images/menu-page-banner-image.jpg"
+  lgImageUrl="/assets/images/menu-page-banner-image.jpg"
+  xlImageUrl="/assets/images/menu-page-banner-image.jpg"
+  xxlImageUrl="/assets/images/menu-page-banner-image.jpg"
+></user-space-page-banner>
+<section
+  class="reduced-section-padding section section--primary-background-color"
+>
+  <div class="container">
+    <shared-select
+      *sharedMedia="'(max-width: 767px)'"
+      class="menu__select"
+      placeholder="Kategorie"
+      [options]="dishCategories | mapToOptions: 'id':'name'"
+      [ngModel]="selectedDishCategory | mapToOption: 'id':'name'"
+      [ngModelOptions]="{
+        standalone: true
+      }"
+      (ngModelChange)="onChangeSelectedOption($event)"
+      sharedFadeIn
+    ></shared-select>
+    <shared-tab-bar
+      *sharedMedia="'(min-width: 768px)'"
+      [options]="dishCategories | mapToOptions: 'id':'name'"
+      [ngModel]="selectedDishCategory | mapToOption: 'id':'name'"
+      [ngModelOptions]="{
+        standalone: true
+      }"
+      (ngModelChange)="onChangeSelectedOption($event)"
+      sharedFadeIn
+    ></shared-tab-bar>
+    <user-space-dish-category-tab-header
+      [title]="selectedDishCategory.description"
+      [subtitle]="selectedDishCategory.name"
+      [imageUrl]="selectedDishCategory.imageUrl"
+      sharedFadeIn
+    >
+    </user-space-dish-category-tab-header>
+    <div class="menu__dish-groups-container">
+      <shared-spinner
+        *ngIf="isFetchingDishes"
+        class="centered"
+        sharedFadeIn
+      ></shared-spinner>
+      <div *ngFor="let dishGroup of dishGroups" class="dish-group">
+        <h3
+          *ngIf="dishGroup.name"
+          class="tertiary-heading dish-group__heading"
+          sharedFadeIn
+        >
+          {{ dishGroup.name }}
+        </h3>
+        <div class="dish-group__lists-container">
+          <ul class="dish-group__list">
+            <shared-menu-item
+              *ngFor="
+                let dish of dishGroup.dishes.slice(
+                  0,
+                  Math.ceil(dishGroup.dishes.length / 2)
+                )
+              "
+              [dish]="dish"
+              sharedFadeIn
+            ></shared-menu-item>
+          </ul>
+          <ul class="dish-group__list">
+            <shared-menu-item
+              *ngFor="
+                let dish of dishGroup.dishes.slice(
+                  Math.ceil(dishGroup.dishes.length / 2)
+                )
+              "
+              [dish]="dish"
+              sharedFadeIn
+            ></shared-menu-item>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <hr class="divider" sharedFadeIn />
+    <div class="menu__legend-container">
+      <shared-spinner
+        *ngIf="isFetchingAllergenes"
+        class="centered"
+        sharedFadeIn
+      ></shared-spinner>
+      <user-space-menu-legend
+        *ngIf="!isFetchingAllergenes"
+        [allergenes]="allergenes"
+        sharedFadeIn
+      ></user-space-menu-legend>
+    </div>
+    <p *ngIf="!isFetchingAllergenes" class="menu__glutamat-note" sharedFadeIn>
+      Unsere Speisen werden ohne zusätzliches Glutamat zubereitet!
+    </p>
+  </div>
+</section>

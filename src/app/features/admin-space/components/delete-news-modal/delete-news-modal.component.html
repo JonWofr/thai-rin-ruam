@@ -1,0 +1,17 @@
+<admin-space-modal
+  *ngIf="news"
+  [title]="'Neuigkeit ' + news.title + ' löschen'"
+  [type]="ModalType.DELETE"
+  [isValid]="true"
+  (clickCloseButton)="clickCloseButton.emit()"
+  (clickCancelButton)="clickCancelButton.emit()"
+>
+  <form id="modal-form" (ngSubmit)="clickDeleteButton.emit()">
+    <p>
+      Die Neuigkeit {{ news.title }} wird
+      <strong class="delete-allergene-modal__strong"
+        >unwiderruflich gelöscht</strong
+      >. Bist du dir sicher, dass du fortfahren möchtest?
+    </p>
+  </form>
+</admin-space-modal>

@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "ebcec4e5-8258-4947-a30e-ca2a0c4eb534"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -7,7 +10,8 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "scss",
+          "displayBlock": true
         },
         "@schematics/angular:application": {
           "strict": true
@@ -20,19 +24,24 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/thai-rin-ruam-new",
+            "outputPath": "public",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "src/favicon.ico",
+              {
+                "glob": "**",
+                "input": "src/favicon",
+                "output": "/"
+              },
               "src/assets"
             ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "styles": ["src/styles/main.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": ["src/styles"]
+            },
             "scripts": []
           },
           "configurations": {
@@ -41,7 +50,7 @@
                 {
                   "type": "initial",
                   "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumError": "2mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -94,13 +103,8 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.scss"],
             "scripts": []
           }
         }

@@ -1,0 +1,175 @@
+@use "sass:map";
+@import "abstracts/variables";
+@import "abstracts/mixins";
+
+:host {
+  display: block;
+}
+
+.hero {
+  height: 90vh;
+  min-height: 700px;
+  position: relative;
+  background-image: $radial-dark-overlay, $solid-dark-overlay,
+    url("/assets/images/hero-image.jpg");
+  background-size: cover;
+  background-position: center;
+
+  &__content {
+    width: 100%;
+    position: absolute;
+    // 50% minus half of the expected height of the element. Transform property can't
+    // be used. Therefore it has to be calculated manually. The height and
+    // margin of the contact button is also considered rendering the entire elemnent centered vertically.
+    top: calc(
+      50% -
+        (
+          3.75rem * 3 + 1.25rem + 2rem + 1px + 2rem + 1.25rem + 0.75rem +
+            3.75rem + 1rem + 1.25rem + 2rem + 2.75rem
+        ) / 2
+    );
+  }
+
+  &__opening-hours-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__opening-hours {
+    margin-bottom: 2rem;
+  }
+
+  &__contact-button-container {
+    width: 100%;
+    height: 2.75rem;
+    position: relative;
+  }
+
+  &__contact-button-inner-container {
+    position: absolute;
+    top: -$default-header-height;
+    width: 100%;
+    height: 100vh;
+    pointer-events: none;
+  }
+
+  &__contact-button {
+    width: 9.5rem;
+    height: 2.75rem;
+
+    position: absolute;
+    bottom: calc(100% - 2.75rem - $default-header-height);
+    right: calc(50% - 9.5rem / 2);
+    z-index: 1;
+
+    overflow: hidden;
+    box-shadow: none;
+    pointer-events: all;
+
+    transition-property: width, height, padding, bottom, right, border-radius,
+      box-shadow, gap, background-color;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.375s, 0.375s, 0.375s, 0.375s, 0.375s, 0.375s, 0.375s,
+      0.375s, 0.25s;
+
+    &--fixed {
+      width: 4rem;
+      height: 4rem;
+      padding: 1rem;
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      border-radius: 50%;
+      box-shadow: $default-box-shadow;
+      gap: 1rem;
+    }
+  }
+
+  &__contact-button-icon,
+  &__contact-button-label {
+    flex: none;
+  }
+
+  &__contact-button-icon {
+    @include with-transition(all, 0.375s);
+
+    &--fixed {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  @include media-breakpoint-up("sm") {
+    background-image: $radial-dark-overlay, $solid-dark-overlay,
+      url("/assets/images/hero-image.jpg");
+  }
+
+  @include media-breakpoint-up("md") {
+    background-image: $radial-dark-overlay, $solid-dark-overlay,
+      url("/assets/images/hero-image.jpg");
+
+    &__content {
+      // For tablet + layouts the content is slightly moved down to give the header more space
+      top: calc(
+        50% -
+          (
+            3.75rem * 3 + 1.25rem + 2rem + 1px + 2rem + 1.25rem + 0.75rem +
+              3.75rem + 1rem + 1.25rem
+          ) / 2
+      );
+    }
+  }
+
+  @include media-breakpoint-up("lg") {
+    background-image: $radial-dark-overlay, $solid-dark-overlay,
+      url("/assets/images/hero-image.jpg");
+  }
+
+  @include media-breakpoint-up("xl") {
+    background-image: $radial-dark-overlay, $solid-dark-overlay,
+      url("/assets/images/hero-image.jpg");
+  }
+
+  @include media-breakpoint-up("xxl") {
+    background-image: $radial-dark-overlay, $solid-dark-overlay,
+      url("/assets/images/hero-image.jpg");
+  }
+
+  @media only screen and (min-width: 1921px) {
+    background-image: $radial-dark-overlay, $solid-dark-overlay,
+      url("/assets/images/hero-image.jpg");
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.divider {
+  width: 100%;
+  max-width: 600px;
+}
+
+.subtitle {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+  text-align: center;
+  color: var(--primary-font-color);
+}
+
+.page-title {
+  line-height: 1.25;
+
+  &__first-word {
+    display: inline-block;
+    margin-bottom: 1rem;
+  }
+
+  @include media-breakpoint-up("md") {
+    font-size: 3rem;
+  }
+}

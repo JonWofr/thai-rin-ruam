@@ -1,0 +1,225 @@
+<section class="section section--secondary-background-color">
+  <div class="container">
+    <h1 class="secondary-heading">Speisekarte</h1>
+    <shared-select
+      *sharedMedia="'(max-width: 767px)'"
+      placeholder="Tab"
+      [options]="tabs"
+      [(ngModel)]="selectedTab"
+      [ngModelOptions]="{
+        standalone: true
+      }"
+    ></shared-select>
+    <shared-tab-bar
+      *sharedMedia="'(min-width: 768px)'"
+      [options]="tabs"
+      [(ngModel)]="selectedTab"
+      [ngModelOptions]="{
+        standalone: true
+      }"
+    ></shared-tab-bar>
+    <div class="document-list__container" [ngSwitch]="selectedTab.value">
+      <ng-container *ngSwitchCase="tabs[0].value">
+        <shared-spinner
+          *ngIf="isFetchingDishes"
+          class="centered"
+        ></shared-spinner>
+        <ul class="document-list">
+          <li *ngFor="let dish of dishes">
+            <div class="document-list__item-content">
+              <shared-menu-item
+                class="document-list__item-content-left-side"
+                [dish]="dish"
+              ></shared-menu-item>
+              <div class="document-list__more-button-container">
+                <div class="document-list__more-button-inner-container">
+                  <admin-space-context-menu
+                    *ngIf="dish.id === selectedDish?.id"
+                    (clickEditButton)="onClickContextMenuEditButton()"
+                    (clickDeleteButton)="onClickContextMenuDeleteButton()"
+                  ></admin-space-context-menu>
+                  <button
+                    class="icon-button"
+                    (click)="onClickDishMoreButton(dish, $event)"
+                  >
+                    <svg
+                      class="icon-button__icon"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g clip-path="url(#clip0_571_8875)">
+                        <path
+                          d="M12 18.2773C13.657 18.2773 15 19.6203 15 21.2773C15 22.9343 13.657 24.2773 12 24.2773C10.343 24.2773 9 22.9343 9 21.2773C9 19.6203 10.343 18.2773 12 18.2773ZM12 9.27734C13.657 9.27734 15 10.6203 15 12.2773C15 13.9343 13.657 15.2773 12 15.2773C10.343 15.2773 9 13.9343 9 12.2773C9 10.6203 10.343 9.27734 12 9.27734ZM12 0.277344C13.657 0.277344 15 1.62034 15 3.27734C15 4.93434 13.657 6.27734 12 6.27734C10.343 6.27734 9 4.93434 9 3.27734C9 1.62034 10.343 0.277344 12 0.277344Z"
+                          fill="#303030"
+                        />
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_571_8875">
+                          <rect
+                            width="24"
+                            height="24"
+                            fill="white"
+                            transform="translate(0 0.277344)"
+                          />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="divider"></div>
+          </li>
+        </ul>
+      </ng-container>
+      <ng-container *ngSwitchCase="tabs[1].value">
+        <shared-spinner
+          *ngIf="isFetchingDishes"
+          class="centered"
+        ></shared-spinner>
+        <ul class="document-list">
+          <li *ngFor="let allergene of allergenes">
+            <div class="document-list__item-content">
+              <p
+                class="document-list__item-content-left-side document-list__allergene"
+              >
+                {{ allergene.abbreviation }}
+              </p>
+              <div class="document-list__more-button-container">
+                <div class="document-list__more-button-inner-container">
+                  <admin-space-context-menu
+                    *ngIf="allergene.id === selectedAllergene?.id"
+                    (clickEditButton)="onClickContextMenuEditButton()"
+                    (clickDeleteButton)="onClickContextMenuDeleteButton()"
+                  ></admin-space-context-menu>
+                  <button
+                    class="icon-button"
+                    (click)="onClickAllergeneMoreButton(allergene, $event)"
+                  >
+                    <svg
+                      class="icon-button__icon"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g clip-path="url(#clip0_571_8875)">
+                        <path
+                          d="M12 18.2773C13.657 18.2773 15 19.6203 15 21.2773C15 22.9343 13.657 24.2773 12 24.2773C10.343 24.2773 9 22.9343 9 21.2773C9 19.6203 10.343 18.2773 12 18.2773ZM12 9.27734C13.657 9.27734 15 10.6203 15 12.2773C15 13.9343 13.657 15.2773 12 15.2773C10.343 15.2773 9 13.9343 9 12.2773C9 10.6203 10.343 9.27734 12 9.27734ZM12 0.277344C13.657 0.277344 15 1.62034 15 3.27734C15 4.93434 13.657 6.27734 12 6.27734C10.343 6.27734 9 4.93434 9 3.27734C9 1.62034 10.343 0.277344 12 0.277344Z"
+                          fill="#303030"
+                        />
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_571_8875">
+                          <rect
+                            width="24"
+                            height="24"
+                            fill="white"
+                            transform="translate(0 0.277344)"
+                          />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="divider"></div>
+          </li>
+        </ul>
+      </ng-container>
+    </div>
+    <button class="button button--embedded" (click)="onClickCreateButton()">
+      <svg
+        class="button__icon button__icon--embedded"
+        width="20"
+        height="20"
+        viewBox="0 0 20 20"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M20 8.33333H11.6667V0H8.33333V8.33333H0V11.6667H8.33333V20H11.6667V11.6667H20V8.33333Z"
+          fill="#5C5C5C"
+        />
+      </svg>
+
+      <p
+        class="button__label button__label--embedded"
+        [ngSwitch]="selectedTab.value"
+      >
+        <ng-container *ngSwitchCase="HomeTab.DISHES">
+          Neues Gericht erstellen
+        </ng-container>
+        <ng-container *ngSwitchCase="HomeTab.ALLERGENES">
+          Neues Allergen erstellen
+        </ng-container>
+      </p>
+    </button>
+  </div>
+</section>
+<ng-container [ngSwitch]="selectedTab.value">
+  <ng-container
+    *ngSwitchCase="HomeTab.DISHES"
+    [ngSwitch]="currentlyVisibleModalType"
+  >
+    <admin-space-create-or-update-dish-modal
+      *ngSwitchCase="ModalType.CREATE"
+      [type]="ModalType.CREATE"
+      [allergenes]="allergenes"
+      (clickCloseButton)="onClickModalCloseButton()"
+      (clickCancelButton)="onClickModalCancelButton()"
+      (clickSaveButton)="createDish($event)"
+    ></admin-space-create-or-update-dish-modal>
+    <ng-container *ngSwitchCase="ModalType.UPDATE">
+      <admin-space-create-or-update-dish-modal
+        *ngIf="selectedDish"
+        [type]="ModalType.UPDATE"
+        [dish]="selectedDish"
+        [allergenes]="allergenes"
+        (clickCloseButton)="onClickModalCloseButton()"
+        (clickCancelButton)="onClickModalCancelButton()"
+        (clickSaveButton)="updateDish($event)"
+      ></admin-space-create-or-update-dish-modal>
+    </ng-container>
+    <admin-space-delete-dish-modal
+      *ngSwitchCase="ModalType.DELETE"
+      [dish]="selectedDish"
+      (clickCloseButton)="onClickModalCloseButton()"
+      (clickCancelButton)="onClickModalCancelButton()"
+      (clickDeleteButton)="deleteDish()"
+    ></admin-space-delete-dish-modal>
+  </ng-container>
+  <ng-container
+    *ngSwitchCase="HomeTab.ALLERGENES"
+    [ngSwitch]="currentlyVisibleModalType"
+  >
+    <admin-space-create-or-update-allergene-modal
+      *ngSwitchCase="ModalType.CREATE"
+      [type]="ModalType.CREATE"
+      (clickCloseButton)="onClickModalCloseButton()"
+      (clickCancelButton)="onClickModalCancelButton()"
+      (clickSaveButton)="createAllergene($event)"
+    >
+    </admin-space-create-or-update-allergene-modal>
+    <ng-container *ngSwitchCase="ModalType.UPDATE">
+      <admin-space-create-or-update-allergene-modal
+        *ngIf="selectedAllergene"
+        [type]="ModalType.UPDATE"
+        [allergene]="selectedAllergene"
+        (clickCloseButton)="onClickModalCloseButton()"
+        (clickCancelButton)="onClickModalCancelButton()"
+        (clickSaveButton)="updateAllergene($event)"
+      >
+      </admin-space-create-or-update-allergene-modal>
+    </ng-container>
+    <admin-space-delete-allergene-modal
+      *ngSwitchCase="ModalType.DELETE"
+      [allergene]="selectedAllergene"
+      (clickCloseButton)="onClickModalCloseButton()"
+      (clickCancelButton)="onClickModalCancelButton()"
+      (clickDeleteButton)="deleteAllergene()"
+    >
+    </admin-space-delete-allergene-modal>
+  </ng-container>
+</ng-container>

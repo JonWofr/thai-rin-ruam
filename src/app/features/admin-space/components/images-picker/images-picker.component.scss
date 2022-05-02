@@ -1,0 +1,14 @@
+:host {
+  display: block;
+}
+
+.images-picker {
+  display: flex;
+  gap: 0.75rem;
+  overflow: auto;
+
+  &__item {
+    flex: none;
+    width: 200px;
+  }
+}

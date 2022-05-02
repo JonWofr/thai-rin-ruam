@@ -1,0 +1,108 @@
+@import "abstracts/mixins";
+
+:host {
+  display: block;
+}
+
+.about-us-section {
+  text-align: center;
+
+  &__grid {
+    max-width: calc(1000px + 2rem);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    // Height of rows is set to auto because grid-auto-columns is set to auto by default
+    grid-template-areas:
+      "header header"
+      "image image"
+      "text text";
+    gap: 2rem;
+    justify-items: center;
+
+    &--without-section-header {
+      grid-template-areas:
+        "image image"
+        "text text";
+    }
+  }
+
+  &__header {
+    width: 100%;
+    grid-area: header;
+    align-self: flex-end;
+    margin-bottom: 0;
+  }
+
+  &__image-container {
+    width: 100%;
+    max-width: 500px;
+    grid-area: image;
+    align-self: center;
+  }
+
+  &__image {
+    width: 90%;
+    height: 90%;
+    object-fit: cover;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-radius: 1.25rem;
+  }
+
+  &__text {
+    width: 100%;
+    grid-area: text;
+    align-self: flex-start;
+
+    &--without-section-header {
+      align-self: center;
+    }
+  }
+
+  @include media-breakpoint-up("md") {
+    text-align: left;
+
+    &__grid {
+      grid-template-areas:
+        "header header"
+        "image text";
+
+      &--without-section-header {
+        grid-template-areas:
+          "image text"
+          "image text";
+      }
+    }
+  }
+
+  @include media-breakpoint-up("lg") {
+    &__grid {
+      grid-template-areas:
+        "image header"
+        "image text";
+
+      &--without-section-header {
+        grid-template-areas:
+          "image text"
+          "image text";
+      }
+    }
+
+    &__header {
+      text-align: left;
+    }
+  }
+}
+
+.aspect-ratio__inner-container::before {
+  content: "";
+  width: 90%;
+  height: 90%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 3px solid var(--primary-accent-color);
+  border-radius: 1.25rem;
+}

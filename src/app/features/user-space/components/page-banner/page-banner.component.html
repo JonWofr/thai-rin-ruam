@@ -1,0 +1,26 @@
+<header class="dark-theme page-banner">
+  <img
+    class="page-banner__image"
+    [srcset]="
+      xsImageUrl +
+      ' 576w, ' +
+      smImageUrl +
+      ' 768w, ' +
+      mdImageUrl +
+      ' 992w, ' +
+      lgImageUrl +
+      ' 1200w, ' +
+      xlImageUrl +
+      ' 1400w, ' +
+      xxlImageUrl +
+      ' 1920w'
+    "
+    sizes="100vw"
+    [src]="xxlImageUrl"
+  />
+  <div class="page-banner__overlay">
+    <h1 class="primary-heading page-banner__title">
+      {{ title }}
+    </h1>
+  </div>
+</header>

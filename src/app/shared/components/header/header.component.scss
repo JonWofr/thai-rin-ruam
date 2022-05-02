@@ -1,0 +1,104 @@
+@import "abstracts/variables";
+@import "abstracts/mixins";
+
+:host {
+  display: block;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  background-color: var(--primary-background-color);
+  box-shadow: none;
+  @include with-transition(all);
+
+  &.light-theme {
+    box-shadow: 0 4px 4px 0 #b3b3b340;
+  }
+
+  &__top-row {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    height: $default-header-height;
+  }
+
+  &__logo-link {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__logo,
+  &__burger-menu-icon {
+    @include with-transition(fill);
+  }
+
+  &__logo {
+    fill: var(--primary-font-color);
+  }
+
+  &__burger-menu-button {
+    margin-left: auto;
+  }
+
+  &__burger-menu-icon {
+    fill: var(--secondary-font-color);
+  }
+}
+
+.drop-down-menu {
+  background-color: var(--primary-background-color);
+  height: 0px;
+  @include with-transition(height);
+  overflow: hidden;
+
+  &__list {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  &__link {
+    padding: 0.75rem 0;
+    display: block;
+    text-align: center;
+    font-family: $primary-font-bold;
+    text-transform: uppercase;
+    line-height: 1.5;
+    position: relative;
+
+    &::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      position: absolute;
+      bottom: 0.25rem;
+      left: calc(50% - 10px / 2);
+      transform-origin: center;
+      transform: scale(0);
+      background-color: var(--primary-accent-color);
+      border-radius: 50%;
+      @include with-transition(transform);
+    }
+
+    &--active::before {
+      transform: scale(1);
+    }
+  }
+
+  &__logout-item {
+    height: 3rem;
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.dark-theme {
+  --primary-background-color: transparent;
+}

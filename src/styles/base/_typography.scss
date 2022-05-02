@@ -1,0 +1,82 @@
+@import "abstracts/variables";
+@import "abstracts/mixins";
+
+@font-face {
+  font-family: $primary-font-regular;
+  src: url("/assets/fonts/papyrus/papyrus-regular.TTF");
+}
+@font-face {
+  font-family: $primary-font-bold;
+  src: url("/assets/fonts/papyrus/papyrus-bold (1).ttf");
+}
+@font-face {
+  font-family: $secondary-font-light;
+  src: url("/assets/fonts/montserrat/montserrat-light.ttf");
+}
+@font-face {
+  font-family: $secondary-font-medium;
+  src: url("/assets/fonts/montserrat/montserrat-medium.ttf");
+}
+@font-face {
+  font-family: $secondary-font-regular;
+  src: url("/assets/fonts/montserrat/montserrat-regular.ttf");
+}
+@font-face {
+  font-family: $secondary-font-bold;
+  src: url("/assets/fonts/montserrat/montserrat-bold.ttf");
+}
+@font-face {
+  font-family: $thai-font-regular;
+  src: url("/assets/fonts/aksaramatee/aksaramatee-regular.ttf");
+}
+@font-face {
+  font-family: $thai-font-bold;
+  src: url("/assets/fonts/aksaramatee/aksaramatee-bold.ttf");
+}
+
+* {
+  font-family: $secondary-font-regular;
+  color: var(--secondary-font-color);
+  font-size: 1rem;
+  line-height: 1.25;
+}
+
+.primary-heading,
+.secondary-heading,
+.tertiary-heading {
+  font-family: $primary-font-bold;
+  color: var(--primary-font-color);
+  line-height: 1.5;
+  font-weight: normal;
+}
+
+.primary-heading {
+  font-size: 3rem;
+
+  @include media-breakpoint-up("md") {
+    font-size: 4rem;
+  }
+}
+
+.secondary-heading {
+  font-size: 2rem;
+}
+
+.tertiary-heading {
+  font-size: 1.5rem;
+}
+
+.subtitle {
+  font-family: $secondary-font-bold;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+
+  &--primary-accent-color {
+    color: var(--primary-accent-color);
+  }
+
+  &--secondary-accent-color {
+    color: var(--secondary-accent-color);
+  }
+}

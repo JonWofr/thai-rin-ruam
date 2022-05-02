@@ -1,0 +1,14 @@
+<ng-container *ngIf="isPageTitleIntersecting !== undefined">
+  <shared-header
+    *sharedMedia="'(max-width: 767px)'"
+    [isPageTitleIntersecting]="isPageTitleIntersecting"
+    [navigationItems]="navigationItems"
+  ></shared-header>
+  <shared-desktop-header
+    *sharedMedia="'(min-width: 768px)'"
+    [isPageTitleIntersecting]="isPageTitleIntersecting"
+    [navigationItems]="navigationItems"
+  ></shared-desktop-header>
+</ng-container>
+<router-outlet></router-outlet>
+<user-space-footer class="dark-theme"></user-space-footer>

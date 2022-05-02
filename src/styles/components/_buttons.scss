@@ -1,0 +1,92 @@
+@import "abstracts/variables";
+@import "abstracts/mixins";
+
+.button {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: $default-border-radius;
+
+  &--primary-accent-color {
+    background-color: var(--primary-accent-color);
+    @include with-transition(background-color);
+
+    &:hover {
+      background-color: var(--primary-accent-color-hover);
+    }
+
+    &:disabled {
+      background-color: var(--primary-accent-color-disabled);
+    }
+  }
+
+  &--primary-accent-color-inverted {
+    background-color: transparent;
+    border: 1px solid var(--primary-accent-color);
+    @include with-transition(border, 0.125s);
+
+    &:hover {
+      border-color: var(--primary-accent-color-hover);
+
+      & > .button__icon {
+        fill: var(--primary-accent-color-hover);
+      }
+
+      & > .button__label {
+        color: var(--primary-accent-color-hover);
+      }
+    }
+  }
+
+  &--embedded {
+    padding: 0;
+    background-color: transparent;
+    border-radius: initial;
+  }
+
+  &__icon {
+    width: 1.25rem;
+    // Weird flexbox bug occurrs when a svg with a set max-width is
+    // inside a flexbox inside an absolutely positioned element. The flexbox
+    // somehow ignores the actual width of the svg when the max-width
+    // property is present.
+    max-width: initial;
+    height: 1.25rem;
+    fill: var(--primary-font-color);
+
+    &--embedded {
+      fill: var(--secondary-font-color);
+    }
+
+    &--primary-accent-color-inverted {
+      fill: var(--primary-accent-color);
+      @include with-transition(fill, 0.125s);
+    }
+  }
+
+  &__label {
+    font-family: $secondary-font-bold;
+    letter-spacing: 0.1em;
+    color: var(--primary-font-color);
+
+    &--embedded {
+      color: var(--secondary-font-color);
+    }
+
+    &--primary-accent-color-inverted {
+      color: var(--primary-accent-color);
+      @include with-transition(color, 0.125s);
+    }
+  }
+}
+
+.icon-button {
+  padding: 0.5rem;
+  margin: -0.5rem;
+  fill: var(--secondary-font-color);
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+  }
+}

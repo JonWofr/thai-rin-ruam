@@ -1,0 +1,53 @@
+<section class="section section--primary-background-color about-us-section">
+  <div class="container">
+    <div
+      class="about-us-section__grid"
+      [class.about-us-section__grid--without-section-header]="
+        !shouldHaveSectionHeader
+      "
+    >
+      <user-space-section-header
+        *ngIf="shouldHaveSectionHeader"
+        class="about-us-section__header"
+        title="Unsere Geschichte"
+        subtitle="Über Uns"
+        sharedFadeIn
+      ></user-space-section-header>
+      <div class="about-us-section__image-container" sharedFadeIn>
+        <div class="aspect-ratio aspect-ratio--1-by-1">
+          <div class="aspect-ratio__inner-container">
+            <img
+              class="about-us-section__image"
+              src="/assets/images/about-us-image.jpeg"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+      <p
+        class="about-us-section__text"
+        [class.about-us-section__text--without-section-header]="
+          !shouldHaveSectionHeader
+        "
+        sharedFadeIn
+      >
+        Thai Rin Ruam wurde im Juni 2010 von meiner Frau Sunan und mir (Norbert
+        Driessen) gegründet. Unsere Intention war es die thailändische Kochkunst
+        meiner Frau mit meiner langjährigen Erfahrung im Catering zu vereinen.
+        So entstand die Idee eines rollenden Restaurants in Anlehnung an die
+        berühmten thailändischen Garküchen. In Bambus-Optik gestaltet und mit
+        Woks ausgestattet hat unser fahrendes Restaurant nun einen gut
+        erreichbaren Standort in Kevelaer auf der Feldstraße gegenüber Bauen und
+        Leben (vormals Holz Derks) gefunden. Hier werden alle Gerichte nach
+        originalen Rezepten aus der thailändischen Heimat meiner Frau direkt
+        frisch zubereitet. <br />
+        <br />
+        Die deutsche Bedeutung unseres Restaurantnamens „ Rin Ruam“ = „alles
+        fließt zusammen“ bezieht sich auf die thailändische Küche, in der alle
+        Zutaten frisch im Wok gegart werden und dann zu einem wohlschmeckenden,
+        leichten und gesunden Gericht zusammengestellt werden. Kommen Sie vorbei
+        und probieren Sie!
+      </p>
+    </div>
+  </div>
+</section>

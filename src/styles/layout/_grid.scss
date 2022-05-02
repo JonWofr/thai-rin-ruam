@@ -1,0 +1,28 @@
+@use "sass:map";
+@import "abstracts/variables";
+@import "abstracts/mixins";
+
+.container {
+  padding: 0 0.75rem;
+
+  @include media-breakpoint-up("sm") {
+    max-width: map.get($container-widths, "sm");
+    margin: 0 auto;
+    padding: initial;
+  }
+
+  @include media-breakpoint-up("md") {
+    max-width: map.get($container-widths, "md");
+  }
+
+  @include media-breakpoint-up("lg") {
+    max-width: map.get($container-widths, "lg");
+  }
+
+  @include media-breakpoint-up("xl") {
+    max-width: map.get($container-widths, "xl");
+  }
+  @include media-breakpoint-up("xxl") {
+    max-width: map.get($container-widths, "xxl");
+  }
+}

@@ -1,0 +1,46 @@
+@import "abstracts/variables";
+@import "abstracts/mixins";
+
+:host {
+  display: block;
+}
+
+.tab-bar {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+
+  &__radio-input {
+    display: none;
+
+    &:checked + .tab-bar__radio-label {
+      color: var(--secondary-font-color);
+
+      &::before {
+        width: 50%;
+      }
+    }
+  }
+
+  &__radio-label {
+    padding: 1rem 0;
+    font-family: $secondary-font-bold;
+    color: var(--placeholder-color);
+    position: relative;
+    cursor: pointer;
+    @include with-transition(color);
+
+    &::before {
+      content: "";
+      width: 0;
+      height: 3px;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      background-color: var(--primary-accent-color);
+      transform: translate(-50%, 0);
+      @include with-transition(width);
+    }
+  }
+}

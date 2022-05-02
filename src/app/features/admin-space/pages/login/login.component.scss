@@ -1,0 +1,20 @@
+:host {
+  display: block;
+}
+
+.login {
+  position: relative;
+  // Hack to hide the header on the login page. This is not really clean and
+  // could probably with more effort be optimised.
+  z-index: 2;
+  width: 100%;
+  height: 100vh;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

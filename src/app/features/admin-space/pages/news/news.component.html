@@ -1,0 +1,79 @@
+<section class="section section--secondary-background-color">
+  <div class="container">
+    <h1 class="secondary-heading">Aktuelles</h1>
+    <div class="news__cards-container">
+      <shared-spinner *ngIf="isFetchingNews" class="centered"></shared-spinner>
+      <div *ngFor="let value of news" class="news__card-container">
+        <shared-news-card [news]="value"></shared-news-card>
+        <div class="news__more-button-container">
+          <admin-space-context-menu
+            *ngIf="value.id === selectedNews?.id"
+            (clickEditButton)="onClickContextMenuEditButton()"
+            (clickDeleteButton)="onClickContextMenuDeleteButton()"
+          ></admin-space-context-menu>
+          <button
+            class="news__more-button"
+            (click)="onClickMoreButton(value, $event)"
+          >
+            <svg
+              class="icon-button__icon"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g clip-path="url(#clip0_571_8875)">
+                <path
+                  d="M12 18.2773C13.657 18.2773 15 19.6203 15 21.2773C15 22.9343 13.657 24.2773 12 24.2773C10.343 24.2773 9 22.9343 9 21.2773C9 19.6203 10.343 18.2773 12 18.2773ZM12 9.27734C13.657 9.27734 15 10.6203 15 12.2773C15 13.9343 13.657 15.2773 12 15.2773C10.343 15.2773 9 13.9343 9 12.2773C9 10.6203 10.343 9.27734 12 9.27734ZM12 0.277344C13.657 0.277344 15 1.62034 15 3.27734C15 4.93434 13.657 6.27734 12 6.27734C10.343 6.27734 9 4.93434 9 3.27734C9 1.62034 10.343 0.277344 12 0.277344Z"
+                  fill="#303030"
+                />
+              </g>
+              <defs>
+                <clipPath id="clip0_571_8875">
+                  <rect
+                    width="24"
+                    height="24"
+                    fill="white"
+                    transform="translate(0 0.277344)"
+                  />
+                </clipPath>
+              </defs>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <admin-space-add-item-card
+        *ngIf="!isFetchingNews"
+        (clickAddItemCard)="onClickAddItemCard()"
+      ></admin-space-add-item-card>
+    </div>
+  </div>
+</section>
+<ng-container [ngSwitch]="currentlyVisibleModalType">
+  <admin-space-create-or-update-news-modal
+    *ngSwitchCase="ModalType.CREATE"
+    [type]="ModalType.CREATE"
+    (clickCloseButton)="onClickModalCloseButton()"
+    (clickCancelButton)="onClickModalCancelButton()"
+    (clickSaveButton)="createNews($event)"
+  ></admin-space-create-or-update-news-modal>
+  <ng-container *ngSwitchCase="ModalType.UPDATE">
+    <admin-space-create-or-update-news-modal
+      *ngIf="selectedNews"
+      [type]="ModalType.UPDATE"
+      [news]="selectedNews"
+      (clickCloseButton)="onClickModalCloseButton()"
+      (clickCancelButton)="onClickModalCancelButton()"
+      (clickSaveButton)="updateNews($event)"
+    ></admin-space-create-or-update-news-modal>
+  </ng-container>
+  <admin-space-delete-news-modal
+    *ngSwitchCase="ModalType.DELETE"
+    [news]="selectedNews"
+    (clickCloseButton)="onClickModalCloseButton()"
+    (clickCancelButton)="onClickModalCancelButton()"
+    (clickDeleteButton)="deleteNews()"
+  >
+  </admin-space-delete-news-modal>
+</ng-container>

@@ -1,0 +1,39 @@
+@use "sass:map";
+@import "abstracts/mixins";
+@import "abstracts/variables";
+
+:host {
+  display: block;
+  width: 100%;
+  max-width: map.get($container-widths, "sm");
+}
+
+.login-card {
+  padding: 2rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+
+  &__header {
+    margin-bottom: 2rem;
+  }
+
+  &__logo {
+    height: 100px;
+    width: auto;
+    margin: 0 auto;
+    align-self: center;
+    fill: var(--primary-font-color);
+  }
+
+  &__footer {
+    margin-top: 2rem;
+  }
+
+  @include media-breakpoint-up("sm") {
+    padding: 2rem;
+  }
+}
+
+.button {
+  margin: 0 auto;
+}
