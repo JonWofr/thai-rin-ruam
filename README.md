@@ -3,6 +3,11 @@
 The website is the digital presence of the renowned Thai restaurant Thai Rin Ruam based in Kevelaer, Germany.
 
 
+## Website
+
+https://thairinruam.de/
+
+
 ## The challenge
 
 The challenge was to renew their existing website. This primarily included a modern redesign, making the website responsive and the functionality to change the menu and the news section by Thai Rin Ruam themselves at any given time.
