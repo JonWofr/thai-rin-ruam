@@ -81,6 +81,9 @@
         </div>
       </div>
     </div>
+    <p *ngIf="selectedDishCategory.name === 'Hauptspeisen'" class="menu__included-rice-note" sharedFadeIn>
+      Alle Hauptgerichte, die ohne Reis oder Nudeln angegeben werden, erhalten als Beilage weißen Duftreis.
+    </p>
     <hr class="divider" sharedFadeIn />
     <div class="menu__legend-container">
       <shared-spinner
